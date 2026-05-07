@@ -1,0 +1,19 @@
+---
+description: Site section horizontal layout — hero-aligned container and text column
+globs: "**/sections/**/*.tsx,**/app/_shared/sectionShell.ts"
+alwaysApply: false
+---
+
+# Site section layout (Heaptrace marketing pages)
+
+Use the same horizontal rhythm as `HomeHeroSection` for every full-width section:
+
+1. **Section edge inset**: `SECTION_OUTER_PAD_CLASS` → `px-[0.9375rem]` (15px).
+2. **Page shell**: `SECTION_PAGE_CONTAINER_CLASS` → `base-container-wrapper relative mx-auto w-full max-w-[84.375rem] px-6`.
+   - Do **not** add `w-container` on this wrapper — legacy `.base-container-wrapper.w-container` caps width at 1174px and conflicts with the hero.
+3. **Intro copy block** (heading + paragraph stacks): `SECTION_TEXT_BLOCK_CLASS` → `flex w-full max-w-[40.6875rem] flex-col items-start gap-4` (hero-aligned width cap).
+4. **Wide copy block** (full container width): `SECTION_FULL_WIDTH_STACK_CLASS` → same stack without `max-w-[40.6875rem]` (use when body copy should span the whole content shell).
+
+Import from `@/app/_shared/sectionShell`. Full-bleed content (e.g. stats grids, marquees) still lives **inside** `SECTION_PAGE_CONTAINER_CLASS`; use `SECTION_TEXT_BLOCK_CLASS` for hero-aligned intros, `SECTION_FULL_WIDTH_STACK_CLASS` when the column should use the full shell width.
+
+Reference implementation: `app/(home)/sections/HomeHeroSection.tsx`, `HomeDigitallyTransformedSection.tsx`.

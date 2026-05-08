@@ -1,0 +1,482 @@
+/* ============================================================
+   Healthcare Technology industry page — scoped under .healthcare-page
+   Figma: VDbpakZg6dXzdclm0rVCy4 node 27:1057
+   ============================================================ */
+
+.healthcare-page {
+  background: #ffffff;
+  color: #4c4c4e;
+  font-family: var(--font-geist-sans), "Inter", system-ui, sans-serif;
+}
+
+/* ── Container ─────────────────────────────────────────────── */
+.healthcare-page .hc-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+/* ── Section backgrounds ───────────────────────────────────── */
+.healthcare-page .hc-section-light {
+  padding: 72px 0;
+  background: #f5f7fa;
+}
+
+.healthcare-page .hc-section-dark {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #428972 0%, #213331 100%);
+}
+
+.healthcare-page .hc-section-compliance {
+  padding: 80px 0;
+  background-color: #000000;
+  background-image: url("https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674826e5d6f401d348fef653_linear-bg.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+.healthcare-page .hc-section-white {
+  padding: 72px 0;
+  background: #ffffff;
+}
+
+/* ── Section header ────────────────────────────────────────── */
+.healthcare-page .hc-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 48px;
+}
+
+.healthcare-page .hc-heading {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.42;
+  letter-spacing: -0.64px;
+  color: #4c4c4e;
+}
+
+.healthcare-page .hc-heading-white {
+  color: #ffffff;
+}
+
+.healthcare-page .hc-subheading {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.44;
+  letter-spacing: -0.4px;
+  color: #4c4c4e;
+}
+
+.healthcare-page .hc-subheading-white {
+  color: #ffffff;
+}
+
+.healthcare-page .hc-desc {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5e5e60;
+  max-width: 860px;
+}
+
+.healthcare-page .hc-desc-white {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* ── Specialty cards (Why Choose Us) ───────────────────────── */
+.healthcare-page .hc-specialty-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.healthcare-page .hc-specialty-card {
+  flex: 0 1 calc(25% - 15px);
+  background: #e5f1ee;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0px 2px 7.5px rgba(59, 89, 82, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.healthcare-page .hc-specialty-text {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #4c4c4e;
+  text-align: center;
+}
+
+/* ── Service cards (3-col) ─────────────────────────────────── */
+.healthcare-page .hc-cards-all {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.healthcare-page .hc-service-card {
+  flex: 0 1 calc(33.333% - 16px);
+  max-width: calc(33.333% - 16px);
+  min-width: 260px;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0px 2px 15px 0px rgba(25, 14, 66, 0.07);
+  transition: box-shadow 0.28s ease, transform 0.28s ease;
+}
+
+.healthcare-page .hc-service-card:hover {
+  box-shadow: 0px 8px 28px 0px rgba(25, 14, 66, 0.14);
+  transform: translateY(-4px);
+}
+
+.healthcare-page .hc-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(77, 172, 138, 0.05);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+.healthcare-page .hc-service-card:hover .hc-card-overlay {
+  opacity: 1;
+}
+
+.healthcare-page .hc-card-inner {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.healthcare-page .hc-card-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.healthcare-page .hc-card-heading {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.36px;
+  color: #4c4c4e;
+}
+
+.healthcare-page .hc-card-body {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5e5e60;
+}
+
+/* ── Approach / How We Work boxes ──────────────────────────── */
+.healthcare-page .hc-steps-all {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.healthcare-page .hc-steps-all .hc-why-box {
+  flex: 1 1 calc(33.333% - 28px);
+  min-width: 240px;
+}
+
+.healthcare-page .hc-steps-all .hc-why-box:nth-child(4),
+.healthcare-page .hc-steps-all .hc-why-box:nth-child(5) {
+  flex: 1 1 calc(50% - 14px);
+}
+
+.healthcare-page .hc-why-box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.healthcare-page .hc-why-box:hover {
+  box-shadow: 0px 12px 32px 0px rgba(0, 0, 0, 0.25);
+  transform: translateY(-4px);
+}
+
+.healthcare-page .hc-why-num-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* ── Compliance cards ──────────────────────────────────────── */
+.healthcare-page .hc-compliance-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.healthcare-page .hc-compliance-card {
+  flex: 1 1 calc(33.333% - 16px);
+  min-width: 240px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.38s ease;
+}
+
+.healthcare-page .hc-compliance-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(99deg, #5AC9A2 0%, #284C46 99.93%);
+  transform: translateX(-100%);
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.healthcare-page .hc-compliance-card:hover::before {
+  transform: translateX(0);
+}
+
+.healthcare-page .hc-compliance-card:hover {
+  box-shadow: 0px 8px 28px 0px rgba(0, 0, 0, 0.25);
+}
+
+.healthcare-page .hc-compliance-card-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.healthcare-page .hc-compliance-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.36px;
+  color: #4c4c4e;
+  transition: color 0.38s ease;
+}
+
+.healthcare-page .hc-compliance-card:hover .hc-compliance-title {
+  color: #ffffff;
+}
+
+.healthcare-page .hc-compliance-body {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5e5e60;
+  transition: color 0.38s ease;
+}
+
+.healthcare-page .hc-compliance-card:hover .hc-compliance-body {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.healthcare-page .hc-compliance-icon-wrap {
+  width: 70px;
+  height: 70px;
+  background: #f5f7fa;
+  border-radius: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  transition: background 0.38s ease;
+}
+
+.healthcare-page .hc-compliance-card:hover .hc-compliance-icon-wrap {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.healthcare-page .hc-compliance-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  transition: filter 0.38s ease;
+}
+
+.healthcare-page .hc-compliance-card:hover .hc-compliance-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* ── Why HeapTrace split layout ────────────────────────────── */
+.healthcare-page .hc-split-layout {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+.healthcare-page .hc-split-text {
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+
+.healthcare-page .hc-split-cards {
+  flex: 1;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.healthcare-page .hc-why-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.healthcare-page .hc-why-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.healthcare-page .hc-why-card:hover {
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+/* IE card offset — left col only, desktop */
+.healthcare-page .hc-why-card-offset {
+  margin-top: 80px;
+}
+
+/* ── CTA button ────────────────────────────────────────────── */
+.healthcare-page .hc-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 36px;
+  background: #4dac8a;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.22s ease;
+  margin-top: 24px;
+}
+
+.healthcare-page .hc-cta-btn:hover {
+  background: #3a9070;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .healthcare-page .hc-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .healthcare-page .hc-service-card {
+    flex: 0 1 calc(50% - 12px);
+    max-width: calc(50% - 12px);
+  }
+
+  .healthcare-page .hc-specialty-card {
+    flex: 0 1 calc(50% - 10px);
+  }
+
+  .healthcare-page .hc-steps-all .hc-why-box,
+  .healthcare-page .hc-steps-all .hc-why-box:nth-child(4),
+  .healthcare-page .hc-steps-all .hc-why-box:nth-child(5) {
+    flex: 0 1 calc(50% - 14px);
+  }
+
+  .healthcare-page .hc-split-text {
+    flex: 0 0 35%;
+    max-width: 35%;
+  }
+}
+
+@media (max-width: 1023px) {
+  .healthcare-page .hc-split-layout {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .healthcare-page .hc-split-text {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  /* Tablet: IE+IF side by side (col1), CS+EES side by side (col2) — columns remain */
+  .healthcare-page .hc-why-card-offset {
+    margin-top: 0;
+  }
+
+  .healthcare-page .hc-compliance-card {
+    flex: 1 1 calc(50% - 12px);
+  }
+}
+
+@media (max-width: 767px) {
+  .healthcare-page .hc-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .healthcare-page .hc-section-light,
+  .healthcare-page .hc-section-dark,
+  .healthcare-page .hc-section-compliance,
+  .healthcare-page .hc-section-white {
+    padding: 56px 0;
+  }
+
+  .healthcare-page .hc-heading {
+    font-size: 26px;
+  }
+
+  .healthcare-page .hc-service-card,
+  .healthcare-page .hc-specialty-card,
+  .healthcare-page .hc-compliance-card,
+  .healthcare-page .hc-why-card {
+    flex: 0 1 100%;
+    max-width: 100%;
+  }
+
+  .healthcare-page .hc-split-cards {
+    flex-direction: column;
+  }
+
+  .healthcare-page .hc-why-card-offset {
+    margin-top: 0;
+  }
+
+  .healthcare-page .hc-steps-all .hc-why-box,
+  .healthcare-page .hc-steps-all .hc-why-box:nth-child(4),
+  .healthcare-page .hc-steps-all .hc-why-box:nth-child(5) {
+    flex: 0 1 100%;
+  }
+
+  .healthcare-page .hc-header {
+    margin-bottom: 32px;
+  }
+}

@@ -2,6 +2,14 @@ import type { Metadata } from "next";
 import IndustryDetailMainSection from "./sections/IndustryDetailMainSection";
 import "./blockchain.css";
 import "./edtech.css";
+import "./healthcare.css";
+import HcBannerSection from "./sections/HcBannerSection";
+import HcWhyChooseUsSection from "./sections/HcWhyChooseUsSection";
+import HcServicesSection from "./sections/HcServicesSection";
+import HcApproachSection from "./sections/HcApproachSection";
+import HcComplianceSection from "./sections/HcComplianceSection";
+import HcWhyHeaptraceSection from "./sections/HcWhyHeaptraceSection";
+import HcCtaSection from "./sections/HcCtaSection";
 import BlockchainBannerSection from "./sections/BlockchainBannerSection";
 import BlockchainWhyChooseSection from "./sections/BlockchainWhyChooseSection";
 import BlockchainCapabilitiesSection from "./sections/BlockchainCapabilitiesSection";
@@ -57,6 +65,20 @@ export default async function IndustryDetailPage({
 }) {
   const { slug } = await params;
   const title = titleFromSlug(slug);
+
+  if (slug === "healthcare-technology") {
+    return (
+      <div className="healthcare-page">
+        <HcBannerSection />
+        <HcWhyChooseUsSection />
+        <HcServicesSection />
+        <HcApproachSection />
+        <HcComplianceSection />
+        <HcWhyHeaptraceSection />
+        <HcCtaSection />
+      </div>
+    );
+  }
 
   if (slug === "edtech") {
     return (

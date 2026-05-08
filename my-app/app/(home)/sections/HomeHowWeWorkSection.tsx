@@ -2,7 +2,7 @@ import type { StaticImageData } from "next/image";
 import step01 from "@/app/assets/icons/01.png";
 import step02 from "@/app/assets/icons/02.png";
 import step03 from "@/app/assets/icons/03.png";
-import step04 from "../../../../Assets/04.png";
+import step04 from "@/app/assets/icons/04.png";
 import {
   SECTION_OUTER_PAD_CLASS,
   SECTION_PAGE_CONTAINER_CLASS,
@@ -80,7 +80,7 @@ export default function HomeHowWeWorkSection() {
                   <h3 className="heading-26">{step.title}</h3>
                   <div className="text-block-15">{step.description}</div>
                 </div>
-                <div className="w-layout-blockcontainer container-92 w-container">
+                <div className="w-layout-blockcontainer container-92 w-container mt-8 sm:mt-0">
                   <img
                     src={step.image.src}
                     width={step.image.width}

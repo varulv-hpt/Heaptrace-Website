@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@source "../app/**/*.{tsx,ts,jsx,js}";
+@source "../components/**/*.{tsx,ts,jsx,js}";
 
 :root {
   --background: #ffffff;
@@ -163,8 +165,7 @@ body {
 .statistic-block-wrapper:hover .statictics-icon {
   transform: scale(1.08);
   color: #c8f5e3;
-  filter: drop-shadow(0 0 18px rgba(96, 215, 173, 0.55))
-    drop-shadow(0 0 4px rgba(200, 245, 227, 0.35));
+  filter: drop-shadow(0 0 18px rgba(96, 215, 173, 0.55)) drop-shadow(0 0 4px rgba(200, 245, 227, 0.35));
 }
 
 .statistic-numeric {
@@ -186,7 +187,7 @@ body {
 .container-90.how-we-work {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 28px;
+  gap: 48px;
 }
 
 .success-blocks {
@@ -268,6 +269,17 @@ body {
   height: auto;
   max-width: 100%;
   display: block;
+}
+
+.cert-logo {
+  width: auto;
+  height: 90px;
+}
+
+@media (max-width: 767px) {
+  .cert-logo {
+    height: 65px;
+  }
 }
 
 @media (max-width: 1200px) {

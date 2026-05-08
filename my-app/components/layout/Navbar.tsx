@@ -167,7 +167,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", updateTopState);
   }, []);
 
-  const isTransparent = pathname === "/" && isAtTop && !mobileOpen;
+  const TRANSPARENT_ROUTES = ["/", "/about-us"];
+  const isTransparent = TRANSPARENT_ROUTES.includes(pathname) && isAtTop && !mobileOpen;
 
   return (
     <>
@@ -251,7 +252,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {pathname !== "/" && <div className="site-header-spacer" aria-hidden="true" />}
+      {!TRANSPARENT_ROUTES.includes(pathname) && <div className="site-header-spacer" aria-hidden="true" />}
     </>
   );
 }

@@ -22,9 +22,6 @@ const WHY = [
 ];
 
 export default function EdtechWhyChooseSection() {
-  const row1 = WHY.slice(0, 3);
-  const row2 = WHY.slice(3, 5);
-
   return (
     <section className="et-section-why-choose">
       <div className="et-container">
@@ -34,13 +31,8 @@ export default function EdtechWhyChooseSection() {
           </h2>
         </div>
 
-        <div className="et-why-grid">
-          {row1.map((item) => (
-            <WhyCard key={item.title} {...item} />
-          ))}
-        </div>
-        <div className="et-why-grid-2" style={{ marginTop: "28px" }}>
-          {row2.map((item) => (
+        <div className="et-steps-all">
+          {WHY.map((item) => (
             <WhyCard key={item.title} {...item} />
           ))}
         </div>

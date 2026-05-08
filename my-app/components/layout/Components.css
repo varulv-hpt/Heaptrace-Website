@@ -140,6 +140,10 @@
   color: #286f58;
 }
 
+.site-dropdown-link-active {
+  color: #4dac8a;
+}
+
 .site-actions {
   display: flex;
   align-items: center;
@@ -461,6 +465,7 @@
   from {
     transform: translate3d(0, 0, 0);
   }
+
   to {
     transform: translate3d(-50%, 0, 0);
   }

@@ -1,10 +1,10 @@
+import Image from "next/image";
+import bgImage from "@/app/assets/banner/blockchain-sec.png";
 import num1 from "@/app/assets/icons/number-circle-one-light.png";
 import num2 from "@/app/assets/icons/number-circle-two-light.png";
 import num3 from "@/app/assets/icons/number-circle-three-light.png";
 import num4 from "@/app/assets/icons/number-circle-four-light.png";
-
-const CDN = "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/";
-const num5 = `${CDN}672e0b0d080e2f04e728513b_number-circle-five-light.png`;
+import num5 from "@/app/assets/icons/number-circle-five-light.png";
 
 const STEPS = [
   {
@@ -28,19 +28,24 @@ const STEPS = [
     body: "Before going live, we rigorously test your platform to ensure optimal performance, security, and scalability. We work with you to deploy the solution in a way that minimizes disruption and allows for a smooth transition to your new learning system.",
   },
   {
-    icon: num5,
+    icon: num5.src,
     title: "Continuous Support and Optimization",
     body: "After the launch, our team provides ongoing support, ensuring that your EdTech solution continues to perform at its best. We also offer regular updates and enhancements based on your evolving needs and the latest technological advancements.",
   },
 ];
 
 export default function EdtechHowWeWorkSection() {
-  const row1 = STEPS.slice(0, 3);
-  const row2 = STEPS.slice(3, 5);
-
   return (
-    <section className="et-section-light">
-      <div className="et-container">
+    <section className="et-section-light" style={{ position: "relative", overflow: "hidden" }}>
+      <Image
+        src={bgImage}
+        alt=""
+        fill
+        sizes="100vw"
+        style={{ objectFit: "cover", objectPosition: "center" }}
+        aria-hidden="true"
+      />
+      <div className="et-container" style={{ position: "relative", zIndex: 1 }}>
         <div className="et-header">
           <h2 className="et-heading">
             How We <span style={{ color: "#4dac8a" }}>Work</span>
@@ -51,13 +56,8 @@ export default function EdtechHowWeWorkSection() {
           </p>
         </div>
 
-        <div className="et-why-grid">
-          {row1.map((s) => (
-            <StepCard key={s.title} {...s} />
-          ))}
-        </div>
-        <div className="et-why-grid-2" style={{ marginTop: "28px" }}>
-          {row2.map((s) => (
+        <div className="et-steps-all">
+          {STEPS.map((s) => (
             <StepCard key={s.title} {...s} />
           ))}
         </div>

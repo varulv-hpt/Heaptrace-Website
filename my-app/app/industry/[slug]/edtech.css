@@ -27,15 +27,12 @@
 
 .edtech-page .et-section-dark {
   padding: 80px 0;
-  background-color: #1e2828;
+  background: linear-gradient(135deg, #428972 0%, #213331 100%);
 }
 
 .edtech-page .et-section-why-choose {
   padding: 80px 0;
-  background-color: #000000;
-  background-image: url("https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674826e5d6f401d348fef653_linear-bg.webp");
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(135deg, #428972 0%, #213331 100%);
 }
 
 /* ── Section header ────────────────────────────────────────── */
@@ -73,29 +70,24 @@
   color: rgba(255, 255, 255, 0.88);
 }
 
-/* ── Service cards (3-col + 2-col grids) ───────────────────── */
-.edtech-page .et-cards-grid {
+/* ── Service cards ─────────────────────────────────────────── */
+.edtech-page .et-cards-all {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
 }
 
-.edtech-page .et-cards-grid .et-service-card {
+/* Desktop: first 6 cards = 3-col, last 2 = 2-col */
+.edtech-page .et-cards-all .et-service-card {
   flex: 0 1 calc(33.333% - 16px);
   max-width: calc(33.333% - 16px);
   min-width: 260px;
 }
 
-.edtech-page .et-cards-grid-2 {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-}
-
-.edtech-page .et-cards-grid-2 .et-service-card {
+.edtech-page .et-cards-all .et-service-card:nth-child(7),
+.edtech-page .et-cards-all .et-service-card:nth-child(8) {
   flex: 0 1 calc(50% - 12px);
   max-width: calc(50% - 12px);
-  min-width: 260px;
 }
 
 .edtech-page .et-service-card {
@@ -157,7 +149,25 @@
   color: #5e5e60;
 }
 
-/* ── Why / How We Work boxes ───────────────────────────────── */
+/* ── How We Work steps (single container) ──────────────────── */
+.edtech-page .et-steps-all {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+/* Desktop: first 3 cards = 3-col, last 2 = 2-col */
+.edtech-page .et-steps-all .et-why-box {
+  flex: 1 1 calc(33.333% - 28px);
+  min-width: 240px;
+}
+
+.edtech-page .et-steps-all .et-why-box:nth-child(4),
+.edtech-page .et-steps-all .et-why-box:nth-child(5) {
+  flex: 1 1 calc(50% - 14px);
+}
+
+/* ── Why Choose boxes ──────────────────────────────────────── */
 .edtech-page .et-why-grid {
   display: flex;
   flex-wrap: wrap;
@@ -230,13 +240,22 @@
     padding-right: 40px;
   }
 
-  .edtech-page .et-cards-grid .et-service-card {
+  .edtech-page .et-cards-all .et-service-card,
+  .edtech-page .et-cards-all .et-service-card:nth-child(7),
+  .edtech-page .et-cards-all .et-service-card:nth-child(8) {
     flex: 0 1 calc(50% - 12px);
     max-width: calc(50% - 12px);
   }
 
   .edtech-page .et-why-grid .et-why-box {
     flex: 1 1 calc(50% - 28px);
+  }
+
+  /* How We Work: 2-per-row on tablet — cards 3 & 4 in same row */
+  .edtech-page .et-steps-all .et-why-box,
+  .edtech-page .et-steps-all .et-why-box:nth-child(4),
+  .edtech-page .et-steps-all .et-why-box:nth-child(5) {
+    flex: 0 1 calc(50% - 14px);
   }
 }
 
@@ -256,8 +275,9 @@
     font-size: 26px;
   }
 
-  .edtech-page .et-cards-grid .et-service-card,
-  .edtech-page .et-cards-grid-2 .et-service-card {
+  .edtech-page .et-cards-all .et-service-card,
+  .edtech-page .et-cards-all .et-service-card:nth-child(7),
+  .edtech-page .et-cards-all .et-service-card:nth-child(8) {
     flex: 0 1 100%;
     max-width: 100%;
   }
@@ -265,6 +285,12 @@
   .edtech-page .et-why-grid .et-why-box,
   .edtech-page .et-why-grid-2 .et-why-box {
     flex: 1 1 100%;
+  }
+
+  .edtech-page .et-steps-all .et-why-box,
+  .edtech-page .et-steps-all .et-why-box:nth-child(4),
+  .edtech-page .et-steps-all .et-why-box:nth-child(5) {
+    flex: 0 1 100%;
   }
 
   .edtech-page .et-header {

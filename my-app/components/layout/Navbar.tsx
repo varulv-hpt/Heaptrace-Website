@@ -57,6 +57,7 @@ interface NavDropdownProps {
 function NavDropdown({ label, items }: NavDropdownProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -101,7 +102,7 @@ function NavDropdown({ label, items }: NavDropdownProps) {
           <Link
             key={item.href}
             href={item.href}
-            className="site-dropdown-link"
+            className={`site-dropdown-link${pathname === item.href ? " site-dropdown-link-active" : ""}`}
             onClick={() => setOpen(false)}
           >
             {item.label}

@@ -50,7 +50,7 @@ export default function ErpBannerSection() {
             style={{
               margin: 0,
               color: "rgba(255,255,255,0.90)",
-              fontSize: "18px",
+              fontSize: "16px",
               fontWeight: 400,
               lineHeight: "28px",
             }}

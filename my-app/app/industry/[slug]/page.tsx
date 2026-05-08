@@ -4,6 +4,7 @@ import "./blockchain.css";
 import "./edtech.css";
 import "./healthcare.css";
 import "./erp.css";
+import "./edp.css";
 import HcBannerSection from "./sections/HcBannerSection";
 import HcWhyChooseUsSection from "./sections/HcWhyChooseUsSection";
 import HcServicesSection from "./sections/HcServicesSection";
@@ -30,6 +31,12 @@ import ErpServicesSection from "./sections/ErpServicesSection";
 import ErpIndustriesSection from "./sections/ErpIndustriesSection";
 import ErpWhyHeaptraceSection from "./sections/ErpWhyHeaptraceSection";
 import ErpCtaSection from "./sections/ErpCtaSection";
+import EdpBannerSection from "./sections/EdpBannerSection";
+import EdpIntroSection from "./sections/EdpIntroSection";
+import EdpServicesSection from "./sections/EdpServicesSection";
+import EdpIndustriesSection from "./sections/EdpIndustriesSection";
+import EdpWhyChooseSection from "./sections/EdpWhyChooseSection";
+import EdpCtaSection from "./sections/EdpCtaSection";
 
 type Params = {
   slug: string;
@@ -123,6 +130,19 @@ export default async function IndustryDetailPage({
         <ErpIndustriesSection />
         <ErpWhyHeaptraceSection />
         <ErpCtaSection />
+      </div>
+    );
+  }
+
+  if (slug === "edp-solutions") {
+    return (
+      <div className="edp-page">
+        <EdpBannerSection />
+        <EdpIntroSection />
+        <EdpServicesSection />
+        <EdpIndustriesSection />
+        <EdpWhyChooseSection />
+        <EdpCtaSection />
       </div>
     );
   }

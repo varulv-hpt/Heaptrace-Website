@@ -50,7 +50,7 @@ export default function HcBannerSection() {
             style={{
               margin: 0,
               color: "rgba(255,255,255,0.90)",
-              fontSize: "20px",
+              fontSize: "16px",
               fontWeight: 400,
               lineHeight: "24px",
             }}

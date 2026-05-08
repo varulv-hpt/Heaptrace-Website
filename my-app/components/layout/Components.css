@@ -12,7 +12,7 @@
 }
 
 .site-header-solid {
-  background: linear-gradient(90deg, rgba(20, 89, 70, 0.94), rgba(18, 78, 63, 0.88));
+  background: linear-gradient(90deg, rgba(77, 172, 138, 0.96), rgba(61, 148, 118, 0.92));
   border-bottom: 1px solid transparent;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
   backdrop-filter: blur(6px);
@@ -112,7 +112,7 @@
   left: 0;
   min-width: 230px;
   background: #fff;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
   padding: 10px 0;
   opacity: 0;
@@ -138,7 +138,7 @@
 
 .site-dropdown-link:hover {
   background: #f5f7f8;
-  color: #286f58;
+  color: var(--brand-primary);
 }
 
 .site-dropdown-link-active {
@@ -158,7 +158,7 @@
   min-height: 42px;
   padding: 0 28px;
   border: 1px solid rgba(255, 255, 255, 0.88);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   color: #fff;
   text-decoration: none;
   font-size: 1rem;
@@ -169,7 +169,7 @@
 
 .site-cta:hover {
   background: #fff;
-  color: #145946;
+  color: var(--brand-primary);
 }
 
 .site-mobile-toggle {
@@ -310,7 +310,7 @@
 }
 
 .site-mobile-nav-link:hover {
-  color: #145946;
+  color: var(--brand-primary);
 }
 
 .site-mobile-drawer .site-nav-btn-mobile {
@@ -333,20 +333,20 @@
 }
 
 .site-mobile-nav-link-sub:hover {
-  color: #145946;
+  color: var(--brand-primary);
 }
 
 .site-mobile-cta {
   margin-top: 24px;
   width: 100%;
-  background: #145946;
-  border-color: #145946;
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
   color: #ffffff;
 }
 
 .site-mobile-cta:hover {
-  background: #0f4435;
-  border-color: #0f4435;
+  background: #3f987b;
+  border-color: #3f987b;
   color: #ffffff;
 }
 

@@ -287,11 +287,6 @@ export default function Navbar() {
         </div>
       </div>
 
-{/* <<<<<<< Updated upstream
-      {!TRANSPARENT_ROUTES.includes(pathname) && <div className="site-header-spacer" aria-hidden="true" />} */}
-
-      {!overlayHero && <div className="site-header-spacer" aria-hidden="true" />}
-
     </>
   );
 }

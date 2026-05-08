@@ -1,11 +1,12 @@
 import ServiceDetailIntro from "../elements/ServiceDetailIntro";
+import type { ServiceDetail } from "../serviceDetails";
 
 type ServiceDetailMainSectionProps = {
-  title: string;
+  service: ServiceDetail;
 };
 
 export default function ServiceDetailMainSection({
-  title,
+  service,
 }: ServiceDetailMainSectionProps) {
-  return <ServiceDetailIntro title={title} />;
+  return <ServiceDetailIntro service={service} />;
 }

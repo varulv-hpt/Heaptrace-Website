@@ -45,6 +45,7 @@ const INSIGHTS_LINKS = [
 // Routes whose hero is dark/full-bleed and should be overlaid by the navbar
 // (transparent at the top, solid on scroll). Mirrors the home page behavior.
 const TRANSPARENT_HERO_ROUTES = new Set<string>(["/", "/careers"]);
+const TRANSPARENT_HERO_PREFIXES = ["/industry/", "/about-us"];
 
 type DropdownItem = { label: string; href: string };
 
@@ -173,7 +174,9 @@ export default function Navbar() {
 
   // const TRANSPARENT_ROUTES = ["/", "/about-us"];
   // const isTransparent = TRANSPARENT_ROUTES.includes(pathname) && isAtTop && !mobileOpen;
-  const overlayHero = TRANSPARENT_HERO_ROUTES.has(pathname);
+  const overlayHero =
+    TRANSPARENT_HERO_ROUTES.has(pathname) ||
+    TRANSPARENT_HERO_PREFIXES.some((prefix) => pathname.startsWith(prefix));
   const isTransparent = overlayHero && isAtTop && !mobileOpen;
 
   return (

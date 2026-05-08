@@ -1,0 +1,552 @@
+/* ============================================================
+   Blockchain industry page — scoped under .blockchain-page
+   Matches Figma: VDbpakZg6dXzdclm0rVCy4 node 18:411
+   ============================================================ */
+
+.blockchain-page {
+  background: #ffffff;
+  color: #4c4c4e;
+  font-family: var(--font-geist-sans), "Inter", system-ui, sans-serif;
+}
+
+/* ── Container ─────────────────────────────────────────────── */
+.blockchain-page .bc-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+/* Banner styles are handled via inline styles in BlockchainBannerSection.tsx */
+
+/* ── Why Choose Us (light bg) ──────────────────────────────── */
+.blockchain-page .bc-section-light {
+  padding: 72px 0;
+  background: #f5f7fa;
+}
+
+/* ── Capabilities section (dark teal) ─────────────────────── */
+.blockchain-page .bc-section-capabilities {
+  padding: 80px 0;
+  background-color: #1e2828;
+}
+
+/* ── Why HeapTrace (light bg + image) ─────────────────────── */
+.blockchain-page .bc-section-why {
+  padding: 80px 0;
+  background: #f5f7fa;
+}
+
+/* ── Industries / Tech Stack (black + image) ───────────────── */
+.blockchain-page .bc-section-dark {
+  padding: 80px 0;
+  background-color: #000000;
+  background-image: url("https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674826e5d6f401d348fef653_linear-bg.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+/* ── CTA section (light bg) ────────────────────────────────── */
+.blockchain-page .bc-section-cta {
+  padding: 72px 0;
+  background: #f5f7fa;
+}
+
+/* ── Section header ────────────────────────────────────────── */
+.blockchain-page .bc-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 48px;
+}
+
+.blockchain-page .bc-heading {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.42;
+  letter-spacing: -0.64px;
+  color: #4c4c4e;
+}
+
+.blockchain-page .bc-heading-white {
+  color: #ffffff;
+}
+
+.blockchain-page .bc-subheading {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.44;
+  letter-spacing: -0.4px;
+  color: #4c4c4e;
+}
+
+.blockchain-page .bc-desc {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5e5e60;
+  max-width: 820px;
+}
+
+.blockchain-page .bc-desc-white {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* ── Capability cards ──────────────────────────────────────── */
+.blockchain-page .bc-capabilities-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.blockchain-page .bc-capability-card {
+  flex: 0 1 calc(33.333% - 24px);
+  min-width: 260px;
+  max-width: calc(33.333% - 24px);
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0px 2px 15px 0px rgba(25, 14, 66, 0.07);
+  transition: box-shadow 0.28s ease, transform 0.28s ease;
+}
+
+.blockchain-page .bc-capability-card:hover {
+  box-shadow: 0px 8px 28px 0px rgba(25, 14, 66, 0.14);
+  transform: translateY(-4px);
+}
+
+.blockchain-page .bc-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(77, 172, 138, 0.05);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+.blockchain-page .bc-capability-card:hover .bc-card-overlay {
+  opacity: 1;
+}
+
+.blockchain-page .bc-card-inner {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.blockchain-page .bc-card-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.blockchain-page .bc-card-heading {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.36px;
+  color: #4c4c4e;
+}
+
+.blockchain-page .bc-card-body {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5e5e60;
+}
+
+/* ── Why HeapTrace boxes ───────────────────────────────────── */
+.blockchain-page .bc-why-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.blockchain-page .bc-why-box {
+  flex: 1 1 calc(25% - 28px);
+  min-width: 230px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.blockchain-page .bc-why-box:hover {
+  box-shadow: 0px 12px 32px 0px rgba(0, 0, 0, 0.25);
+  transform: translateY(-4px);
+}
+
+.blockchain-page .bc-why-num-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* ── Industries grid ───────────────────────────────────────── */
+.blockchain-page .bc-industries-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.blockchain-page .bc-industry-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Sliding dark-green fill — starts off-screen left, slides to full width on hover */
+.blockchain-page .bc-industry-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(99deg, #5AC9A2 0%, #284C46 99.93%);
+  transform: translateX(-100%);
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.blockchain-page .bc-industry-card:hover::before {
+  transform: translateX(0);
+}
+
+/* All card content sits above the slide layer */
+.blockchain-page .bc-industry-card-header,
+.blockchain-page .bc-industry-desc {
+  position: relative;
+  z-index: 1;
+}
+
+.blockchain-page .bc-industry-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.blockchain-page .bc-industry-icon-wrap {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(77, 172, 138, 0.12);
+  border-radius: 48px;
+  flex-shrink: 0;
+  transition: background 0.38s ease;
+}
+
+.blockchain-page .bc-industry-card:hover .bc-industry-icon-wrap {
+  background: #4C4C4E;
+}
+
+.blockchain-page .bc-industry-card:hover .bc-industry-icon {
+  filter: brightness(0) invert(1);
+}
+
+.blockchain-page .bc-industry-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  transition: filter 0.38s ease;
+}
+
+.blockchain-page .bc-industry-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.36px;
+  color: #4c4c4e;
+  margin: 0;
+  transition: color 0.38s ease;
+}
+
+.blockchain-page .bc-industry-card:hover .bc-industry-title {
+  color: #ffffff;
+}
+
+.blockchain-page .bc-industry-desc {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  transition: color 0.38s ease;
+  line-height: 24px;
+  color: #5e5e60;
+}
+
+.blockchain-page .bc-industry-card:hover .bc-industry-desc {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── Tech Stack ────────────────────────────────────────────── */
+.blockchain-page .bc-techstack-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.blockchain-page .bc-techstack-col {
+  flex: 1 1 calc(20% - 20px);
+  min-width: 170px;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.38s ease;
+}
+
+.blockchain-page .bc-techstack-col::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(99deg, #5AC9A2 0%, #284C46 99.93%);
+  transform: translateX(-100%);
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.blockchain-page .bc-techstack-col:hover::before {
+  transform: translateX(0);
+}
+
+.blockchain-page .bc-techstack-col-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 20px 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.blockchain-page .bc-techstack-col-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+  right: 16px;
+  height: 1px;
+  background: #dbdbdc;
+  transition: background 0.38s ease;
+}
+
+.blockchain-page .bc-techstack-col:hover .bc-techstack-col-header::after {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+
+.blockchain-page .bc-techstack-icon-wrap {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border-radius: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.38s ease;
+  padding: 6px;
+}
+
+.blockchain-page .bc-techstack-col:hover .bc-techstack-icon-wrap {
+  background: #ffffff;
+}
+
+.blockchain-page .bc-techstack-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  transition: filter 0.38s ease;
+}
+
+.blockchain-page .bc-techstack-col:hover .bc-techstack-icon {
+  filter: none;
+}
+
+.blockchain-page .bc-techstack-head {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #4c4c4e;
+  transition: color 0.38s ease;
+}
+
+.blockchain-page .bc-techstack-col:hover .bc-techstack-head {
+  color: #ffffff;
+}
+
+.blockchain-page .bc-stack-list {
+  list-style: none;
+  margin: 0;
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.blockchain-page .bc-stack-list li {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #5e5e60;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.38s ease;
+}
+
+.blockchain-page .bc-techstack-col:hover .bc-stack-list li {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.blockchain-page .bc-stack-list li::before {
+  content: "▪";
+  color: #4DAC8A;
+  flex-shrink: 0;
+  font-size: 12px;
+  transition: color 0.38s ease;
+}
+
+.blockchain-page .bc-techstack-col:hover .bc-stack-list li::before {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ── CTA section ───────────────────────────────────────────── */
+.blockchain-page .bc-cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 860px;
+}
+
+.blockchain-page .bc-cta-inner h2 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.42;
+  letter-spacing: -0.64px;
+  color: #4c4c4e;
+}
+
+.blockchain-page .bc-cta-inner p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5e5e60;
+}
+
+.blockchain-page .bc-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 36px;
+  background: #4DAC8A;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.22s ease;
+  margin-top: 8px;
+}
+
+.blockchain-page .bc-cta-btn:hover {
+  background: #3a9070;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .blockchain-page .bc-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .blockchain-page .bc-capability-card {
+    flex: 0 1 calc(50% - 24px);
+    max-width: calc(50% - 24px);
+  }
+
+  .blockchain-page .bc-why-box {
+    flex: 1 1 calc(50% - 28px);
+  }
+
+  .blockchain-page .bc-techstack-col {
+    flex: 1 1 calc(33.333% - 20px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .blockchain-page .bc-industries-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .blockchain-page .bc-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .blockchain-page .bc-section-light,
+  .blockchain-page .bc-section-capabilities,
+  .blockchain-page .bc-section-why,
+  .blockchain-page .bc-section-dark,
+  .blockchain-page .bc-section-cta {
+    padding: 56px 0;
+  }
+
+  .blockchain-page .bc-heading {
+    font-size: 26px;
+  }
+
+  .blockchain-page .bc-capability-card {
+    flex: 0 1 100%;
+    max-width: 100%;
+  }
+
+  .blockchain-page .bc-why-box {
+    flex: 1 1 100%;
+  }
+
+  .blockchain-page .bc-industries-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blockchain-page .bc-techstack-col {
+    flex: 1 1 calc(50% - 20px);
+  }
+
+  .blockchain-page .bc-header {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blockchain-page .bc-techstack-col {
+    flex: 1 1 100%;
+  }
+}

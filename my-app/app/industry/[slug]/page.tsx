@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
 import IndustryDetailMainSection from "./sections/IndustryDetailMainSection";
+import "./blockchain.css";
+import BlockchainBannerSection from "./sections/BlockchainBannerSection";
+import BlockchainWhyChooseSection from "./sections/BlockchainWhyChooseSection";
+import BlockchainCapabilitiesSection from "./sections/BlockchainCapabilitiesSection";
+import BlockchainWhyHeaptraceSection from "./sections/BlockchainWhyHeaptraceSection";
+import BlockchainIndustriesSection from "./sections/BlockchainIndustriesSection";
+import BlockchainTechStackSection from "./sections/BlockchainTechStackSection";
+import BlockchainCtaSection from "./sections/BlockchainCtaSection";
 
 type Params = {
   slug: string;
@@ -43,7 +51,19 @@ export default async function IndustryDetailPage({
   const { slug } = await params;
   const title = titleFromSlug(slug);
 
-  return (
-    <IndustryDetailMainSection title={title} />
-  );
+  if (slug === "blockchain") {
+    return (
+      <div className="blockchain-page">
+        <BlockchainBannerSection />
+        <BlockchainWhyChooseSection />
+        <BlockchainCapabilitiesSection />
+        <BlockchainWhyHeaptraceSection />
+        <BlockchainIndustriesSection />
+        <BlockchainTechStackSection />
+        <BlockchainCtaSection />
+      </div>
+    );
+  }
+
+  return <IndustryDetailMainSection title={title} />;
 }

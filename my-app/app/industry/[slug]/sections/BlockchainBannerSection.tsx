@@ -1,10 +1,10 @@
 import Image from "next/image";
-import bannerImage from "@/app/assets/banner/about-us.webp";
+import bannerImage from "@/app/assets/banner/Blockchain.jpg";
 
-export default function AboutUsBannerSection() {
+export default function BlockchainBannerSection() {
   return (
     <section
-      aria-label="About Us banner"
+      aria-label="Blockchain banner"
       style={{
         position: "relative",
         overflow: "hidden",
@@ -44,7 +44,7 @@ export default function AboutUsBannerSection() {
               letterSpacing: "-0.8px",
             }}
           >
-            About Us
+            Blockchain Industry Solutions
           </h1>
           <p
             style={{
@@ -55,9 +55,10 @@ export default function AboutUsBannerSection() {
               lineHeight: "24px",
             }}
           >
-            We believe in the power of clean code. Our focus is converting
-            real-world problems into efficient solutions through quality coding.
-            Regardless of domains or technologies.
+            Harness the power of blockchain to drive transparency, enhance
+            security, and streamline business processes. Our custom blockchain
+            solutions are built to support industries seeking innovation, trust,
+            and operational efficiency.
           </p>
         </div>
       </div>

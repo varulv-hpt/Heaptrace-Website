@@ -1,25 +1,11 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { serviceFromSlug } from "./serviceDetails";
 import ServiceDetailMainSection from "./sections/ServiceDetailMainSection";
 
 type Params = {
   slug: string;
 };
-
-const SERVICE_TITLES: Record<string, string> = {
-  "cloud-development": "Cloud Development",
-  "generative-ai": "Generative AI",
-  "web-development": "Web Development",
-  "mobile-development": "Mobile Development",
-  "big-data-and-ml": "Big Data and ML",
-  "data-engineering": "Data Engineering",
-  "testing-services": "Testing Services",
-  "devops-services": "DevOps Services",
-  "ux-design": "UX Design",
-};
-
-function titleFromSlug(slug: string) {
-  return SERVICE_TITLES[slug] ?? slug.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
-}
 
 export async function generateMetadata({
   params,
@@ -27,11 +13,18 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const title = titleFromSlug(slug);
+  const service = serviceFromSlug(slug);
+
+  if (!service) {
+    return {
+      title: "Service Not Found",
+      description: "The requested service page does not exist.",
+    };
+  }
 
   return {
-    title,
-    description: `${title} services at Heaptrace Technology.`,
+    title: service.title,
+    description: service.subtitle,
   };
 }
 
@@ -41,9 +34,11 @@ export default async function ServiceDetailPage({
   params: Promise<Params>;
 }) {
   const { slug } = await params;
-  const title = titleFromSlug(slug);
+  const service = serviceFromSlug(slug);
 
-  return (
-    <ServiceDetailMainSection title={title} />
-  );
+  if (!service) {
+    notFound();
+  }
+
+  return <ServiceDetailMainSection service={service} />;
 }

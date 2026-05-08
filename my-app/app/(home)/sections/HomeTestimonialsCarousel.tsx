@@ -174,7 +174,7 @@ export default function HomeTestimonialsCarousel() {
     >
       <div className="relative w-full overflow-hidden px-12 sm:px-16 md:px-20">
         <div
-          className={`testimonial-slide flex w-full flex-col items-center text-center transition-opacity ease-out`}
+          className={`testimonial-slide flex h-[392px] w-full flex-col items-center text-center transition-opacity ease-out`}
           style={{
             transitionDuration: `${FADE_MS}ms`,
             opacity: fading ? 0 : 1,
@@ -192,11 +192,13 @@ export default function HomeTestimonialsCarousel() {
             />
           </div>
 
-          <div className="div-block-36 mt-8 flex w-full max-w-[640px] flex-col items-center gap-6">
-            <p className="paragraph-18 m-0 text-[1rem] font-normal leading-[1.75rem] text-[#5e5e60] sm:text-[1.0625rem]">
-              {active.quote}
-            </p>
-            <div className="div-block-35 flex flex-col items-center gap-1">
+          <div className="div-block-36 mt-8 flex w-full flex-1 min-h-0 max-w-[640px] flex-col items-center gap-6 overflow-hidden">
+            <div className="flex-1 min-h-0 overflow-y-auto">
+              <p className="paragraph-18 m-0 text-[1rem] font-normal leading-[1.75rem] text-[#5e5e60] sm:text-[1.0625rem]">
+                {active.quote}
+              </p>
+            </div>
+            <div className="div-block-35 flex-none flex flex-col items-center gap-1">
               <div className="profile-name text-base font-semibold leading-6 text-[#1f1f21]">
                 {active.name}
               </div>

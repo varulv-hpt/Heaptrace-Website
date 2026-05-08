@@ -97,6 +97,15 @@
   position: relative;
 }
 
+.site-dropdown::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: max(100%, 230px);
+  height: 22px;
+}
+
 .site-dropdown-panel {
   position: absolute;
   top: calc(100% + 22px);

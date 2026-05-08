@@ -6,7 +6,7 @@ import step04 from "../../../../Assets/04.png";
 import {
   SECTION_OUTER_PAD_CLASS,
   SECTION_PAGE_CONTAINER_CLASS,
-  SECTION_TEXT_BLOCK_CLASS,
+  SECTION_FULL_WIDTH_STACK_CLASS,
 } from "@/app/_shared/sectionShell";
 
 type WorkStep = {
@@ -49,7 +49,7 @@ export default function HomeHowWeWorkSection() {
       aria-labelledby="how-we-work-heading"
     >
       <div className={SECTION_PAGE_CONTAINER_CLASS}>
-        <div className={`${SECTION_TEXT_BLOCK_CLASS} mb-0 gap-14`}>
+        <div className={`${SECTION_FULL_WIDTH_STACK_CLASS} mb-0 gap-14`}>
           <h2
             id="how-we-work-heading"
             className="main-heading text-white"

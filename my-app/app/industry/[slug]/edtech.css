@@ -1,0 +1,280 @@
+/* ============================================================
+   EdTech industry page — scoped under .edtech-page
+   Figma: VDbpakZg6dXzdclm0rVCy4 node 22:789
+   ============================================================ */
+
+.edtech-page {
+  background: #ffffff;
+  color: #4c4c4e;
+  font-family: var(--font-geist-sans), "Inter", system-ui, sans-serif;
+}
+
+/* ── Container ─────────────────────────────────────────────── */
+.edtech-page .et-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+/* ── Section backgrounds ───────────────────────────────────── */
+.edtech-page .et-section-light {
+  padding: 72px 0;
+  background: #f5f7fa;
+}
+
+.edtech-page .et-section-dark {
+  padding: 80px 0;
+  background-color: #1e2828;
+}
+
+.edtech-page .et-section-why-choose {
+  padding: 80px 0;
+  background-color: #000000;
+  background-image: url("https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674826e5d6f401d348fef653_linear-bg.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+/* ── Section header ────────────────────────────────────────── */
+.edtech-page .et-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 48px;
+}
+
+.edtech-page .et-heading {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.42;
+  letter-spacing: -0.64px;
+  color: #4c4c4e;
+}
+
+.edtech-page .et-heading-white {
+  color: #ffffff;
+}
+
+.edtech-page .et-desc {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5e5e60;
+  max-width: 860px;
+}
+
+.edtech-page .et-desc-white {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* ── Service cards (3-col + 2-col grids) ───────────────────── */
+.edtech-page .et-cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.edtech-page .et-cards-grid .et-service-card {
+  flex: 0 1 calc(33.333% - 16px);
+  max-width: calc(33.333% - 16px);
+  min-width: 260px;
+}
+
+.edtech-page .et-cards-grid-2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.edtech-page .et-cards-grid-2 .et-service-card {
+  flex: 0 1 calc(50% - 12px);
+  max-width: calc(50% - 12px);
+  min-width: 260px;
+}
+
+.edtech-page .et-service-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0px 2px 15px 0px rgba(25, 14, 66, 0.07);
+  transition: box-shadow 0.28s ease, transform 0.28s ease;
+}
+
+.edtech-page .et-service-card:hover {
+  box-shadow: 0px 8px 28px 0px rgba(25, 14, 66, 0.14);
+  transform: translateY(-4px);
+}
+
+.edtech-page .et-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(77, 172, 138, 0.05);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+.edtech-page .et-service-card:hover .et-card-overlay {
+  opacity: 1;
+}
+
+.edtech-page .et-card-inner {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.edtech-page .et-card-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.edtech-page .et-card-heading {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.36px;
+  color: #4c4c4e;
+}
+
+.edtech-page .et-card-body {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5e5e60;
+}
+
+/* ── Why / How We Work boxes ───────────────────────────────── */
+.edtech-page .et-why-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.edtech-page .et-why-grid .et-why-box {
+  flex: 1 1 calc(33.333% - 28px);
+  min-width: 240px;
+}
+
+.edtech-page .et-why-grid-2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.edtech-page .et-why-grid-2 .et-why-box {
+  flex: 1 1 calc(50% - 14px);
+  min-width: 240px;
+}
+
+.edtech-page .et-why-box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.edtech-page .et-why-box:hover {
+  box-shadow: 0px 12px 32px 0px rgba(0, 0, 0, 0.25);
+  transform: translateY(-4px);
+}
+
+.edtech-page .et-why-num-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* ── CTA button ────────────────────────────────────────────── */
+.edtech-page .et-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 36px;
+  background: #4dac8a;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.22s ease;
+  margin-top: 24px;
+}
+
+.edtech-page .et-cta-btn:hover {
+  background: #3a9070;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .edtech-page .et-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .edtech-page .et-cards-grid .et-service-card {
+    flex: 0 1 calc(50% - 12px);
+    max-width: calc(50% - 12px);
+  }
+
+  .edtech-page .et-why-grid .et-why-box {
+    flex: 1 1 calc(50% - 28px);
+  }
+}
+
+@media (max-width: 767px) {
+  .edtech-page .et-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .edtech-page .et-section-light,
+  .edtech-page .et-section-dark,
+  .edtech-page .et-section-why-choose {
+    padding: 56px 0;
+  }
+
+  .edtech-page .et-heading {
+    font-size: 26px;
+  }
+
+  .edtech-page .et-cards-grid .et-service-card,
+  .edtech-page .et-cards-grid-2 .et-service-card {
+    flex: 0 1 100%;
+    max-width: 100%;
+  }
+
+  .edtech-page .et-why-grid .et-why-box,
+  .edtech-page .et-why-grid-2 .et-why-box {
+    flex: 1 1 100%;
+  }
+
+  .edtech-page .et-header {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .edtech-page .et-cards-grid-2 .et-service-card {
+    flex: 0 1 100%;
+    max-width: 100%;
+  }
+}

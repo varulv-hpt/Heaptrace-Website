@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import IndustryDetailMainSection from "./sections/IndustryDetailMainSection";
 import "./blockchain.css";
+import "./edtech.css";
 import BlockchainBannerSection from "./sections/BlockchainBannerSection";
 import BlockchainWhyChooseSection from "./sections/BlockchainWhyChooseSection";
 import BlockchainCapabilitiesSection from "./sections/BlockchainCapabilitiesSection";
@@ -8,6 +9,12 @@ import BlockchainWhyHeaptraceSection from "./sections/BlockchainWhyHeaptraceSect
 import BlockchainIndustriesSection from "./sections/BlockchainIndustriesSection";
 import BlockchainTechStackSection from "./sections/BlockchainTechStackSection";
 import BlockchainCtaSection from "./sections/BlockchainCtaSection";
+import EdtechBannerSection from "./sections/EdtechBannerSection";
+import EdtechIntroSection from "./sections/EdtechIntroSection";
+import EdtechServicesSection from "./sections/EdtechServicesSection";
+import EdtechHowWeWorkSection from "./sections/EdtechHowWeWorkSection";
+import EdtechWhyChooseSection from "./sections/EdtechWhyChooseSection";
+import EdtechCtaSection from "./sections/EdtechCtaSection";
 
 type Params = {
   slug: string;
@@ -50,6 +57,19 @@ export default async function IndustryDetailPage({
 }) {
   const { slug } = await params;
   const title = titleFromSlug(slug);
+
+  if (slug === "edtech") {
+    return (
+      <div className="edtech-page">
+        <EdtechBannerSection />
+        <EdtechIntroSection />
+        <EdtechServicesSection />
+        <EdtechHowWeWorkSection />
+        <EdtechWhyChooseSection />
+        <EdtechCtaSection />
+      </div>
+    );
+  }
 
   if (slug === "blockchain") {
     return (

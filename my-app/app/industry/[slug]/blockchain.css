@@ -30,7 +30,7 @@
 /* ── Capabilities section (dark teal) ─────────────────────── */
 .blockchain-page .bc-section-capabilities {
   padding: 80px 0;
-  background-color: #1e2828;
+  background: linear-gradient(99deg, #46957B 0%, #20302E 99.93%);
 }
 
 /* ── Why HeapTrace (light bg + image) ─────────────────────── */

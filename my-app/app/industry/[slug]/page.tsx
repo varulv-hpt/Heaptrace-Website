@@ -3,6 +3,7 @@ import IndustryDetailMainSection from "./sections/IndustryDetailMainSection";
 import "./blockchain.css";
 import "./edtech.css";
 import "./healthcare.css";
+import "./erp.css";
 import HcBannerSection from "./sections/HcBannerSection";
 import HcWhyChooseUsSection from "./sections/HcWhyChooseUsSection";
 import HcServicesSection from "./sections/HcServicesSection";
@@ -23,6 +24,12 @@ import EdtechServicesSection from "./sections/EdtechServicesSection";
 import EdtechHowWeWorkSection from "./sections/EdtechHowWeWorkSection";
 import EdtechWhyChooseSection from "./sections/EdtechWhyChooseSection";
 import EdtechCtaSection from "./sections/EdtechCtaSection";
+import ErpBannerSection from "./sections/ErpBannerSection";
+import ErpIntroSection from "./sections/ErpIntroSection";
+import ErpServicesSection from "./sections/ErpServicesSection";
+import ErpIndustriesSection from "./sections/ErpIndustriesSection";
+import ErpWhyHeaptraceSection from "./sections/ErpWhyHeaptraceSection";
+import ErpCtaSection from "./sections/ErpCtaSection";
 
 type Params = {
   slug: string;
@@ -103,6 +110,19 @@ export default async function IndustryDetailPage({
         <BlockchainIndustriesSection />
         <BlockchainTechStackSection />
         <BlockchainCtaSection />
+      </div>
+    );
+  }
+
+  if (slug === "erp-solutions") {
+    return (
+      <div className="erp-page">
+        <ErpBannerSection />
+        <ErpIntroSection />
+        <ErpServicesSection />
+        <ErpIndustriesSection />
+        <ErpWhyHeaptraceSection />
+        <ErpCtaSection />
       </div>
     );
   }

@@ -42,6 +42,10 @@ const INSIGHTS_LINKS = [
   { label: "White Paper", href: "/contact-us" },
 ];
 
+// Routes whose hero is dark/full-bleed and should be overlaid by the navbar
+// (transparent at the top, solid on scroll). Mirrors the home page behavior.
+const TRANSPARENT_HERO_ROUTES = new Set<string>(["/", "/careers"]);
+
 type DropdownItem = { label: string; href: string };
 
 interface NavDropdownProps {
@@ -167,8 +171,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", updateTopState);
   }, []);
 
-  const TRANSPARENT_ROUTES = ["/", "/about-us"];
-  const isTransparent = TRANSPARENT_ROUTES.includes(pathname) && isAtTop && !mobileOpen;
+  // const TRANSPARENT_ROUTES = ["/", "/about-us"];
+  // const isTransparent = TRANSPARENT_ROUTES.includes(pathname) && isAtTop && !mobileOpen;
+  const overlayHero = TRANSPARENT_HERO_ROUTES.has(pathname);
+  const isTransparent = overlayHero && isAtTop && !mobileOpen;
 
   return (
     <>
@@ -221,6 +227,31 @@ export default function Navbar() {
       >
         <div className="site-mobile-backdrop" onClick={() => setMobileOpen(false)} aria-hidden="true" />
         <div className="site-mobile-drawer">
+          <div className="site-mobile-drawer-header">
+            <Link
+              href="/"
+              aria-label="home"
+              className="site-logo-link"
+              onClick={() => setMobileOpen(false)}
+            >
+              <Image
+                src={LOGO_URL}
+                alt="Heaptrace"
+                width={140}
+                height={34}
+                className="site-mobile-drawer-logo"
+              />
+            </Link>
+            <button
+              type="button"
+              className="site-mobile-close"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close menu"
+            >
+              <span className="site-mobile-close-line" />
+              <span className="site-mobile-close-line" />
+            </button>
+          </div>
           <nav role="navigation" aria-label="Mobile navigation">
             <MobileAccordion label="Industries" items={INDUSTRIES_LINKS} onClose={() => setMobileOpen(false)} />
             <MobileAccordion label="Services" items={SERVICES_LINKS} onClose={() => setMobileOpen(false)} />
@@ -252,7 +283,11 @@ export default function Navbar() {
         </div>
       </div>
 
-      {!TRANSPARENT_ROUTES.includes(pathname) && <div className="site-header-spacer" aria-hidden="true" />}
+{/* <<<<<<< Updated upstream
+      {!TRANSPARENT_ROUTES.includes(pathname) && <div className="site-header-spacer" aria-hidden="true" />} */}
+
+      {!overlayHero && <div className="site-header-spacer" aria-hidden="true" />}
+
     </>
   );
 }

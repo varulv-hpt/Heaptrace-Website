@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export default function EdtechCtaSection() {
   return (
     <section className="et-section-light">
@@ -16,9 +14,6 @@ export default function EdtechCtaSection() {
           computing, and interactive platforms, we provide scalable, secure, and innovative
           solutions that meet the evolving needs of the education sector.
         </p>
-        <Link href="/contact-us" className="et-cta-btn">
-          Get In Touch
-        </Link>
       </div>
     </section>
   );

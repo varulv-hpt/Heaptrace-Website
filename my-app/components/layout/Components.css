@@ -133,6 +133,7 @@
   color: #1c1c1c;
   text-decoration: none;
   font-size: 14px;
+  font-family: var(--font-geist-sans), "Inter", system-ui, sans-serif;
 }
 
 .site-dropdown-link:hover {

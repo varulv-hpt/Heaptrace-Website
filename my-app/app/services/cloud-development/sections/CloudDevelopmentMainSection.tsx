@@ -26,7 +26,7 @@ export default function CloudDevelopmentMainSection({ service }: CloudDevelopmen
             padding: "130px 0 92px",
           }}
         >
-          <div className="w-layout-blockcontainer base-container service-baner w-container">
+          <div className="w-layout-blockcontainer service-baner mx-auto w-full max-w-[1350px] px-6">
             <div className="title-banner-wraper-flex">
               <Link href="/services/cloud-development" className="service-sidebar-post-category w-inline-block">
                 <div className="text-block-23 rounded-full bg-white px-3 py-1 text-xs font-medium text-[#4c4c4e]">
@@ -48,7 +48,7 @@ export default function CloudDevelopmentMainSection({ service }: CloudDevelopmen
       </section>
 
       <section className="section-10 bg-[#f5f7fa] py-18">
-        <div className="w-layout-blockcontainer base-container w-container">
+        <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
           <div className="w-layout-blockcontainer header-container _w-100 gap-32 w-container">
             <h2 className="main-heading">
               Cloud Development Services: Scalable, Secure, and Flexible{" "}
@@ -62,40 +62,38 @@ export default function CloudDevelopmentMainSection({ service }: CloudDevelopmen
       </section>
 
       <section className="linear-bg py-100">
-        <div className="w-layout-blockcontainer base-container px-0 w-container">
+        <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
           <div className="w-layout-blockcontainer header-container w-container">
             <h2 className="main-heading text-white">Our Cloud Development Services</h2>
           </div>
-          <div className="w-layout-blockcontainer grid-conatiner pb-0 w-container mt-8 grid gap-6 md:grid-cols-2">
-            {detailedServices.map((item, idx) => (
+          <div className="w-layout-blockcontainer grid-conatiner pb-0 w-container mt-8 cloud-services-grid">
+            {detailedServices.map((item) => (
               <div
                 key={item.title}
-                className={`w-layout-blockcontainer rounded-[12px] border border-[#ffffff14] bg-white/95 p-6 shadow-[0_14px_30px_rgba(6,10,20,0.2)] ${
-                  idx % 3 === 0 ? "container-w-70 md:col-span-2" : "container-w-29"
-                }`}
+                className="w-layout-blockcontainer cloud-service-card"
               >
-                <div className="w-layout-blockcontainer container-4 w-container flex items-center gap-3">
-                  <div className="div-block-13">
+                <div className="w-layout-blockcontainer container-4 w-container cloud-service-card-header">
+                  <div className="div-block-13 cloud-service-icon-wrap">
                     <img
                       width="42"
                       loading="lazy"
                       alt={item.title}
                       src="https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674ec8ed9ac3e900ff4c0d83_Cloud%20migration.svg"
-                      className="image-7"
+                      className="image-7 cloud-service-icon"
                     />
                   </div>
                   <div className="text-block-3 text-dark hover-text">
-                    <strong className="bold-text-20 text-[22px] font-semibold text-[#2c2f33]">
+                    <strong className="bold-text-20 cloud-service-title">
                       {item.title}
                     </strong>
                   </div>
                 </div>
                 <div className="w-layout-blockcontainer container-82 w-container mt-4">
-                  <div className="block-description text-[17px] leading-[1.7] text-[#545a60]">
+                  <div className="block-description cloud-service-desc">
                     {item.description}
                   </div>
                 </div>
-                <div className="left-hover-block" />
+                <div className="left-hover-block cloud-service-hover-block" />
               </div>
             ))}
           </div>
@@ -103,7 +101,7 @@ export default function CloudDevelopmentMainSection({ service }: CloudDevelopmen
       </section>
 
       <section className="section-8 bg-white py-24">
-        <div className="w-layout-blockcontainer base-container w-container">
+        <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
           <div className="w-layout-blockcontainer header-container w-container">
             <h2 className="main-heading">
               How We <span className="text-span-24 text-[#4dac8a]">Work</span>
@@ -144,7 +142,7 @@ export default function CloudDevelopmentMainSection({ service }: CloudDevelopmen
       </section>
 
       <section className="section-12 bg-[#f8f9fb] py-24">
-        <div className="w-layout-blockcontainer base-container w-container">
+        <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
           <div className="w-layout-blockcontainer header-container _w-100 w-container">
             <h2 className="main-heading">
               Why Choose HeapTrace Technology for{" "}
@@ -177,7 +175,7 @@ export default function CloudDevelopmentMainSection({ service }: CloudDevelopmen
       </section>
 
       <section className="section-9 linear-bg py-24">
-        <div className="w-layout-blockcontainer base-container w-container">
+        <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
           <div className="w-layout-blockcontainer header-container w-container">
             <h2 className="main-heading text-white">Technologies We Use</h2>
             <p className="description-text-white">
@@ -210,7 +208,7 @@ export default function CloudDevelopmentMainSection({ service }: CloudDevelopmen
       </section>
 
       <section className="section-11 bg-[#f6f7fa] py-20">
-        <div className="w-layout-blockcontainer base-container w-container">
+        <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
           <h4 className="heading-21 text-[38px] font-semibold leading-[1.3] text-[#35383c]">
             Leverage the Power of the Cloud with{" "}
             <span className="text-span-26 text-[#4dac8a]">HeapTrace Technology</span>

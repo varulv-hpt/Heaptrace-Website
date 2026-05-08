@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
-import { Bug, CodeXml, Database, PenTool, Server, TabletSmartphone } from "lucide-react";
+import { ArrowRight, Bug, CodeXml, Database, PenTool, Server, TabletSmartphone } from "lucide-react";
 import {
   SECTION_OUTER_PAD_CLASS,
   SECTION_PAGE_CONTAINER_CLASS,
@@ -93,33 +93,36 @@ export default function HomeInnovationExpertiseSection() {
             {SERVICE_CARDS.map((card) => (
               <article
                 key={card.title}
-                className="group relative flex min-h-[272px] flex-col justify-between overflow-hidden rounded-xl bg-white p-6 shadow-[0px_12px_32px_rgba(25,14,66,0.07)]"
+                className="group relative flex min-h-[284px] flex-col justify-between overflow-hidden rounded-xl border border-[#ecf0f4] bg-white p-6 shadow-[0px_10px_28px_rgba(25,14,66,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0px_18px_36px_rgba(25,14,66,0.12)]"
               >
                 <div
-                  className="wc-animation-box pointer-events-none absolute inset-0 z-0 translate-y-full bg-[#286f58] transition-transform duration-300 ease-out group-hover:translate-y-0"
+                  className="wc-animation-box pointer-events-none absolute inset-0 z-0 translate-y-full bg-[linear-gradient(135deg,#60d7ad,#213c3a)] transition-transform duration-300 ease-out group-hover:translate-y-0"
                   aria-hidden="true"
                 />
 
                 <div className="relative z-10 flex flex-col gap-4">
-                  <card.icon
-                    className="h-10 w-10 transition-[stroke] duration-300 group-hover:stroke-white"
-                    strokeWidth={1.75}
-                    stroke={`url(#${SERVICE_ICON_GRADIENT_ID})`}
-                    aria-hidden="true"
-                  />
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#f3f8f5] transition-colors duration-300 group-hover:bg-[#4c4c4e]">
+                    <card.icon
+                      className="h-6 w-6 transition-[stroke] duration-300 group-hover:stroke-white"
+                      strokeWidth={1.85}
+                      stroke={`url(#${SERVICE_ICON_GRADIENT_ID})`}
+                      aria-hidden="true"
+                    />
+                  </div>
                   <h3 className="m-0 text-[1.25rem] font-semibold leading-6 tracking-[-0.02em] text-[#4c4c4e] transition-colors duration-300 group-hover:text-white">
                     {card.title}
                   </h3>
-                  <p className="m-0 text-base leading-6 text-[#5e5e60] transition-colors duration-300 group-hover:text-white/90">
+                  <p className="m-0 text-[1.02rem] leading-6 text-[#5e5e60] transition-colors duration-300 group-hover:text-white/90">
                     {card.description}
                   </p>
                 </div>
 
                 <Link
                   href={card.href}
-                  className="relative z-10 mt-6 inline-flex w-fit text-[1.125rem] font-medium leading-6 text-[#4c4c4e] transition-colors duration-300 group-hover:text-white"
+                  className="relative z-10 mt-6 inline-flex w-fit items-center gap-2 text-[1.03rem] font-semibold leading-6 text-[#4c4c4e] transition-colors duration-300 group-hover:text-white"
                 >
                   Learn More
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </article>
             ))}

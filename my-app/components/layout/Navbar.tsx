@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import "./Components.css";
 
 const CHEVRON_URL =
@@ -160,6 +161,7 @@ function MobileAccordion({ label, items, onClose }: MobileAccordionProps) {
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
+  const pathname = usePathname();
 
   useEffect(() => {
     function updateTopState() {

@@ -1,3 +1,6 @@
+import Image from "next/image";
+import bannerImage from "@/app/assets/banner/Healthcare.webp";
+
 export default function HcBannerSection() {
   return (
     <section
@@ -9,13 +12,17 @@ export default function HcBannerSection() {
         display: "flex",
         alignItems: "flex-end",
         paddingBottom: "72px",
-        backgroundColor: "#1e2828",
-        backgroundImage:
-          "url('https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674826e5d6f401d348fef653_linear-bg.webp')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
       }}
     >
+      <Image
+        src={bannerImage}
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        style={{ objectFit: "cover", objectPosition: "center" }}
+        aria-hidden="true"
+      />
       <div
         style={{
           position: "relative",

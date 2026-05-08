@@ -1,0 +1,606 @@
+/* ==========================================================================
+   Careers page styles — mirrors the Webflow class system used on
+   https://www.heaptrace.com/careers so the rebuilt page keeps the same
+   visual rhythm, typography scale, color palette, and section layout.
+   All selectors are scoped under .careers-page to avoid leaking into
+   other routes.
+   ========================================================================== */
+
+.careers-page {
+  background: #ffffff;
+  color: #1f1f21;
+  font-family: var(--font-geist-sans), "Onest", "Inter", system-ui, sans-serif;
+}
+
+.careers-page .careers-container {
+  width: 100%;
+  max-width: 1174px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* ---------- Hero banner ---------- */
+.careers-page .careers-banner-section {
+  position: relative;
+  overflow: hidden;
+  padding: 140px 0 90px;
+  background-color: #050b15;
+  color: #ffffff;
+  isolation: isolate;
+}
+
+.careers-page .careers-banner-section .careers-banner-background {
+  z-index: 0;
+  object-fit: cover;
+  object-position: center;
+}
+
+.careers-page .careers-banner-section .careers-banner-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: radial-gradient(
+      1200px 600px at 80% -10%,
+      rgba(77, 172, 138, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 0% 110%,
+      rgba(34, 95, 75, 0.25),
+      transparent 60%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(5, 11, 21, 0.78) 0%,
+      rgba(13, 31, 35, 0.68) 60%,
+      rgba(15, 46, 42, 0.6) 100%
+    );
+}
+
+.careers-page .careers-banner-section > .careers-container {
+  position: relative;
+  z-index: 2;
+}
+
+.careers-page .careers-banner-content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 760px;
+}
+
+.careers-page .careers-banner-content h1 {
+  margin: 0;
+  font-size: 60px;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.careers-page .title-description-white-about {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(231, 240, 248, 0.85);
+  max-width: 640px;
+}
+
+/* ---------- Section: Join us to get more experience ---------- */
+.careers-page .careers-join-section {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.careers-page .about-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.careers-page .careers-img-box {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.careers-page .careers-left-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 18px;
+}
+
+.careers-page .careers-image-block {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.18);
+}
+
+.careers-page .careers-image-block .image-54 {
+  width: 32px;
+  height: 32px;
+}
+
+.careers-page .text-block-28 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #0e1f23;
+}
+
+.careers-page .heading-29 {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #0e1117;
+}
+
+.careers-page .heading-29 span,
+.careers-page .heading-29 .text-span-2 {
+  color: #4dac8a;
+}
+
+.careers-page .careers-subtxt {
+  margin: 14px 0 0;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #4c4c4e;
+}
+
+.careers-page .careers-paragraph {
+  margin: 18px 0 0;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #5e5e60;
+}
+
+.careers-page .divider-line {
+  height: 1px;
+  width: 100%;
+  background: #e5eaef;
+  margin: 28px 0;
+}
+
+.careers-page .grid-6 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.careers-page .div-block-48 {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.careers-page .div-block-48 img {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.careers-page .career-stat-icon {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.careers-page .career-stat-icon svg {
+  display: block;
+}
+
+.careers-page .satisfication-heading {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0e1117;
+}
+
+.careers-page .satisfication-txt {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+/* ---------- Section: Benefits ---------- */
+.careers-page .section-28 {
+  padding: 80px 0;
+  background: #f5f7fa;
+}
+
+.careers-page .div-block-55 {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 48px;
+}
+
+.careers-page .div-block-55 .careers-paragraph {
+  margin-top: 12px;
+}
+
+.careers-page .benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.careers-page .small-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+  padding: 32px 18px;
+  border-radius: 16px;
+  min-height: 168px;
+  transition:
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.careers-page .small-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+}
+
+.careers-page .small-container.bg-white-card {
+  background: #ffffff;
+  border: 1px solid #e5eaef;
+}
+
+.careers-page .small-container.gradient-box {
+  background: linear-gradient(135deg, #2a8a6c 0%, #1f6651 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.careers-page .image-58 {
+  width: 52px;
+  height: 52px;
+}
+
+.careers-page .heading-38 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: #0e1117;
+}
+
+.careers-page .heading-38.text-white {
+  color: #ffffff;
+}
+
+.careers-page .lh-14 {
+  line-height: 1.4;
+}
+
+/* ---------- Section: Join our big family (dark) ---------- */
+.careers-page .careers-openings-section {
+  position: relative;
+  padding: 100px 0;
+  background-color: #03070d;
+  background-image:
+    radial-gradient(900px 500px at 90% 10%, rgba(77, 172, 138, 0.18), transparent 60%),
+    radial-gradient(700px 400px at 0% 100%, rgba(34, 95, 75, 0.22), transparent 60%),
+    linear-gradient(180deg, #03070d 0%, #0a141a 100%);
+  color: #ffffff;
+}
+
+.careers-page .careers-openings-section .heading-24 {
+  margin: 0 0 8px;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.careers-page .careers-openings-section .paragraph-14 {
+  margin: 0;
+  max-width: 760px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(225, 230, 233, 0.78);
+}
+
+.careers-page .current-opening-list {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.careers-page .careers-list-item-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  padding: 28px;
+  background-color: #ffffff;
+  border: 1px solid #e7ecf1;
+  border-radius: 18px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  transition:
+    border-color 220ms ease,
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.careers-page .careers-list-item-wrapper:hover {
+  border-color: rgba(77, 172, 138, 0.45);
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.12);
+  transform: translateY(-2px);
+}
+
+.careers-page .careers-link-text {
+  display: inline-block;
+  font-size: 22px;
+  font-weight: 600;
+  color: #0e1117;
+  text-decoration: none;
+  line-height: 1.3;
+}
+
+.careers-page .careers-link-text:hover {
+  color: #4dac8a;
+}
+
+.careers-page .careers-description-text {
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #5e5e60;
+}
+
+.careers-page .div-block-50 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.careers-page .careers-types-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+}
+
+.careers-page .div-block-51,
+.careers-page .div-block-52 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.careers-page .div-block-51 .careers-type {
+  color: #4dac8a;
+  font-weight: 500;
+}
+
+.careers-page .image-55,
+.careers-page .image-56 {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) saturate(100%) invert(58%) sepia(31%) saturate(498%)
+    hue-rotate(112deg) brightness(92%) contrast(86%);
+}
+
+.careers-page .ht-secondary-btn-lg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2a8a6c;
+  border: 1px solid rgba(77, 172, 138, 0.6);
+  border-radius: 10px;
+  background: transparent;
+  text-decoration: none;
+  transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+.careers-page .ht-secondary-btn-lg:hover {
+  background: #4dac8a;
+  color: #ffffff;
+  border-color: #4dac8a;
+}
+
+.careers-page .primary-button-dark {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  background: #4dac8a;
+  border: 1px solid #4dac8a;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+.careers-page .primary-button-dark.with-border {
+  background: transparent;
+  border-color: #0e1117;
+  color: #0e1117;
+}
+
+.careers-page .primary-button-dark.with-border:hover {
+  background: #0e1117;
+  border-color: #0e1117;
+  color: #ffffff;
+}
+
+.careers-page .careers-apply-button {
+  align-self: flex-start;
+}
+
+.careers-page .button-border {
+  display: none;
+}
+
+/* ---------- Section: Valued clients ---------- */
+.careers-page .careers-valued-clients-section {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.careers-page .valued-clients-section.about-block {
+  align-items: flex-start;
+}
+
+.careers-page .valued-clients .heading-29 {
+  margin-bottom: 18px;
+}
+
+.careers-page .valued-images,
+.careers-page .div-block-40 {
+  display: block;
+}
+
+.careers-page .valued-images.careers-img-box {
+  background: transparent;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.careers-page .valued-client-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.careers-page .div-block-53 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid #e7ecf1;
+  border-radius: 14px;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.careers-page .div-block-53:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+  border-color: rgba(77, 172, 138, 0.35);
+}
+
+.careers-page .image-57 {
+  max-width: 100%;
+  max-height: 56px;
+  object-fit: contain;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991px) {
+  .careers-page .about-block {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .careers-page .benefits-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .careers-page .valued-client-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .careers-page .div-block-53 {
+    height: 96px;
+    padding: 14px;
+  }
+
+  .careers-page .current-opening-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .careers-page .careers-banner-section {
+    padding: 110px 0 70px;
+  }
+
+  .careers-page .careers-banner-content h1 {
+    font-size: 42px;
+  }
+
+  .careers-page .careers-join-section,
+  .careers-page .careers-valued-clients-section,
+  .careers-page .section-28 {
+    padding: 60px 0;
+  }
+
+  .careers-page .careers-openings-section {
+    padding: 70px 0;
+  }
+
+  .careers-page .heading-29,
+  .careers-page .careers-openings-section .heading-24 {
+    font-size: 30px;
+  }
+
+  .careers-page .grid-6 {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .careers-page .benefits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .careers-page .valued-client-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .careers-page .div-block-53 {
+    height: 88px;
+    padding: 12px;
+  }
+
+  .careers-page .image-57 {
+    max-height: 48px;
+  }
+
+  .careers-page .current-opening-list {
+    grid-template-columns: 1fr;
+  }
+
+  .careers-page .div-block-50 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

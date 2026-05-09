@@ -254,7 +254,7 @@ export default function GenerativeAiMainSection({ service }: GenerativeAiMainSec
                   key={card.title}
                   className="flex h-full flex-col rounded-2xl border border-[#dce3ea] bg-white p-5 transition-colors duration-200 hover:border-[#9ed8c4] sm:p-6"
                 >
-                  <div className="mb-4 inline-flex rounded-xl bg-[#4dac8a1f] p-3">
+                  <div className="mb-4 inline-flex h-fit w-fit shrink-0 self-start items-center justify-center rounded-xl bg-[#4dac8a1f] p-3">
                     <Icon className="h-6 w-6 text-[#4dac8a]" />
                   </div>
                   <h3 className="text-[20px] font-semibold leading-[1.35] text-[#1f2937] sm:text-[22px]">

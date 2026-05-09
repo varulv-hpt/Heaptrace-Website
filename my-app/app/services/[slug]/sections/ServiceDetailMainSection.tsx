@@ -1,4 +1,4 @@
-import ServiceDetailIntro from "../elements/ServiceDetailIntro";
+import ServiceDetailIntro from "../components/ServiceDetailIntro";
 import type { ServiceDetail } from "../serviceDetails";
 
 type ServiceDetailMainSectionProps = {

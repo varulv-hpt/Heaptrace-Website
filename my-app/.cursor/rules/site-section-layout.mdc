@@ -1,6 +1,6 @@
 ---
 description: Site section horizontal layout — hero-aligned container and text column
-globs: "**/sections/**/*.tsx,**/app/_shared/sectionShell.ts"
+globs: "**/sections/**/*.tsx,**/lib/layout/sectionShell.ts"
 alwaysApply: false
 ---
 
@@ -14,6 +14,6 @@ Use the same horizontal rhythm as `HomeHeroSection` for every full-width section
 3. **Intro copy block** (heading + paragraph stacks): `SECTION_TEXT_BLOCK_CLASS` → `flex w-full max-w-[40.6875rem] flex-col items-start gap-4` (hero-aligned width cap).
 4. **Wide copy block** (full container width): `SECTION_FULL_WIDTH_STACK_CLASS` → same stack without `max-w-[40.6875rem]` (use when body copy should span the whole content shell).
 
-Import from `@/app/_shared/sectionShell`. Full-bleed content (e.g. stats grids, marquees) still lives **inside** `SECTION_PAGE_CONTAINER_CLASS`; use `SECTION_TEXT_BLOCK_CLASS` for hero-aligned intros, `SECTION_FULL_WIDTH_STACK_CLASS` when the column should use the full shell width.
+Import from `@/lib/layout/sectionShell`. Full-bleed content (e.g. stats grids, marquees) still lives **inside** `SECTION_PAGE_CONTAINER_CLASS`; use `SECTION_TEXT_BLOCK_CLASS` for hero-aligned intros, `SECTION_FULL_WIDTH_STACK_CLASS` when the column should use the full shell width.
 
 Reference implementation: `app/(home)/sections/HomeHeroSection.tsx`, `HomeDigitallyTransformedSection.tsx`.

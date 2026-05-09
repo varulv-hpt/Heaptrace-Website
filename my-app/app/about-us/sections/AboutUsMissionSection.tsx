@@ -4,7 +4,7 @@ import missionMobile from "@/app/assets/banner/mission-mobile.png";
 import {
   SECTION_OUTER_PAD_CLASS,
   SECTION_PAGE_CONTAINER_CLASS,
-} from "@/app/_shared/sectionShell";
+} from "@/lib/layout/sectionShell";
 
 function MissionCard({ title, description }: { title: string; description: string }) {
   return (

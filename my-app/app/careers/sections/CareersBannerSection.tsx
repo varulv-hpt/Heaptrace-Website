@@ -1,5 +1,5 @@
-import { BANNER_IMAGE } from "../elements/careersData";
-import PageBanner from "@/app/_shared/elements/PageBanner";
+import { BANNER_IMAGE } from "../components/careersData";
+import PageBanner from "@/components/shared/PageBanner";
 
 export default function CareersBannerSection() {
   return (

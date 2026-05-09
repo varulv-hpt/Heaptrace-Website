@@ -1,7 +1,7 @@
 import type { ServiceDetail } from "../serviceDetails";
 import servicesBanner from "@/app/assets/banner/services-banner.png";
 import Link from "next/link";
-import PageBanner from "@/app/_shared/elements/PageBanner";
+import PageBanner from "@/components/shared/PageBanner";
 
 type ServiceDetailIntroProps = {
   service: ServiceDetail;

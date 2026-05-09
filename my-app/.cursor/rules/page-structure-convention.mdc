@@ -1,14 +1,14 @@
 ---
-description: Enforce page-wise folders with colocated sections and elements
+description: Enforce page-wise folders with colocated sections and components
 alwaysApply: true
 ---
 
 # Page Structure Convention
 
 - Keep each route inside its own folder under `app/` with a colocated `page.tsx`.
-- Use `sections/` and `elements/` for route folders when page complexity justifies it.
-- Prefer route-level elements inside `app/<route>/elements/` and page sections inside `app/<route>/sections/`.
+- Use `sections/` and `components/` for route folders when page complexity justifies it.
+- Prefer route-level components inside `app/<route>/components/` and page sections inside `app/<route>/sections/`.
 - `page.tsx` should stay thin and primarily compose route sections.
-- Shared primitives reused across many routes should live in `app/_shared/`.
-- Marketing sections share horizontal spacing via `@/app/_shared/sectionShell` (see `.cursor/rules/site-section-layout.mdc`).
+- Shared primitives reused across many routes should live in `components/shared/`.
+- Marketing sections share horizontal spacing via `@/lib/layout/sectionShell` (see `.cursor/rules/site-section-layout.mdc`).
 - Shared sitewide layout primitives (for example navbar/footer) can remain under `components/layout/`.

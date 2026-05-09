@@ -3,7 +3,7 @@ import {
   SECTION_OUTER_PAD_CLASS,
   SECTION_PAGE_CONTAINER_CLASS,
   SECTION_TEXT_BLOCK_CLASS,
-} from "@/app/_shared/sectionShell";
+} from "@/lib/layout/sectionShell";
 
 export default function HomeWhyChooseUsSection() {
   return (

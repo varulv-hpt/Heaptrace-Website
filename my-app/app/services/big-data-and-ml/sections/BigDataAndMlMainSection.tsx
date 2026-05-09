@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import servicesBanner from "@/app/assets/banner/services-banner.png";
-import ConnectSection from "@/app/services/elements/ConnectSection";
+import ConnectSection from "@/app/services/components/ConnectSection";
 import type { ServiceDetail } from "../../[slug]/serviceDetails";
 
 type BigDataAndMlMainSectionProps = {
@@ -128,7 +128,7 @@ export default function BigDataAndMlMainSection({ service }: BigDataAndMlMainSec
               </Link>
               <h1 className="text-white">{service.title}</h1>
               <p className="title-description-white-about">{service.subtitle}</p>
-              <Link href="/contact-us" className="secondary-button w-button">
+              <Link href="/contact-us" className="site-cta service-banner-cta">
                 GET IN TOUCH
               </Link>
             </motion.div>

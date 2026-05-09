@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { benefits } from "../elements/careersData";
+import { benefits } from "../components/careersData";
 
 export default function CareersBenefitsSection() {
   return (

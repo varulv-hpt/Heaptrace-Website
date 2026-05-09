@@ -2,7 +2,7 @@ import {
   SECTION_FULL_WIDTH_STACK_CLASS,
   SECTION_OUTER_PAD_CLASS,
   SECTION_PAGE_CONTAINER_CLASS,
-} from "@/app/_shared/sectionShell";
+} from "@/lib/layout/sectionShell";
 
 export default function HomeDigitallyTransformedSection() {
   return (

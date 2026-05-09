@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Heaptrace Website (Next.js)
 
-## Getting Started
+Marketing website built with Next.js App Router (`next@16`), React (`19`), and TypeScript.
 
-First, run the development server:
+This repository is structured for:
+- clear route ownership
+- predictable reusable component placement
+- easy onboarding for new contributors
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Tech Stack
+
+- Next.js App Router
+- React + TypeScript
+- Tailwind CSS
+- Framer Motion
+
+## Project Structure
+
+```txt
+my-app/
+  app/
+    (home)/
+      page.tsx
+      sections/
+      components/
+    about-us/
+      page.tsx
+      sections/
+      components/
+    blog/
+    careers/
+    contact-us/
+    faq/
+    industry/
+      [slug]/
+    portfolio/
+    services/
+      [slug]/
+    assets/
+    globals.css
+    layout.tsx
+
+  components/
+    layout/
+      Navbar.tsx
+      Footer.tsx
+      Components.css
+    shared/
+      PageBanner.tsx
+      RevealOnScroll.tsx
+      RoutePlaceholder.tsx
+
+  lib/
+    layout/
+      sectionShell.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Folder Conventions
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `app/<route>/page.tsx`: route entry that composes sections.
+- `app/<route>/sections`: page-level blocks that define the route flow.
+- `app/<route>/components`: route-local supporting UI reused within that route.
+- `components/shared`: reusable UI across multiple routes.
+- `components/layout`: global layout UI used by `app/layout.tsx`.
+- `lib/*`: non-UI shared utilities/constants.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Styling Conventions
 
-## Learn More
+- `app/globals.css` contains global styles/tokens/reset-level rules.
+- Route-specific CSS stays in its route folder (for example `app/blog/blog.css`).
+- Shared styles for shared/layout components stay near those components.
+- Avoid mixing global and route-local styles in the same file.
 
-To learn more about Next.js, take a look at the following resources:
+## Reusable Component Rules
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Use this checklist before placing a component:
+- Used in one route only -> `app/<route>/components`.
+- Used in multiple routes -> `components/shared`.
+- Used for app shell/navigation/footer -> `components/layout`.
+- Pure helper/constants (not JSX UI) -> `lib`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Running the Project
 
-## Deploy on Vercel
+```bash
+npm install
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Open [http://localhost:3000](http://localhost:3000).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Quality Checks
+
+```bash
+npm run lint
+npm run build
+```
+
+## How to Add a New Page
+
+1. Create `app/<new-route>/page.tsx`.
+2. Add `sections/` for major page blocks.
+3. Add `components/` only for route-local reusable pieces.
+4. Promote any cross-route reusable UI into `components/shared`.
+5. Keep `page.tsx` focused on composition, not heavy implementation details.

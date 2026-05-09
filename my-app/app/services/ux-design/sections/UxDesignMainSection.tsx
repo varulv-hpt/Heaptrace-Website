@@ -1,7 +1,7 @@
-﻿"use client";
+"use client";
 
 import type { ServiceDetail } from "../../[slug]/serviceDetails";
-import ServiceShowcaseSection from "../../elements/ServiceShowcaseSection";
+import ServiceShowcaseSection from "../../components/ServiceShowcaseSection";
 
 type UxDesignMainSectionProps = {
   service: ServiceDetail;

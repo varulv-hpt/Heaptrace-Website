@@ -172,6 +172,10 @@
   color: var(--brand-primary);
 }
 
+.service-banner-cta {
+  display: inline-flex;
+}
+
 .site-mobile-toggle {
   width: 40px;
   height: 40px;

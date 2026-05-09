@@ -13,8 +13,8 @@ import asset17 from "@/app/assets/collaborations/asset 17.svg";
 import {
   SECTION_OUTER_PAD_CLASS,
   SECTION_PAGE_CONTAINER_CLASS,
-} from "@/app/_shared/sectionShell";
-import CollaboratorLogo from "../elements/CollaboratorLogo";
+} from "@/lib/layout/sectionShell";
+import CollaboratorLogo from "../components/CollaboratorLogo";
 
 type LogoItem = {
   name: string;

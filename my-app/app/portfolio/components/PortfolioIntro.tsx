@@ -1,4 +1,4 @@
-import RoutePlaceholder from "@/app/_shared/elements/RoutePlaceholder";
+import RoutePlaceholder from "@/components/shared/RoutePlaceholder";
 
 export default function PortfolioIntro() {
   return (

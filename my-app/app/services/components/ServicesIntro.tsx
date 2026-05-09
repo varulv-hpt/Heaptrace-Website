@@ -15,7 +15,7 @@ import HomeHowWeWorkSection from "@/app/(home)/sections/HomeHowWeWorkSection";
 import servicesBanner from "@/app/assets/banner/services-banner.png";
 import ServicesFaqSection from "./ServicesFaqSection";
 import ConnectSection from "./ConnectSection";
-import PageBanner from "@/app/_shared/elements/PageBanner";
+import PageBanner from "@/components/shared/PageBanner";
 
 type ServiceCard = {
   slug: string;

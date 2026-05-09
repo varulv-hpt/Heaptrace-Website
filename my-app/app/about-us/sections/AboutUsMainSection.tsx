@@ -1,4 +1,4 @@
-import AboutUsIntro from "../elements/AboutUsIntro";
+import AboutUsIntro from "../components/AboutUsIntro";
 
 export default function AboutUsMainSection() {
   return <AboutUsIntro />;

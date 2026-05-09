@@ -1,4 +1,4 @@
-import ContactUsIntro from "../elements/ContactUsIntro";
+import ContactUsIntro from "../components/ContactUsIntro";
 
 export default function ContactUsMainSection() {
   return <ContactUsIntro />;

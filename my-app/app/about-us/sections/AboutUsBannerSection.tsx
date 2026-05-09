@@ -1,5 +1,5 @@
 import bannerImage from "@/app/assets/banner/about-us.webp";
-import PageBanner from "@/app/_shared/elements/PageBanner";
+import PageBanner from "@/components/shared/PageBanner";
 
 export default function AboutUsBannerSection() {
   return (

@@ -6,7 +6,7 @@ import shwetaPandya from "@/app/assets/people/shweta-pandya.png";
 import {
   SECTION_OUTER_PAD_CLASS,
   SECTION_PAGE_CONTAINER_CLASS,
-} from "@/app/_shared/sectionShell";
+} from "@/lib/layout/sectionShell";
 
 type TeamMember = {
   name: string;

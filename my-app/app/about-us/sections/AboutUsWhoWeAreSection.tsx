@@ -8,7 +8,7 @@ import cert21 from "@/app/assets/collaborations/asset 21.svg";
 import {
   SECTION_OUTER_PAD_CLASS,
   SECTION_PAGE_CONTAINER_CLASS,
-} from "@/app/_shared/sectionShell";
+} from "@/lib/layout/sectionShell";
 
 const SERVICES = [
   "IT Professional services",

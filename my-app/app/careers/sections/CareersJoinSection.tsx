@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { HERO_IMAGE, ICON } from "../elements/careersData";
-import { RetentionIcon, SatisfactionIcon } from "../elements/StatIcons";
+import { HERO_IMAGE, ICON } from "../components/careersData";
+import { RetentionIcon, SatisfactionIcon } from "../components/StatIcons";
 
 export default function CareersJoinSection() {
   return (

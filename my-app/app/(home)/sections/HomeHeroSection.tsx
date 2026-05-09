@@ -2,8 +2,8 @@ import Link from "next/link";
 import {
   SECTION_OUTER_PAD_CLASS,
   SECTION_PAGE_CONTAINER_CLASS,
-} from "@/app/_shared/sectionShell";
-import HeroBackground from "../elements/HeroBackground";
+} from "@/lib/layout/sectionShell";
+import HeroBackground from "../components/HeroBackground";
 
 export default function HomeHeroSection() {
   return (

@@ -1,7 +1,7 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import type { ServiceDetail } from "../../[slug]/serviceDetails";
 import servicesBanner from "@/app/assets/banner/services-banner.png";
-import ConnectSection from "@/app/services/elements/ConnectSection";
+import ConnectSection from "@/app/services/components/ConnectSection";
 
 type CloudDevelopmentMainSectionProps = {
   service: ServiceDetail;
@@ -64,7 +64,7 @@ export default function CloudDevelopmentMainSection({ service }: CloudDevelopmen
               <p className="title-description-white-about">
                 {service.subtitle}
               </p>
-              <Link href="/contact-us" className="secondary-button w-button">
+              <Link href="/contact-us" className="site-cta service-banner-cta">
                 GET IN TOUCH
               </Link>
             </div>

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import RevealOnScroll from "@/app/_shared/elements/RevealOnScroll";
-import { valuedClientRows } from "../elements/careersData";
+import RevealOnScroll from "@/components/shared/RevealOnScroll";
+import { valuedClientRows } from "../components/careersData";
 
 const valuedClientLogos = valuedClientRows.flat();
 

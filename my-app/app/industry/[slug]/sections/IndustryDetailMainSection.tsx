@@ -1,4 +1,4 @@
-import IndustryDetailIntro from "../elements/IndustryDetailIntro";
+import IndustryDetailIntro from "../components/IndustryDetailIntro";
 
 type IndustryDetailMainSectionProps = {
   title: string;

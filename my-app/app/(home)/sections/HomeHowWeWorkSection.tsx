@@ -7,7 +7,7 @@ import {
   SECTION_OUTER_PAD_CLASS,
   SECTION_PAGE_CONTAINER_CLASS,
   SECTION_FULL_WIDTH_STACK_CLASS,
-} from "@/app/_shared/sectionShell";
+} from "@/lib/layout/sectionShell";
 
 type WorkStep = {
   title: string;

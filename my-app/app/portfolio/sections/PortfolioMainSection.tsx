@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import WorkProjectCard from "../elements/WorkProjectCard";
+import WorkProjectCard from "../components/WorkProjectCard";
 import { workFilterCategories, workProjects } from "../data/workProjects";
-import PageBanner from "@/app/_shared/elements/PageBanner";
+import PageBanner from "@/components/shared/PageBanner";
 
 export default function PortfolioMainSection() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -98,9 +98,9 @@ export default function PortfolioMainSection() {
             Improve your business with the right solutions
           </h2>
           <p className="mx-auto mt-5 max-w-[850px] text-[18px] leading-[1.75] text-[#5e5e60]">
-            "It is really refreshing to create the best solutions for clients who are truly interested in their
+            &quot;It is really refreshing to create the best solutions for clients who are truly interested in their
             client&apos;s needs and preferences. We offer one of the most comprehensive sets of laboratory services and
-            quality result."
+            quality result.&quot;
           </p>
           <p className="mt-6 text-[18px] font-semibold text-[#303338]">Mul Sahu</p>
           <p className="mt-1 text-[15px] text-[#5e5e60]">CEO, HeapTrace Technology</p>

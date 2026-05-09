@@ -1,7 +1,7 @@
 import {
   SECTION_OUTER_PAD_CLASS,
   SECTION_PAGE_CONTAINER_CLASS,
-} from "@/app/_shared/sectionShell";
+} from "@/lib/layout/sectionShell";
 import HomeTestimonialsCarousel from "./HomeTestimonialsCarousel";
 
 const QUOTE_SHAPE_SRC =

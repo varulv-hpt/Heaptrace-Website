@@ -1,4 +1,4 @@
-import ServicesIntro from "../elements/ServicesIntro";
+import ServicesIntro from "../components/ServicesIntro";
 
 export default function ServicesMainSection() {
   return <ServicesIntro />;

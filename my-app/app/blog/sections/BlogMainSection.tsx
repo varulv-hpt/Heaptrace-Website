@@ -1,9 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import BlogCard from "../elements/BlogCard";
+import BlogCard from "../components/BlogCard";
 import { blogCategories, blogPosts } from "../data/blogPosts";
-import PageBanner from "@/app/_shared/elements/PageBanner";
+import PageBanner from "@/components/shared/PageBanner";
 
 export default function BlogMainSection() {
   const [activeCategory, setActiveCategory] = useState<string>("All");

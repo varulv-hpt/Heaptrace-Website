@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ICON, openings } from "../elements/careersData";
+import { ICON, openings } from "../components/careersData";
 
 export default function CareersOpeningsLegacySection() {
   return (

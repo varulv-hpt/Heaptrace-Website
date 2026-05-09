@@ -15,6 +15,7 @@ import HomeHowWeWorkSection from "@/app/(home)/sections/HomeHowWeWorkSection";
 import servicesBanner from "@/app/assets/banner/services-banner.png";
 import ServicesFaqSection from "./ServicesFaqSection";
 import ConnectSection from "./ConnectSection";
+import PageBanner from "@/app/_shared/elements/PageBanner";
 
 type ServiceCard = {
   slug: string;
@@ -127,22 +128,11 @@ const FAQ_PREVIEW = [
 export default function ServicesIntro() {
   return (
     <section className="bg-[#f5f7fa] text-[#4c4c4e]">
-      <section
-        className="section service-details-banner our-services"
-        style={{
-          backgroundImage: `linear-gradient(90deg, rgba(2, 11, 23, 0.88) 0%, rgba(4, 16, 30, 0.82) 44%, rgba(8, 61, 75, 0.52) 100%), radial-gradient(circle at 78% 48%, rgba(0, 239, 255, 0.22), transparent 42%), url(${servicesBanner.src})`,
-        }}
-      >
-        <div className="mx-auto w-full max-w-[1350px] px-6">
-          <div className="title-banner-wraper-flex">
-            <h1 className="text-white">Our Services</h1>
-            <p className="title-description-white-about">
-              We pride ourselves on offering a diverse range of services
-              meticulously crafted to meet the unique needs of your business.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageBanner
+        title="Our Services"
+        description="We pride ourselves on offering a diverse range of services meticulously crafted to meet the unique needs of your business."
+        backgroundImage={servicesBanner}
+      />
 
       <div className="mx-auto w-full max-w-[1350px] px-6 py-20 md:py-24">
         <svg aria-hidden="true" width="0" height="0" className="absolute">

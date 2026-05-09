@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PortfolioMainSection from "./sections/PortfolioMainSection";
+import "./portfolio.css";
 
 export const metadata: Metadata = {
   title: "Portfolio",

@@ -1,0 +1,19 @@
+.portfolio-page {
+  background: #f6f8fb;
+}
+
+.portfolio-hero {
+  background: linear-gradient(90deg, rgba(2, 11, 23, 0.92) 0%, rgba(3, 16, 30, 0.84) 45%, rgba(10, 82, 93, 0.42) 100%);
+}
+
+.portfolio-chip {
+  border: 1px solid #dce3ea;
+  background: #ffffff;
+  color: #303338;
+}
+
+.portfolio-chip-active {
+  border-color: #4dac8a;
+  background: #4dac8a;
+  color: #ffffff;
+}

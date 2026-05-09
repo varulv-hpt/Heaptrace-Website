@@ -1,66 +1,12 @@
-import Image from "next/image";
 import bannerImage from "@/app/assets/banner/about-us.webp";
+import PageBanner from "@/app/_shared/elements/PageBanner";
 
 export default function AboutUsBannerSection() {
   return (
-    <section
-      aria-label="About Us banner"
-      style={{
-        position: "relative",
-        overflow: "hidden",
-        height: "450px",
-        display: "flex",
-        alignItems: "flex-end",
-        paddingBottom: "72px",
-      }}
-    >
-      <Image
-        src={bannerImage}
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        style={{ objectFit: "cover", objectPosition: "center" }}
-        aria-hidden="true"
-      />
-      <div
-        style={{
-          position: "relative",
-          zIndex: 2,
-          width: "100%",
-          maxWidth: "1440px",
-          margin: "0 auto",
-          padding: "0 60px",
-        }}
-      >
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px", maxWidth: "700px" }}>
-          <h1
-            style={{
-              margin: 0,
-              color: "#ffffff",
-              fontSize: "40px",
-              fontWeight: 600,
-              lineHeight: "56px",
-              letterSpacing: "-0.8px",
-            }}
-          >
-            About Us
-          </h1>
-          <p
-            style={{
-              margin: 0,
-              color: "rgba(255,255,255,0.90)",
-              fontSize: "20px",
-              fontWeight: 400,
-              lineHeight: "24px",
-            }}
-          >
-            We believe in the power of clean code. Our focus is converting
-            real-world problems into efficient solutions through quality coding.
-            Regardless of domains or technologies.
-          </p>
-        </div>
-      </div>
-    </section>
+    <PageBanner
+      title="About Us"
+      description="We believe in the power of clean code. Our focus is converting real-world problems into efficient solutions through quality coding. Regardless of domains or technologies."
+      backgroundImage={bannerImage}
+    />
   );
 }

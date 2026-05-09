@@ -1,5 +1,5 @@
 import Image from "next/image";
-import bannerImage from "@/app/assets/banner/Healthcare.webp";
+import bannerImage from "@/app/assets/banner/services-banner.png";
 
 export default function HcBannerSection() {
   return (

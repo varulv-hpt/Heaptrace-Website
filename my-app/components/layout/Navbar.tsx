@@ -42,11 +42,6 @@ const INSIGHTS_LINKS = [
   { label: "White Paper", href: "/contact-us" },
 ];
 
-// Routes whose hero is dark/full-bleed and should be overlaid by the navbar
-// (transparent at the top, solid on scroll). Mirrors the home page behavior.
-const TRANSPARENT_HERO_ROUTES = new Set<string>(["/", "/careers"]);
-const TRANSPARENT_HERO_PREFIXES = ["/industry/", "/about-us"];
-
 type DropdownItem = { label: string; href: string };
 
 interface NavDropdownProps {
@@ -161,7 +156,6 @@ function MobileAccordion({ label, items, onClose }: MobileAccordionProps) {
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
-  const pathname = usePathname();
 
   useEffect(() => {
     function updateTopState() {
@@ -173,12 +167,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", updateTopState);
   }, []);
 
-  // const TRANSPARENT_ROUTES = ["/", "/about-us"];
-  // const isTransparent = TRANSPARENT_ROUTES.includes(pathname) && isAtTop && !mobileOpen;
-  const overlayHero =
-    TRANSPARENT_HERO_ROUTES.has(pathname) ||
-    TRANSPARENT_HERO_PREFIXES.some((prefix) => pathname.startsWith(prefix));
-  const isTransparent = overlayHero && isAtTop && !mobileOpen;
+  const isTransparent = isAtTop && !mobileOpen;
 
   return (
     <>

@@ -4,18 +4,22 @@ import { useEffect, useRef, useState } from "react";
 
 function useInView<T extends HTMLElement>(threshold = 0.35) {
   const ref = useRef<T | null>(null);
-  const [inView, setInView] = useState(false);
+  const [inView, setInView] = useState(() => {
+    if (typeof window === "undefined") return false;
+    if (!("IntersectionObserver" in window)) return true;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return true;
+    return false;
+  });
 
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
 
-    if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
-      setInView(true);
-      return;
-    }
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setInView(true);
+    if (
+      typeof window === "undefined" ||
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       return;
     }
 
@@ -71,6 +75,9 @@ export function CircularStat({
   delay = 120,
 }: CircularStatProps) {
   const [ref, inView] = useInView<HTMLDivElement>();
+  const reduceMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const [display, setDisplay] = useState(0);
 
   const clamped = Math.max(0, Math.min(100, value));
@@ -83,12 +90,7 @@ export function CircularStat({
 
   useEffect(() => {
     if (!inView) return;
-
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      setDisplay(clamped);
+    if (reduceMotion) {
       return;
     }
 
@@ -109,7 +111,7 @@ export function CircularStat({
 
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [inView, clamped, duration, delay]);
+  }, [inView, clamped, duration, delay, reduceMotion]);
 
   const gradientId = `stat-grad-${clamped}-${size}`;
   const fontSize = Math.round(size * 0.28);
@@ -187,7 +189,7 @@ export function CircularStat({
           lineHeight: 1,
         }}
       >
-        {display}
+        {reduceMotion && inView ? clamped : display}
         <span style={{ fontSize: Math.round(fontSize * 0.55), marginLeft: 1 }}>
           %
         </span>

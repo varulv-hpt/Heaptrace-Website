@@ -10,7 +10,7 @@ export default function BlockchainWhyChooseSection() {
             Merging Cutting-Edge Tech with Transparent Blockchain Solutions
           </h3>
           <p className="bc-desc">
-            At HeapTrace, we believe Blockchain is more than a technology—it's a
+            At HeapTrace, we believe Blockchain is more than a technology—it&apos;s a
             transformational force. From secure digital transactions to
             decentralized applications (dApps), our blockchain services are
             designed to unlock new efficiencies, improve transparency, and foster

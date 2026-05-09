@@ -26,20 +26,22 @@ export default function RevealOnScroll({
   style,
 }: RevealOnScrollProps) {
   const ref = useRef<HTMLElement | null>(null);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(() => {
+    if (typeof window === "undefined") return false;
+    if (!("IntersectionObserver" in window)) return true;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return true;
+    return false;
+  });
 
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
 
-    if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
-      setVisible(true);
-      return;
-    }
-
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) {
-      setVisible(true);
+    if (
+      typeof window === "undefined" ||
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       return;
     }
 

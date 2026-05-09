@@ -54,43 +54,43 @@ const serviceCards: ServiceCard[] = [
   {
     title: "Agentic AI & RAG-Driven Intelligence",
     description:
-      "Integrate retrieval-augmented generation with AI agents that decide what to fetch, when to fetch, and how to act for enterprise workflows.",
+      "Integrate retrieval-augmented generation (RAG) with AI agents that decide what to fetch, when to fetch, and how to act for enterprise workflows.",
     icon: Bot,
   },
   {
     title: "AI-Powered Diagramming & Visualization",
     description:
-      "Enable text-to-diagram conversion, collaborative flows, and auto-synced documentation with Generative and Agentic AI capabilities.",
+      "Develop enterprise-ready diagramming and visualization platforms with text-to-diagram conversion, collaboration, proactive workflow suggestions, and auto-synced documentation.",
     icon: LayoutDashboard,
   },
   {
-    title: "AI for Data & Decision Support",
+    title: "AI For Data & Decision Support",
     description:
-      "Use predictive insights, synthetic dataset generation, and advanced analytics to improve decision speed and confidence.",
+      "Strengthen decision-making with synthetic data generation, advanced analytics, and predictive insights for faster, more reliable strategic decisions.",
     icon: BrainCircuit,
   },
   {
     title: "Custom AI Solutions",
     description:
-      "Build secure, scalable AI solutions aligned to business outcomes, from recommendations to process automation.",
+      "Design and implement enterprise-grade AI models tailored to business goals, from intelligent recommendations to workflow automation.",
     icon: Wrench,
   },
   {
     title: "AI-Powered Content Creation",
     description:
-      "Automate high-quality enterprise content generation for marketing, documentation, and product communication.",
+      "Automate enterprise content production for marketing, product copy, and training materials with better consistency and delivery speed.",
     icon: FileText,
   },
   {
-    title: "AI for Design & Media",
+    title: "AI For Design & Media",
     description:
-      "Accelerate design and media production while keeping assets consistent with your brand and multi-channel strategy.",
+      "Accelerate creative workflows with AI-powered design and media generation aligned with brand standards and multi-channel delivery.",
     icon: Sparkles,
   },
   {
     title: "Conversational AI & Chatbots",
     description:
-      "Deploy always-on support assistants integrated with enterprise systems to reduce costs and improve customer satisfaction.",
+      "Build conversational platforms that deliver 24/7 support and integrate securely with enterprise systems to improve engagement and satisfaction.",
     icon: MessageSquareCode,
   },
 ];
@@ -105,25 +105,25 @@ const approachSteps: StepCard[] = [
   {
     title: "Custom Solution Design",
     description:
-      "Our team designs tailored AI architecture and interaction flows for your exact requirements.",
+      "Our team of AI experts designs custom solutions tailored to your requirements and existing systems.",
     icon: Lightbulb,
   },
   {
     title: "Model Training & Testing",
     description:
-      "We train and validate models with quality controls to ensure reliable production-ready performance.",
+      "We use state-of-the-art tools to train and test your models with rigorous quality control.",
     icon: ShieldCheck,
   },
   {
     title: "Implementation & Integration",
     description:
-      "We integrate AI into your products and workflows with scalable, secure deployment practices.",
+      "Once approved, we handle full implementation and integration into business processes with scalable architecture.",
     icon: Workflow,
   },
   {
     title: "Ongoing Support & Optimization",
     description:
-      "Continuous monitoring and optimization keep your AI systems effective as business needs evolve.",
+      "We provide continuous support, maintenance, and optimization so your AI systems stay effective and up to date.",
     icon: Rocket,
   },
 ];
@@ -132,30 +132,30 @@ const whyChooseCards: WhyChooseCard[] = [
   {
     title: "Expert Team",
     description:
-      "Our AI specialists bring deep implementation experience across industries and enterprise use cases.",
+      "Our AI specialists have years of experience building and deploying AI solutions across industries.",
     icon: BrainCircuit,
   },
   {
     title: "Custom Solutions",
-    description: "Every engagement is tailored to your stack, goals, compliance constraints, and growth plan.",
+    description: "Every business is different, which is why we deliver AI solutions tailored to your needs.",
     icon: Wrench,
   },
   {
     title: "Proven Track Record",
     description:
-      "We help teams improve efficiency, creativity, and decision quality with practical AI solutions.",
+      "We've successfully helped businesses improve efficiency, enhance creativity, and make smarter decisions with AI.",
     icon: CheckCircle2,
   },
   {
     title: "End-to-End Service",
     description:
-      "From consulting to implementation and support, we cover the full lifecycle of your AI journey.",
+      "From consultation to ongoing support, we provide comprehensive AI services to ensure success.",
     icon: Workflow,
   },
   {
     title: "Commitment to Innovation",
     description:
-      "We continuously evaluate emerging AI capabilities to keep your business ahead of the curve.",
+      "We stay on the cutting edge of AI technology to ensure clients benefit from the latest advancements.",
     icon: Sparkles,
   },
 ];
@@ -166,7 +166,7 @@ export default function GenerativeAiMainSection({ service }: GenerativeAiMainSec
     "Generate high-quality content and media",
     "Build intelligent, data-driven applications",
     "Enhance decision-making through AI-powered insights",
-    "Improve customer experience through advanced conversational AI",
+    "Improve customer experiences through advanced conversational AI",
   ];
 
   return (
@@ -196,11 +196,7 @@ export default function GenerativeAiMainSection({ service }: GenerativeAiMainSec
                 </div>
               </Link>
               <h1 className="text-white">{service.title}</h1>
-              <p className="title-description-white-about">
-                Unlock your company&apos;s potential with HeapTrace, your trusted partner for strategic
-                business solutions. From expert consulting to tailored strategies, we&apos;re here to help
-                you thrive in today&apos;s competitive landscape.
-              </p>
+              <p className="title-description-white-about">{service.subtitle}</p>
               <Link href="/contact-us" className="secondary-button w-button">
                 GET IN TOUCH
               </Link>
@@ -217,10 +213,7 @@ export default function GenerativeAiMainSection({ service }: GenerativeAiMainSec
             </h2>
             <h3 className="subheading">Transform Your Business with AI-Powered Innovation</h3>
             <p className="description-text-dark max-w-[1300px] text-[19px] leading-[1.7] text-[#5e5e60]">
-              At HeapTrace Technology, our Generative AI services empower businesses to harness AI for
-              automation, creativity, and actionable insights. Whether you&apos;re looking to automate
-              content generation, improve customer interactions, or build AI-driven applications, we
-              deliver custom solutions that integrate seamlessly into your operations.
+              {service.overview}
             </p>
           </div>
 
@@ -246,39 +239,34 @@ export default function GenerativeAiMainSection({ service }: GenerativeAiMainSec
         </div>
       </section>
 
-      <section className="section-2 py-80 linear-bg">
+      <section className="section-2 bg-[#f5f7fa] py-16 md:py-20 xl:py-24">
         <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
           <div className="w-layout-blockcontainer header-container mb-sm-0 w-container">
-            <h2 className="main-heading text-white">Our Generative AI Services</h2>
+            <h2 className="main-heading text-[#303338]">Our Generative AI Services</h2>
           </div>
 
-          <motion.div
-            className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
-          >
+          <div className="mt-10 grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {serviceCards.map((card) => {
               const Icon = card.icon;
 
               return (
-                <motion.article
+                <article
                   key={card.title}
-                  variants={fadeUp}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                  whileHover={{ y: -6 }}
-                  className="rounded-2xl border border-[#ffffff21] bg-[#122733] p-6 transition-colors duration-200 hover:border-[#4dac8a66]"
+                  className="flex h-full flex-col rounded-2xl border border-[#dce3ea] bg-white p-5 transition-colors duration-200 hover:border-[#9ed8c4] sm:p-6"
                 >
                   <div className="mb-4 inline-flex rounded-xl bg-[#4dac8a1f] p-3">
-                    <Icon className="h-6 w-6 text-[#7ce0c2]" />
+                    <Icon className="h-6 w-6 text-[#4dac8a]" />
                   </div>
-                  <h3 className="text-[22px] font-semibold leading-[1.35] text-white">{card.title}</h3>
-                  <p className="mt-3 text-[16px] leading-[1.72] text-[#d8e4e8]">{card.description}</p>
-                </motion.article>
+                  <h3 className="text-[20px] font-semibold leading-[1.35] text-[#1f2937] sm:text-[22px]">
+                    {card.title}
+                  </h3>
+                  <p className="mt-3 text-[15px] leading-[1.72] text-[#4b5563] sm:text-[16px]">
+                    {card.description}
+                  </p>
+                </article>
               );
             })}
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -310,26 +298,18 @@ export default function GenerativeAiMainSection({ service }: GenerativeAiMainSec
                   variants={fadeUp}
                   transition={{ duration: 0.45, ease: "easeOut" }}
                   whileHover={{ y: -4 }}
-                  className="group relative overflow-hidden rounded-[10px] border border-white bg-white p-6"
+                  className="group relative overflow-hidden rounded-[10px] border border-[#dce3ea] bg-white p-6"
                 >
-                  <motion.div
-                    aria-hidden="true"
-                    className="absolute inset-0 z-0 bg-[linear-gradient(135deg,#60d7ad,#213c3a)]"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "-6%" }}
-                    transition={{ duration: 0.38, ease: "easeOut" }}
-                  />
-
                   <div className="relative z-10 flex flex-col gap-3">
                     <div className="flex items-center">
-                      <div className="mr-4 inline-flex h-[90px] w-[90px] items-center justify-center rounded-full bg-white p-4 transition-colors duration-300 group-hover:bg-[#4c4c4e]">
-                        <Icon className="h-14 w-14 text-[#4dac8a] transition-colors duration-300 group-hover:text-white" />
+                      <div className="mr-4 inline-flex h-[90px] w-[90px] items-center justify-center rounded-full bg-[#eef7f2] p-4 transition-colors duration-300 group-hover:bg-[#e2f3eb]">
+                        <Icon className="h-14 w-14 text-[#4dac8a]" />
                       </div>
-                      <h3 className="text-[18px] font-semibold leading-6 text-[#4c4c4e] transition-colors duration-300 group-hover:text-white">
+                      <h3 className="text-[18px] font-semibold leading-6 text-[#4c4c4e]">
                         {step.title}
                       </h3>
                     </div>
-                    <p className="text-[18px] leading-[1.6] text-[#5e5e60] transition-colors duration-300 group-hover:text-[rgba(255,255,255,0.88)]">
+                    <p className="text-[18px] leading-[1.6] text-[#5e5e60]">
                       {step.description}
                     </p>
                   </div>
@@ -362,15 +342,15 @@ export default function GenerativeAiMainSection({ service }: GenerativeAiMainSec
                   variants={fadeUp}
                   transition={{ duration: 0.45, ease: "easeOut" }}
                   whileHover={{ y: -4 }}
-                  className="rounded-xl border border-[#ffffff24] bg-[#173440] p-6"
+                  className="rounded-xl border border-[#dce3ea] bg-white p-6"
                 >
                   <div className="flex items-center gap-3">
                     <div className="rounded-lg bg-[#4dac8a1f] p-2.5">
-                      <Icon className="h-5 w-5 text-[#7ce0c2]" />
+                      <Icon className="h-5 w-5 text-[#4dac8a]" />
                     </div>
-                    <h3 className="text-[22px] font-semibold text-white">{item.title}</h3>
+                    <h3 className="text-[22px] font-semibold text-[#1f2937]">{item.title}</h3>
                   </div>
-                  <p className="mt-4 text-[16px] leading-[1.72] text-[#d8e4e8]">{item.description}</p>
+                  <p className="mt-4 text-[16px] leading-[1.72] text-[#4b5563]">{item.description}</p>
                 </motion.div>
               );
             })}
@@ -385,8 +365,9 @@ export default function GenerativeAiMainSection({ service }: GenerativeAiMainSec
               Get Started with <span className="text-span-29 text-[#4dac8a]">Generative AI Today</span>
             </h2>
             <p className="description-text-dark max-w-[1200px] text-[19px] leading-[1.75] text-[#5e5e60]">
-              Let&apos;s build the future together with Generative AI. Contact us today to learn how we can
-              design, implement, and scale AI systems that drive measurable outcomes for your business.
+              Let&apos;s Build the Future Together with Generative AI. Contact us today to learn more about
+              how Generative AI can revolutionize your business. Our team is ready to help you design,
+              implement, and scale AI solutions that drive real results.
             </p>
             <Link
               href="/contact-us"

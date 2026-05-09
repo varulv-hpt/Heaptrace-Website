@@ -63,55 +63,55 @@ const mobileServiceCards: ServiceCard[] = [
   {
     title: "iOS App Development",
     description:
-      "Custom iOS applications optimized for iPhone, iPad, and Apple Watch with Swift and Objective-C best practices.",
+      "We develop custom iOS applications that are optimized for Apple devices, ensuring a seamless experience for iPhone, iPad, and Apple Watch users.",
     icon: Apple,
   },
   {
     title: "Android App Development",
     description:
-      "Feature-rich, responsive Android apps built with Kotlin and Java for consistent performance across devices.",
+      "Our Android app development services deliver feature-rich, responsive, and scalable apps for the world's most widely used mobile platform.",
     icon: Smartphone,
   },
   {
     title: "Cross-Platform App Development",
     description:
-      "High-performance cross-platform apps using React Native, Flutter, and Xamarin for faster delivery with native-like UX.",
+      "We create high-performance cross-platform apps that run seamlessly on both iOS and Android using technologies like React Native, Flutter, and Xamarin.",
     icon: Layers,
   },
   {
     title: "Native App Development",
     description:
-      "Platform-specific apps that fully leverage iOS and Android capabilities for top performance and user interaction quality.",
+      "For businesses looking for native mobile apps, we provide custom solutions optimized for the specific platform, whether it's iOS or Android.",
     icon: MonitorSmartphone,
   },
   {
     title: "Hybrid App Development",
     description:
-      "Cost-effective hybrid solutions using Ionic and Cordova to reach broader audiences with a single maintainable codebase.",
+      "Our hybrid app development services combine the best of both web and mobile apps using frameworks like Ionic and Cordova.",
     icon: Puzzle,
   },
   {
     title: "UI/UX Design for Mobile Apps",
     description:
-      "Intuitive mobile-first interfaces crafted to improve usability, engagement, and conversion for your target users.",
+      "We prioritize user experience by designing visually stunning and intuitive UI/UX for mobile apps.",
     icon: LayoutTemplate,
   },
   {
     title: "App Testing and Quality Assurance",
     description:
-      "Comprehensive functional, performance, security, usability, and compatibility testing before release.",
+      "We provide comprehensive app testing and quality assurance services to ensure your mobile application works seamlessly across devices and platforms.",
     icon: TestTubeDiagonal,
   },
   {
     title: "Mobile App Maintenance and Support",
     description:
-      "Ongoing support for updates, bug fixes, and feature enhancements to keep your app secure and performant.",
+      "We provide ongoing maintenance and support to ensure your app remains up-to-date, secure, and optimized for performance.",
     icon: Wrench,
   },
   {
     title: "Mobile App Integrations",
     description:
-      "Seamless integrations with APIs, payment gateways, social sign-ins, and enterprise systems for unified workflows.",
+      "We offer mobile app integration services to connect your app with third-party services, APIs, and backend systems for seamless functionality.",
     icon: Database,
   },
 ];
@@ -120,37 +120,37 @@ const processSteps: StepCard[] = [
   {
     title: "Discovery and Ideation",
     description:
-      "We understand your goals, define app scope, and recommend the right architecture and technology stack.",
+      "We begin with a thorough understanding of your business goals, app objectives, and user needs through workshops and discussions.",
     icon: ScanLine,
   },
   {
     title: "UI/UX Design and Prototyping",
     description:
-      "Our team designs wireframes and prototypes so you can validate structure, flows, and interactions early.",
+      "Our design team creates engaging UI/UX designs, wireframes, and interactive prototypes to validate structure and functionality.",
     icon: LayoutTemplate,
   },
   {
     title: "Agile Development Process",
     description:
-      "Iterative development with continuous feedback ensures flexibility, high code quality, and predictable delivery.",
+      "Our agile methodology allows iterative progress, continuous feedback, and flexibility while ensuring high performance and scalability.",
     icon: Layers,
   },
   {
     title: "Quality Assurance and Testing",
     description:
-      "Rigorous QA validates performance, security, and compatibility across devices before production rollout.",
+      "Before launching, we rigorously test the app for functionality, performance, and security across different devices and platforms.",
     icon: ShieldCheck,
   },
   {
     title: "Deployment and Launch",
     description:
-      "We manage App Store and Play Store deployment processes and ensure compliance with release requirements.",
+      "We handle the deployment process to Google Play Store, Apple App Store, or any other platform of your choice.",
     icon: PlayCircle,
   },
   {
     title: "Post-Launch Support and Maintenance",
     description:
-      "After launch, we support monitoring, improvements, and roadmap enhancements as your product grows.",
+      "After launch, we continue to provide support for bug fixes, performance monitoring, and feature enhancements.",
     icon: Rocket,
   },
 ];
@@ -159,31 +159,31 @@ const whyChooseCards: WhyChooseCard[] = [
   {
     title: "User-Centric Approach",
     description:
-      "Every mobile experience is designed around real user behavior to maximize adoption and engagement.",
+      "At HeapTrace, we build mobile apps that are not only functional but also centered around the user.",
     icon: CheckCircle2,
   },
   {
     title: "Expertise Across Platforms",
     description:
-      "We deliver robust iOS, Android, and cross-platform builds using modern frameworks and platform standards.",
+      "We offer expertise in both iOS and Android development, as well as cross-platform solutions.",
     icon: Smartphone,
   },
   {
     title: "Performance and Scalability",
     description:
-      "We optimize app speed, stability, and architecture so your product scales smoothly as usage grows.",
+      "We build mobile apps that are optimized for performance, with fast load times and smooth user interactions.",
     icon: Gauge,
   },
   {
     title: "End-to-End Solutions",
     description:
-      "From discovery to post-launch optimization, we support the full mobile delivery lifecycle.",
+      "From concept and design to development, testing, and post-launch support, we provide end-to-end mobile app development services.",
     icon: Workflow,
   },
   {
     title: "Agile and Transparent Process",
     description:
-      "Frequent demos, feedback loops, and milestone clarity keep your team aligned at every stage.",
+      "We follow an agile development process with transparent communication to keep you informed at all stages.",
     icon: Layers,
   },
 ];
@@ -225,11 +225,7 @@ export default function MobileDevelopmentMainSection({ service }: MobileDevelopm
                 </div>
               </Link>
               <h1 className="text-white">{service.title}</h1>
-              <p className="title-description-white-about">
-                Unlock your company&apos;s potential with HeapTrace, your trusted partner for strategic
-                business solutions. From expert consulting to tailored strategies, we&apos;re here to help
-                you thrive in today&apos;s competitive landscape.
-              </p>
+              <p className="title-description-white-about">{service.subtitle}</p>
               <Link href="/contact-us" className="secondary-button w-button">
                 GET IN TOUCH
               </Link>
@@ -246,15 +242,13 @@ export default function MobileDevelopmentMainSection({ service }: MobileDevelopm
               Experiences
             </h2>
             <p className="description-text-dark max-w-[1300px] text-[19px] leading-[1.7] text-[#5e5e60]">
-              At HeapTrace Technology, we deliver high-quality mobile applications for iOS, Android, and
-              cross-platform environments. Whether you need a consumer app, enterprise solution, or hybrid
-              app, our team builds products that drive engagement and create exceptional user experiences.
+              {service.overview}
             </p>
           </div>
         </div>
       </section>
 
-      <section className="section-2 py-80 linear-bg">
+      <section className="section-2 linear-bg py-16 md:py-20 xl:py-24">
         <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
           <div className="w-layout-blockcontainer header-container w-container">
             <h2 className="main-heading text-white">Our Mobile Development Services</h2>
@@ -276,13 +270,13 @@ export default function MobileDevelopmentMainSection({ service }: MobileDevelopm
                   variants={fadeUp}
                   transition={{ duration: 0.5, ease: "easeOut" }}
                   whileHover={{ y: -6 }}
-                  className="rounded-2xl border border-[#ffffff21] bg-[#122733] p-6 transition-colors duration-200 hover:border-[#4dac8a66]"
+                  className="rounded-2xl border border-[#dce3ea] bg-white p-6 transition-colors duration-200 hover:border-[#4dac8a66]"
                 >
                   <div className="mb-4 inline-flex rounded-xl bg-[#4dac8a1f] p-3">
-                    <Icon className="h-6 w-6 text-[#7ce0c2]" />
+                    <Icon className="h-6 w-6 text-[#4dac8a]" />
                   </div>
-                  <h3 className="text-[22px] font-semibold leading-[1.35] text-white">{card.title}</h3>
-                  <p className="mt-3 text-[16px] leading-[1.72] text-[#d8e4e8]">{card.description}</p>
+                  <h3 className="text-[22px] font-semibold leading-[1.35] text-[#1f2937]">{card.title}</h3>
+                  <p className="mt-3 text-[16px] leading-[1.72] text-[#4b5563]">{card.description}</p>
                 </motion.article>
               );
             })}
@@ -337,7 +331,7 @@ export default function MobileDevelopmentMainSection({ service }: MobileDevelopm
       <section className="section-12 bg-[#f8f9fb] py-24">
         <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
           <div className="w-layout-blockcontainer header-container w-container">
-            <h2 className="main-heading">Why Choose HeapTrace Technology for Mobile Development?</h2>
+            <h2 className="main-heading">Why Choose HeapTrace Technology for DevOps Solutions?</h2>
           </div>
 
           <motion.div
@@ -377,7 +371,8 @@ export default function MobileDevelopmentMainSection({ service }: MobileDevelopm
           <div className="w-layout-blockcontainer header-container w-container">
             <h2 className="main-heading text-white">Technologies We Use</h2>
             <p className="description-text-white">
-              We leverage modern technologies to deliver high-performance mobile solutions across platforms.
+              We leverage a wide range of modern technologies to deliver cutting-edge mobile app
+              development solutions, including:
             </p>
           </div>
 
@@ -396,13 +391,13 @@ export default function MobileDevelopmentMainSection({ service }: MobileDevelopm
                   key={tech.title}
                   variants={fadeUp}
                   transition={{ duration: 0.45, ease: "easeOut" }}
-                  className="rounded-xl border border-[#ffffff2b] bg-[#142a32] p-6"
+                  className="rounded-xl border border-[#dce3ea] bg-white p-6"
                 >
                   <div className="mb-4 inline-flex rounded-xl bg-[#4dac8a1f] p-3">
-                    <Icon className="h-6 w-6 text-[#7ce0c2]" />
+                    <Icon className="h-6 w-6 text-[#4dac8a]" />
                   </div>
-                  <h3 className="text-[22px] font-semibold text-white">{tech.title}</h3>
-                  <p className="mt-2 text-[16px] leading-[1.7] text-[#d8e4e8]">{tech.tools}</p>
+                  <h3 className="text-[22px] font-semibold text-[#1f2937]">{tech.title}</h3>
+                  <p className="mt-2 text-[16px] leading-[1.7] text-[#4b5563]">{tech.tools}</p>
                 </motion.div>
               );
             })}
@@ -415,9 +410,14 @@ export default function MobileDevelopmentMainSection({ service }: MobileDevelopm
           <div className="w-layout-blockcontainer header-container _w-100 gap-32 w-container">
             <h2 className="main-heading">Transform Your Mobile Presence with HeapTrace Technology</h2>
             <p className="description-text-dark max-w-[1200px] text-[19px] leading-[1.75] text-[#5e5e60]">
-              Whether you&apos;re building a new mobile app or upgrading an existing one, our developers and
-              designers partner with your team to deliver experiences that engage users and drive measurable
-              outcomes.
+              {service.closingCta?.description}
+              {service.closingCta?.secondaryDescription ? (
+                <>
+                  <br />
+                  <br />
+                  {service.closingCta.secondaryDescription}
+                </>
+              ) : null}
             </p>
             <Link
               href="/contact-us"

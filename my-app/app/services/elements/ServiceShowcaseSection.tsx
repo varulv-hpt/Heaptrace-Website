@@ -1,43 +1,254 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
+  Activity,
   ArrowRight,
   BarChart3,
   BrainCircuit,
+  Bug,
+  CheckCircle2,
   Cloud,
+  Container,
   Database,
   FileSearch,
+  Gauge,
   GitBranch,
   Languages,
+  Layers,
+  Lightbulb,
   LineChart,
   Lock,
+  Monitor,
   Network,
+  PenTool,
   RefreshCw,
   Rocket,
+  ScanSearch,
   Server,
   Settings2,
+  ShieldCheck,
+  Smartphone,
+  Sparkles,
+  Users,
+  Workflow,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import servicesBanner from "@/app/assets/banner/services-banner.png";
 import ConnectSection from "@/app/services/elements/ConnectSection";
-import type { ServiceDetail } from "../../[slug]/serviceDetails";
+import type { ServiceDetail } from "../[slug]/serviceDetails";
 
-type BigDataAndMlMainSectionProps = {
-  service: ServiceDetail;
-};
-
-type CardItem = {
+type MappedCard = {
   title: string;
   description: string;
   icon: LucideIcon;
 };
 
-type TechCard = {
+type MappedTech = {
   category: string;
   tools: string;
   icon: LucideIcon;
+};
+
+type ServiceShowcaseSectionProps = {
+  service: ServiceDetail;
+  servicePath: string;
+  serviceBadge: string;
+  serviceHeading: string;
+  whyHeading: string;
+  overviewHeading: string;
+  heroClassName: string;
+};
+
+const ICON_CONFIG: Record<
+  string,
+  {
+    serviceIcons: Record<string, LucideIcon>;
+    processIcons: Record<string, LucideIcon>;
+    whyIcons: Record<string, LucideIcon>;
+    techIcons: Record<string, LucideIcon>;
+    fallbackIcon: LucideIcon;
+  }
+> = {
+  "data-engineering": {
+    serviceIcons: {
+      "Data Pipeline Development": Workflow,
+      "Data Warehousing": Database,
+      "Data Lake Architecture": Cloud,
+      "Real-Time Data Processing": BarChart3,
+      "Cloud Data Engineering": Cloud,
+      "Big Data Engineering": Server,
+      "Data Integration": Network,
+      "Data Governance and Security": Lock,
+      "Data Quality Management": FileSearch,
+    },
+    processIcons: {
+      "Data Strategy and Architecture Design": Settings2,
+      "Data Collection and Integration": Network,
+      "Data Pipeline Development": Workflow,
+      "Real-Time and Batch Processing": BarChart3,
+      "Data Governance and Security Implementation": Lock,
+      "Continuous Monitoring and Optimization": RefreshCw,
+    },
+    whyIcons: {
+      "Expertise Across Data Platforms": GitBranch,
+      "Scalable Solutions": Rocket,
+      "Data Security and Compliance": Lock,
+      "End-to-End Data Engineering Services": Workflow,
+      "Data-Driven Business Outcomes": BarChart3,
+    },
+    techIcons: {
+      "Big Data Tools": Server,
+      "Cloud Platforms": Cloud,
+      "Databases": Database,
+      "ETL Tools": Workflow,
+      "Data Warehousing": BarChart3,
+      "Security": Lock,
+    },
+    fallbackIcon: Database,
+  },
+  "testing-services": {
+    serviceIcons: {
+      "Manual Testing": ScanSearch,
+      "Automated Testing": GitBranch,
+      "Performance Testing": Gauge,
+      "Security Testing": ShieldCheck,
+      "Mobile App Testing": Smartphone,
+      "Regression Testing": RefreshCw,
+      "API Testing": Network,
+      "Usability Testing": CheckCircle2,
+      "Compliance Testing": Lock,
+    },
+    processIcons: {
+      "Test Strategy and Planning": ScanSearch,
+      "Test Case Development": Bug,
+      "Test Execution": Activity,
+      "Continuous Testing and Integration": GitBranch,
+      "Defect Reporting and Resolution": Bug,
+      "Post-Release Testing": Rocket,
+    },
+    whyIcons: {
+      "Comprehensive Test Coverage": CheckCircle2,
+      "Manual and Automated Testing Expertise": GitBranch,
+      "Quality and Speed": Gauge,
+      "Security and Compliance Focus": ShieldCheck,
+      "End-to-End Test Engineering Services": Rocket,
+    },
+    techIcons: {
+      "Automation Tools": GitBranch,
+      "Performance Testing": Gauge,
+      "Mobile Testing": Smartphone,
+      "Security Testing": ShieldCheck,
+      "CI/CD Integration": Network,
+      "API Testing": Activity,
+    },
+    fallbackIcon: CheckCircle2,
+  },
+  "devops-services": {
+    serviceIcons: {
+      "CI/CD Pipeline Automation": GitBranch,
+      "Infrastructure as Code (IaC)": Settings2,
+      "Cloud DevOps": Cloud,
+      "Containerization and Orchestration": Container,
+      "Automated Testing and Monitoring": Monitor,
+      "Security and Compliance Automation": ShieldCheck,
+      "Microservices Architecture": Network,
+      "Configuration Management": Server,
+      "DevOps Consulting": Workflow,
+    },
+    processIcons: {
+      "DevOps Assessment and Strategy": Settings2,
+      "CI/CD Pipeline Implementation": GitBranch,
+      "Infrastructure Automation": Server,
+      "Containerization and Microservices": Container,
+      "Continuous Monitoring and Optimization": RefreshCw,
+      "Ongoing Support and Improvement": Rocket,
+    },
+    whyIcons: {
+      "Tailored DevOps Solutions": Workflow,
+      "Automation and Efficiency": Settings2,
+      "Faster Time to Market": Rocket,
+      "Automation, Scalable and Secure Infrastructure Efficiency": ShieldCheck,
+      "End-to-End DevOps Expertise": Network,
+    },
+    techIcons: {
+      "CI/CD": GitBranch,
+      "Containerization": Container,
+      "Infrastructure as Code": Server,
+      "Cloud Platforms": Cloud,
+      "Monitoring and Logging": Monitor,
+      "Security Tools": Lock,
+    },
+    fallbackIcon: Workflow,
+  },
+  "ux-design": {
+    serviceIcons: {
+      "User Research & Analysis": FileSearch,
+      "Wireframing & Prototyping": Layers,
+      "User Testing & Validation": CheckCircle2,
+      "UI Design": PenTool,
+      "Interaction Design & Animation": Sparkles,
+    },
+    processIcons: {
+      "Discovery & Research": FileSearch,
+      "User Personas & Journeys": Users,
+      "Wireframing & Prototyping": Layers,
+      "Design & Iterate": Workflow,
+      "Development Support": Settings2,
+    },
+    whyIcons: {
+      "User-Centered Approach": Users,
+      "Data-Driven Decisions": BarChart3,
+      "Collaboration": Workflow,
+      "Attention to Detail": Activity,
+      "Proven Expertise": Rocket,
+    },
+    techIcons: {
+      "Research Tools": FileSearch,
+      "Design Tools": PenTool,
+      "Prototyping": Layers,
+      "Analytics": BarChart3,
+      "Interaction Design": Sparkles,
+    },
+    fallbackIcon: Lightbulb,
+  },
+  "big-data-and-ml": {
+    serviceIcons: {
+      "Big Data Analytics": BarChart3,
+      "Data Engineering": Database,
+      "Machine Learning Solutions": BrainCircuit,
+      "AI-Powered Predictive Analytics": LineChart,
+      "Natural Language Processing (NLP)": Languages,
+      "Data Visualization and Reporting": FileSearch,
+      "Big Data Infrastructure and Cloud Integration": Cloud,
+      "AI and ML Model Deployment": Rocket,
+      "Data Governance and Compliance": Lock,
+    },
+    processIcons: {
+      "Data Discovery and Strategy": FileSearch,
+      "Data Collection and Preparation": Database,
+      "Model Development and Training": BrainCircuit,
+      "Data Analysis and Visualization": BarChart3,
+      "Model Deployment and Integration": Server,
+      "Continuous Improvement and Optimization": RefreshCw,
+    },
+    whyIcons: {
+      "Tailored Solutions": Settings2,
+      "Cutting-Edge Technologies": Rocket,
+      "Data Security and Compliance": Lock,
+      "Scalable and Flexible Infrastructure": Network,
+      "Proven Expertise": GitBranch,
+    },
+    techIcons: {
+      "Big Data Tools": Database,
+      "Cloud Platforms": Cloud,
+      "Machine Learning Frameworks": BrainCircuit,
+      "Programming Languages": Languages,
+      "Databases": Server,
+    },
+    fallbackIcon: Database,
+  },
 };
 
 const fadeUp = {
@@ -45,66 +256,48 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-const iconByServiceTitle: Record<string, LucideIcon> = {
-  "Big Data Analytics": BarChart3,
-  "Data Engineering": Database,
-  "Machine Learning Solutions": BrainCircuit,
-  "AI-Powered Predictive Analytics": LineChart,
-  "Natural Language Processing (NLP)": Languages,
-  "Data Visualization and Reporting": FileSearch,
-  "Big Data Infrastructure and Cloud Integration": Cloud,
-  "AI and ML Model Deployment": Rocket,
-  "Data Governance and Compliance": Lock,
-};
-
-const iconByProcessTitle: Record<string, LucideIcon> = {
-  "Data Discovery and Strategy": FileSearch,
-  "Data Collection and Preparation": Database,
-  "Model Development and Training": BrainCircuit,
-  "Data Analysis and Visualization": BarChart3,
-  "Model Deployment and Integration": Server,
-  "Continuous Improvement and Optimization": RefreshCw,
-};
-
-const iconByWhyTitle: Record<string, LucideIcon> = {
-  "Tailored Solutions": Settings2,
-  "Cutting-Edge Technologies": Rocket,
-  "Data Security and Compliance": Lock,
-  "Scalable and Flexible Infrastructure": Network,
-  "Proven Expertise": GitBranch,
-};
-
-const iconByTechCategory: Record<string, LucideIcon> = {
-  "Big Data Tools": Database,
-  "Cloud Platforms": Cloud,
-  "Machine Learning Frameworks": BrainCircuit,
-  "Programming Languages": Languages,
-  "Databases": Server,
-};
-
-export default function BigDataAndMlMainSection({ service }: BigDataAndMlMainSectionProps) {
+export default function ServiceShowcaseSection({
+  service,
+  servicePath,
+  serviceBadge,
+  serviceHeading,
+  whyHeading,
+  overviewHeading,
+  heroClassName,
+}: ServiceShowcaseSectionProps) {
+  const iconConfig = ICON_CONFIG[heroClassName] ?? {
+    serviceIcons: {},
+    processIcons: {},
+    whyIcons: {},
+    techIcons: {},
+    fallbackIcon: Database,
+  };
+  const { serviceIcons, processIcons, whyIcons, techIcons, fallbackIcon } = iconConfig;
   const detailedServices = (service.detailedServices ?? []).map((item) => ({
     ...item,
-    icon: iconByServiceTitle[item.title] ?? Database,
-  })) as CardItem[];
+    icon: serviceIcons[item.title] ?? fallbackIcon,
+  })) as MappedCard[];
+
   const processSteps = (service.processSteps ?? []).map((item) => ({
     ...item,
-    icon: iconByProcessTitle[item.title] ?? Settings2,
-  })) as CardItem[];
+    icon: processIcons[item.title] ?? fallbackIcon,
+  })) as MappedCard[];
+
   const whyChooseUs = (service.whyChooseUs ?? []).map((item) => ({
     ...item,
-    icon: iconByWhyTitle[item.title] ?? GitBranch,
-  })) as CardItem[];
+    icon: whyIcons[item.title] ?? fallbackIcon,
+  })) as MappedCard[];
+
   const technologies = (service.technologies ?? []).map((item) => ({
     ...item,
-    icon: iconByTechCategory[item.category] ?? Server,
-  })) as TechCard[];
+    icon: techIcons[item.category] ?? fallbackIcon,
+  })) as MappedTech[];
 
   return (
     <>
       <section className="section-18">
         <section
-          className="section service-details-banner big-data-and-ml"
+          className={`section service-details-banner ${heroClassName}`}
           style={{
             backgroundImage: `linear-gradient(90deg, rgba(2, 11, 23, 0.92) 0%, rgba(3, 16, 30, 0.84) 45%, rgba(10, 82, 93, 0.42) 100%), url(${servicesBanner.src})`,
             backgroundSize: "cover",
@@ -121,9 +314,9 @@ export default function BigDataAndMlMainSection({ service }: BigDataAndMlMainSec
               variants={fadeUp}
               transition={{ duration: 0.55, ease: "easeOut" }}
             >
-              <Link href="/services/big-data-and-ml" className="service-sidebar-post-category w-inline-block">
+              <Link href={servicePath} className="service-sidebar-post-category w-inline-block">
                 <div className="text-block-24 rounded-full bg-white px-3 py-1 text-xs font-medium text-[#4c4c4e]">
-                  Big Data And ML
+                  {serviceBadge}
                 </div>
               </Link>
               <h1 className="text-white">{service.title}</h1>
@@ -139,10 +332,7 @@ export default function BigDataAndMlMainSection({ service }: BigDataAndMlMainSec
       <section className="section-10 bg-[#f5f7fa] py-18">
         <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
           <div className="w-layout-blockcontainer header-container _w-100 gap-32 w-container">
-            <h2 className="main-heading">
-              Big Data and Machine Learning Services:{" "}
-              <span className="text-span-23 text-[#4dac8a]">Unlocking Insights and Driving Innovation</span>
-            </h2>
+            <h2 className="main-heading">{overviewHeading}</h2>
             <p className="description-text-dark max-w-[1300px] text-[19px] leading-[1.7] text-[#5e5e60]">
               {service.overview}
             </p>
@@ -153,7 +343,7 @@ export default function BigDataAndMlMainSection({ service }: BigDataAndMlMainSec
       <section className="section-2 linear-bg py-16 md:py-20 xl:py-24">
         <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
           <div className="w-layout-blockcontainer header-container w-container">
-            <h2 className="main-heading text-white">Our Big Data and ML Services</h2>
+            <h2 className="main-heading text-white">{serviceHeading}</h2>
           </div>
           <motion.div
             className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
@@ -222,7 +412,7 @@ export default function BigDataAndMlMainSection({ service }: BigDataAndMlMainSec
       <section className="section-12 bg-[#f8f9fb] py-24">
         <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
           <div className="w-layout-blockcontainer header-container w-container">
-            <h2 className="main-heading">Why Choose HeapTrace Technology for Big Data and Machine Learning?</h2>
+            <h2 className="main-heading">{whyHeading}</h2>
           </div>
           <motion.div
             className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
@@ -316,4 +506,3 @@ export default function BigDataAndMlMainSection({ service }: BigDataAndMlMainSec
     </>
   );
 }
-

@@ -23,6 +23,8 @@ import EdtechServicesSection from "./sections/EdtechServicesSection";
 import EdtechHowWeWorkSection from "./sections/EdtechHowWeWorkSection";
 import EdtechWhyChooseSection from "./sections/EdtechWhyChooseSection";
 import EdtechCtaSection from "./sections/EdtechCtaSection";
+import { industryDetails } from "./industryDetails";
+import IndustryShowcaseSection from "./sections/IndustryShowcaseSection";
 
 type Params = {
   slug: string;
@@ -105,6 +107,11 @@ export default async function IndustryDetailPage({
         <BlockchainCtaSection />
       </div>
     );
+  }
+
+  const industryDetail = industryDetails[slug];
+  if (industryDetail) {
+    return <IndustryShowcaseSection slug={slug} detail={industryDetail} />;
   }
 
   return <IndustryDetailMainSection title={title} />;

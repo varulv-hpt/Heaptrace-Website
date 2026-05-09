@@ -29,7 +29,7 @@ export default function HcWhyHeaptraceSection() {
             </p>
             <p className="hc-desc" style={{ marginTop: "12px" }}>
               At HeapTrace Technology, we combine deep healthcare industry expertise with
-              cutting-edge technology to deliver solutions that truly make a difference. Here's
+              cutting-edge technology to deliver solutions that truly make a difference. Here&apos;s
               why clients trust us for healthcare IT:
             </p>
           </div>

@@ -1,10 +1,10 @@
 import Image from "next/image";
-import bannerImage from "@/app/assets/banner/Edtech.webp";
+import bannerBg from "@/app/assets/banner/Erp-industry.webp";
 
-export default function EdtechBannerSection() {
+export default function ErpBannerSection() {
   return (
     <section
-      aria-label="EdTech banner"
+      aria-label="ERP Solutions banner"
       style={{
         position: "relative",
         overflow: "hidden",
@@ -15,7 +15,7 @@ export default function EdtechBannerSection() {
       }}
     >
       <Image
-        src={bannerImage}
+        src={bannerBg}
         alt=""
         fill
         priority
@@ -33,7 +33,7 @@ export default function EdtechBannerSection() {
           padding: "0 60px",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px", maxWidth: "700px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "12px", maxWidth: "700px" }}>
           <h1
             style={{
               margin: 0,
@@ -44,7 +44,7 @@ export default function EdtechBannerSection() {
               letterSpacing: "-0.8px",
             }}
           >
-            EdTech
+            ERP Solutions
           </h1>
           <p
             style={{
@@ -52,14 +52,10 @@ export default function EdtechBannerSection() {
               color: "rgba(255,255,255,0.90)",
               fontSize: "16px",
               fontWeight: 400,
-              lineHeight: "28.8px",
+              lineHeight: "28px",
             }}
           >
-            We specialize in creating innovative EdTech solutions that transform the learning
-            experience. From custom e-learning platforms and AI-powered personalized learning to
-            virtual classrooms and mobile-friendly solutions, we help educational institutions and
-            training organizations deliver engaging, effective, and scalable education. Let us help
-            you revolutionize the future of education with cutting-edge technology.
+            ERP Solutions: Streamlining Operations Across Industries
           </p>
         </div>
       </div>

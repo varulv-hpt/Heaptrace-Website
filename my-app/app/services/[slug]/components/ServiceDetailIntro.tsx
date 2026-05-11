@@ -1,16 +1,38 @@
 import type { ServiceDetail } from "../serviceDetails";
-import servicesBanner from "@/app/assets/banner/services-banner.png";
-import Link from "next/link";
+import type { StaticImageData } from "next/image";
+import bigDataMlBanner from "@/app/assets/banner/services/Big data ML.webp";
+import cloudServicesBanner from "@/app/assets/banner/services/Cloud services.webp";
+import dataEngineeringBanner from "@/app/assets/banner/services/Data Engineering.webp";
+import devopsServicesBanner from "@/app/assets/banner/services/Devops Services.webp";
+import generativeAiBanner from "@/app/assets/banner/services/Generative AI.webp";
+import mobileDevelopmentBanner from "@/app/assets/banner/services/Mobile devlopment.webp";
+import testingServicesBanner from "@/app/assets/banner/services/Testing services.webp";
+import uiUxDesignBanner from "@/app/assets/banner/services/UI UX design.webp";
+import webDevelopmentBanner from "@/app/assets/banner/services/Web development.webp";
 import PageBanner from "@/components/shared/PageBanner";
+import ConnectSection from "@/components/shared/ConnectSection";
+import PreConnectCtaSection from "@/components/shared/PreConnectCtaSection";
 
 type ServiceDetailIntroProps = {
   service: ServiceDetail;
 };
 
 export default function ServiceDetailIntro({ service }: ServiceDetailIntroProps) {
+  const serviceBannerByTitle: Record<string, StaticImageData> = {
+    "Big Data and ML": bigDataMlBanner,
+    "Cloud Development": cloudServicesBanner,
+    "Data Engineering": dataEngineeringBanner,
+    "DevOps Services": devopsServicesBanner,
+    "Generative AI": generativeAiBanner,
+    "Mobile Development": mobileDevelopmentBanner,
+    "Testing Services": testingServicesBanner,
+    "UX Design": uiUxDesignBanner,
+    "Web Development": webDevelopmentBanner,
+  };
+  const selectedBanner = serviceBannerByTitle[service.title] ?? cloudServicesBanner;
   return (
     <section className="bg-[#f5f7fa] text-[#4c4c4e]">
-      <PageBanner title={service.title} description={service.subtitle} backgroundImage={servicesBanner} />
+      <PageBanner title={service.title} description={service.subtitle} backgroundImage={selectedBanner} />
 
       <section className="py-16 md:py-20">
         <div className="mx-auto grid w-full max-w-[1350px] gap-8 px-6 lg:grid-cols-[1.45fr_1fr]">
@@ -142,72 +164,15 @@ export default function ServiceDetailIntro({ service }: ServiceDetailIntroProps)
       ) : null}
 
       {service.closingCta ? (
-        <section className="pb-14">
-          <div className="mx-auto w-full max-w-[1350px] px-6">
-            <article className="rounded-xl bg-[#081420] p-8 text-white md:p-10">
-              <h2 className="text-[1.8rem] font-semibold leading-tight">{service.closingCta.title}</h2>
-              <p className="mt-4 max-w-[980px] leading-8 text-[#d6e3ec]">
-                {service.closingCta.description}
-              </p>
-              {service.closingCta.secondaryDescription ? (
-                <p className="mt-3 max-w-[980px] leading-8 text-[#d6e3ec]">
-                  {service.closingCta.secondaryDescription}
-                </p>
-              ) : null}
-              <Link
-                href="/contact-us"
-                className="mt-6 inline-flex rounded-full bg-[#18d2d4] px-6 py-3 text-sm font-semibold text-[#00121c] transition hover:bg-[#58e4e6]"
-              >
-                Get In Touch
-              </Link>
-            </article>
-          </div>
-        </section>
+        <PreConnectCtaSection
+          title={service.closingCta.title}
+          description={service.closingCta.description}
+          secondaryDescription={service.closingCta.secondaryDescription}
+          buttonLabel="Get In Touch"
+        />
       ) : null}
 
-      {service.contactSection ? (
-        <section className="pb-24">
-          <div className="mx-auto w-full max-w-[1350px] px-6">
-            <article className="rounded-xl bg-white p-7 shadow-[0px_12px_32px_rgba(25,14,66,0.07)] md:p-8">
-              <h2 className="text-[1.65rem] font-semibold leading-tight text-[#1f1f21]">
-                {service.contactSection.heading}
-              </h2>
-              <div className="mt-6 grid gap-6 md:grid-cols-2">
-                <section className="rounded-lg border border-[#ebeff5] p-5">
-                  <h3 className="text-lg font-semibold text-[#1f1f21]">
-                    {service.contactSection.salesLabel}
-                  </h3>
-                  <p className="mt-3 leading-7 text-[#5e5e60]">
-                    Sales:{" "}
-                    <a className="text-[#2185d5] hover:underline" href={`tel:${service.contactSection.salesPhone}`}>
-                      {service.contactSection.salesPhone}
-                    </a>
-                  </p>
-                  <p className="leading-7 text-[#5e5e60]">
-                    HR:{" "}
-                    <a className="text-[#2185d5] hover:underline" href={`tel:${service.contactSection.hrPhone}`}>
-                      {service.contactSection.hrPhone}
-                    </a>
-                  </p>
-                </section>
-                <section className="rounded-lg border border-[#ebeff5] p-5">
-                  <h3 className="text-lg font-semibold text-[#1f1f21]">
-                    {service.contactSection.generalLabel}
-                  </h3>
-                  <p className="mt-3 leading-7 text-[#5e5e60]">
-                    <a
-                      className="text-[#2185d5] hover:underline"
-                      href={`mailto:${service.contactSection.generalEmail}`}
-                    >
-                      {service.contactSection.generalEmail}
-                    </a>
-                  </p>
-                </section>
-              </div>
-            </article>
-          </div>
-        </section>
-      ) : null}
+      <ConnectSection />
     </section>
   );
 }

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { ServiceDetail } from "../../[slug]/serviceDetails";
-import servicesBanner from "@/app/assets/banner/services-banner.png";
-import ConnectSection from "@/app/services/components/ConnectSection";
+import cloudServicesBanner from "@/app/assets/banner/services/Cloud services.webp";
+import ConnectSection from "@/components/shared/ConnectSection";
+import PreConnectCtaSection from "@/components/shared/PreConnectCtaSection";
 
 type CloudDevelopmentMainSectionProps = {
   service: ServiceDetail;
@@ -46,7 +47,7 @@ export default function CloudDevelopmentMainSection({ service }: CloudDevelopmen
         <section
           className="section service-details-banner cloud-development"
           style={{
-            backgroundImage: `linear-gradient(90deg, rgba(2, 11, 23, 0.92) 0%, rgba(3, 16, 30, 0.84) 45%, rgba(10, 82, 93, 0.42) 100%), url(${servicesBanner.src})`,
+            backgroundImage: `linear-gradient(90deg, rgba(2, 11, 23, 0.92) 0%, rgba(3, 16, 30, 0.84) 45%, rgba(10, 82, 93, 0.42) 100%), url("${encodeURI(cloudServicesBanner.src)}")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -74,7 +75,7 @@ export default function CloudDevelopmentMainSection({ service }: CloudDevelopmen
 
       <section className="section-10 bg-[#f5f7fa] py-18">
         <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
-          <div className="w-layout-blockcontainer header-container _w-100 gap-32 w-container">
+          <div className="w-layout-blockcontainer header-container _w-100 gap-6 w-container">
             <h2 className="main-heading">
               Cloud Development Services: Scalable, Secure, and Flexible{" "}
               <span className="text-span-23 text-[#4dac8a]">Cloud Solutions</span>
@@ -237,30 +238,14 @@ export default function CloudDevelopmentMainSection({ service }: CloudDevelopmen
         </div>
       </section>
 
-      <section className="section-11 bg-[#f6f7fa] py-20">
-        <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
-          {closingCta ? (
-            <>
-              <h4 className="heading-21 text-[38px] font-semibold leading-[1.3] text-[#35383c]">
-                Leverage the Power of the Cloud with{" "}
-                <span className="text-span-26 text-[#4dac8a]">HeapTrace Technology</span>
-              </h4>
-              <div className="w-layout-blockcontainer container-69 w-container mt-6">
-                <p className="paragraph-12 max-w-[1180px] text-[19px] leading-[1.8] text-[#5e5e60]">
-                  {closingCta.description}
-                  {closingCta.secondaryDescription ? (
-                    <>
-                      <br />
-                      <br />
-                      {closingCta.secondaryDescription}
-                    </>
-                  ) : null}
-                </p>
-              </div>
-            </>
-          ) : null}
-        </div>
-      </section>
+      {closingCta ? (
+        <PreConnectCtaSection
+          title="Leverage the Power of the Cloud with HeapTrace Technology"
+          description={closingCta.description}
+          secondaryDescription={closingCta.secondaryDescription}
+          sectionClassName="section-11 bg-[#f6f7fa] py-20"
+        />
+      ) : null}
 
       <ConnectSection />
     </>

@@ -17,10 +17,10 @@ export default function PageBanner({
   backgroundImage,
 }: PageBannerProps) {
   const resolvedImage =
-    typeof backgroundImage === "string" ? backgroundImage : backgroundImage?.src;
+    typeof backgroundImage === "string" ? encodeURI(backgroundImage) : backgroundImage?.src;
 
   const backgroundStyle = resolvedImage
-    ? { backgroundImage: `${BASE_BANNER_GRADIENT}, url(${resolvedImage})` }
+    ? { backgroundImage: `${BASE_BANNER_GRADIENT}, url("${resolvedImage}")` }
     : { backgroundImage: BASE_BANNER_GRADIENT };
 
   return (

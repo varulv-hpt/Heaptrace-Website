@@ -9,7 +9,7 @@
 .careers-page {
   background: #ffffff;
   color: #1f1f21;
-  font-family: var(--font-geist-sans), "Onest", "Inter", system-ui, sans-serif;
+  font-family: var(--font-sans-stack);
 }
 
 .careers-page .careers-container {

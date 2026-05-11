@@ -1,4 +1,4 @@
-import bannerImage from "@/app/assets/banner/Edtech.webp";
+import bannerImage from "@/app/assets/banner/industries/Edtech.webp";
 import IndustryPageBanner from "../components/IndustryPageBanner";
 
 export default function EdtechBannerSection() {

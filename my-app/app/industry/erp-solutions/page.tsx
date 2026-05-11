@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import ConnectSection from "@/components/shared/ConnectSection";
 import IndustryShowcaseSection from "../[slug]/sections/IndustryShowcaseSection";
 import { industryDetails } from "../[slug]/industryDetails";
 
@@ -17,5 +18,10 @@ export default function Page() {
     notFound();
   }
 
-  return <IndustryShowcaseSection slug={slug} detail={detail} />;
+  return (
+    <>
+      <IndustryShowcaseSection detail={detail} />
+      <ConnectSection />
+    </>
+  );
 }

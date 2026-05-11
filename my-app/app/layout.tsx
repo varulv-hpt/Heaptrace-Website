@@ -5,13 +5,17 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 const inter = Inter({
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
   variable: "--font-inter",
-  subsets: ["latin"],
+  adjustFontFallback: true,
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-geist-mono",
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -52,9 +56,11 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body
+        className={`${inter.className} min-h-full flex flex-col font-sans`}
+      >
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 font-sans">{children}</main>
         <Footer />
       </body>
     </html>

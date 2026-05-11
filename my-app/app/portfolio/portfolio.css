@@ -1,5 +1,6 @@
 .portfolio-page {
   background: #f6f8fb;
+  font-family: var(--font-sans-stack);
 }
 
 .portfolio-hero {

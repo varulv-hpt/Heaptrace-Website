@@ -1,5 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import facebookIcon from "@/app/assets/ht/facebook.svg";
+import htLogo from "@/app/assets/ht/ht-logo.svg";
+import instagramIcon from "@/app/assets/ht/instagram.svg";
+import linkedinIcon from "@/app/assets/ht/linkedin.svg";
+import youtubeIcon from "@/app/assets/ht/Youtube.svg";
 import "./Components.css";
 
 type FooterLink = {
@@ -8,28 +13,25 @@ type FooterLink = {
   external?: boolean;
 };
 
-const LOGO_URL =
-  "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/670bbc6b01de0ce138925648_ht-logo.svg";
-
 const SOCIAL_LINKS = [
   {
     href: "https://in.linkedin.com/company/heaptrace-technology-pvt.-ltd.",
-    icon: "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/6746cea551bdedc4299a9cdd_linkedin.svg",
+    icon: linkedinIcon,
     alt: "LinkedIn",
   },
   {
     href: "https://www.facebook.com/heaptrace",
-    icon: "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/6746c8413cfdf245ae577c0b_facebook.svg",
+    icon: facebookIcon,
     alt: "Facebook",
   },
   {
     href: "https://www.instagram.com/heaptracetechnology/",
-    icon: "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/6746c8426e6b5ae9f0e1c226_instagram.svg",
+    icon: instagramIcon,
     alt: "Instagram",
   },
   {
     href: "https://www.youtube.com/@heaptracetechnologypvt.ltd5344",
-    icon: "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/6746c841fafaa06022b83315_Youtube.svg",
+    icon: youtubeIcon,
     alt: "YouTube",
   },
 ];
@@ -77,7 +79,7 @@ export default function Footer() {
           <div className="site-footer-grid">
             <div className="site-footer-brand">
               <Link href="/" className="site-logo-link site-logo-link-footer">
-                <Image src={LOGO_URL} alt="Heaptrace" width={227} height={30} className="site-logo" />
+                <Image src={htLogo} alt="Heaptrace" width={227} height={30} className="site-logo" />
               </Link>
 
               <p className="site-footer-text">

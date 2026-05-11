@@ -1,7 +1,8 @@
 import type { ServiceDetail } from "../../[slug]/serviceDetails";
 import Link from "next/link";
-import servicesBanner from "@/app/assets/banner/services-banner.png";
-import ConnectSection from "@/app/services/components/ConnectSection";
+import webDevelopmentBanner from "@/app/assets/banner/services/Web development.webp";
+import ConnectSection from "@/components/shared/ConnectSection";
+import PreConnectCtaSection from "@/components/shared/PreConnectCtaSection";
 
 type WebDevelopmentMainSectionProps = {
   service: ServiceDetail;
@@ -18,7 +19,7 @@ export default function WebDevelopmentMainSection({ service }: WebDevelopmentMai
         <section
           className="section service-details-banner web-development"
           style={{
-            backgroundImage: `linear-gradient(90deg, rgba(2, 11, 23, 0.92) 0%, rgba(3, 16, 30, 0.84) 45%, rgba(10, 82, 93, 0.42) 100%), url(${servicesBanner.src})`,
+            backgroundImage: `linear-gradient(90deg, rgba(2, 11, 23, 0.92) 0%, rgba(3, 16, 30, 0.84) 45%, rgba(10, 82, 93, 0.42) 100%), url("${encodeURI(webDevelopmentBanner.src)}")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -44,7 +45,7 @@ export default function WebDevelopmentMainSection({ service }: WebDevelopmentMai
 
       <section className="section-10 bg-[#f5f7fa] py-18">
         <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
-          <div className="w-layout-blockcontainer header-container _w-100 gap-32 w-container">
+          <div className="w-layout-blockcontainer header-container _w-100 gap-6 w-container">
             <h2 className="main-heading">
               Web Development Services: Crafting Dynamic, Scalable, and{" "}
               <span className="text-span-23 text-[#4dac8a]">Responsive Web Solutions</span>
@@ -121,6 +122,14 @@ export default function WebDevelopmentMainSection({ service }: WebDevelopmentMai
           </div>
         </div>
       </section>
+
+      {service.closingCta ? (
+        <PreConnectCtaSection
+          title={service.closingCta.title}
+          description={service.closingCta.description}
+          secondaryDescription={service.closingCta.secondaryDescription}
+        />
+      ) : null}
 
       <ConnectSection />
     </>

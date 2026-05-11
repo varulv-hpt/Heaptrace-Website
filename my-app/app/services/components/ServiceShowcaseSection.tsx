@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import type { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 import {
   Activity,
-  ArrowRight,
   BarChart3,
   BrainCircuit,
   Bug,
@@ -35,8 +35,14 @@ import {
   Workflow,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import servicesBanner from "@/app/assets/banner/services-banner.png";
-import ConnectSection from "@/app/services/components/ConnectSection";
+import bigDataMlBanner from "@/app/assets/banner/services/Big data ML.webp";
+import cloudServicesBanner from "@/app/assets/banner/services/Cloud services.webp";
+import dataEngineeringBanner from "@/app/assets/banner/services/Data Engineering.webp";
+import devopsServicesBanner from "@/app/assets/banner/services/Devops Services.webp";
+import testingServicesBanner from "@/app/assets/banner/services/Testing services.webp";
+import uiUxDesignBanner from "@/app/assets/banner/services/UI UX design.webp";
+import ConnectSection from "@/components/shared/ConnectSection";
+import PreConnectCtaSection from "@/components/shared/PreConnectCtaSection";
 import type { ServiceDetail } from "../[slug]/serviceDetails";
 
 type MappedCard = {
@@ -265,6 +271,15 @@ export default function ServiceShowcaseSection({
   overviewHeading,
   heroClassName,
 }: ServiceShowcaseSectionProps) {
+  const serviceBannerBySlug: Record<string, StaticImageData> = {
+    "big-data-and-ml": bigDataMlBanner,
+    "cloud-development": cloudServicesBanner,
+    "data-engineering": dataEngineeringBanner,
+    "devops-services": devopsServicesBanner,
+    "testing-services": testingServicesBanner,
+    "ux-design": uiUxDesignBanner,
+  };
+  const selectedBanner = serviceBannerBySlug[heroClassName] ?? cloudServicesBanner;
   const iconConfig = ICON_CONFIG[heroClassName] ?? {
     serviceIcons: {},
     processIcons: {},
@@ -299,7 +314,7 @@ export default function ServiceShowcaseSection({
         <section
           className={`section service-details-banner ${heroClassName}`}
           style={{
-            backgroundImage: `linear-gradient(90deg, rgba(2, 11, 23, 0.92) 0%, rgba(3, 16, 30, 0.84) 45%, rgba(10, 82, 93, 0.42) 100%), url(${servicesBanner.src})`,
+            backgroundImage: `linear-gradient(90deg, rgba(2, 11, 23, 0.92) 0%, rgba(3, 16, 30, 0.84) 45%, rgba(10, 82, 93, 0.42) 100%), url("${encodeURI(selectedBanner.src)}")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -331,7 +346,7 @@ export default function ServiceShowcaseSection({
 
       <section className="section-10 bg-[#f5f7fa] py-18">
         <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
-          <div className="w-layout-blockcontainer header-container _w-100 gap-32 w-container">
+          <div className="w-layout-blockcontainer header-container _w-100 gap-6 w-container">
             <h2 className="main-heading">{overviewHeading}</h2>
             <p className="description-text-dark max-w-[1300px] text-[19px] leading-[1.7] text-[#5e5e60]">
               {service.overview}
@@ -477,30 +492,13 @@ export default function ServiceShowcaseSection({
         </div>
       </section>
 
-      <section className="section-10 bg-[#f6f7fa] py-20">
-        <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
-          <div className="w-layout-blockcontainer header-container _w-100 gap-32 w-container">
-            <h2 className="main-heading">{service.closingCta?.title}</h2>
-            <p className="description-text-dark max-w-[1200px] text-[19px] leading-[1.75] text-[#5e5e60]">
-              {service.closingCta?.description}
-              {service.closingCta?.secondaryDescription ? (
-                <>
-                  <br />
-                  <br />
-                  {service.closingCta.secondaryDescription}
-                </>
-              ) : null}
-            </p>
-            <Link
-              href="/contact-us"
-              className="inline-flex w-fit items-center gap-2 rounded-full bg-[#173440] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#4dac8a]"
-            >
-              GET IN TOUCH
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      {service.closingCta ? (
+        <PreConnectCtaSection
+          title={service.closingCta.title}
+          description={service.closingCta.description}
+          secondaryDescription={service.closingCta.secondaryDescription}
+        />
+      ) : null}
 
       <ConnectSection />
     </>

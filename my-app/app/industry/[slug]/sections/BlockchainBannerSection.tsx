@@ -1,4 +1,4 @@
-import bannerImage from "@/app/assets/banner/Blockchain.jpg";
+import bannerImage from "@/app/assets/banner/industries/Blockchain.jpg";
 import IndustryPageBanner from "../components/IndustryPageBanner";
 
 export default function BlockchainBannerSection() {

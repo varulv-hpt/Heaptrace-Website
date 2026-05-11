@@ -6,7 +6,7 @@
 .blockchain-page {
   background: #ffffff;
   color: #4c4c4e;
-  font-family: var(--font-geist-sans), "Inter", system-ui, sans-serif;
+  font-family: var(--font-sans-stack);
 }
 
 /* ── Container ─────────────────────────────────────────────── */
@@ -43,15 +43,9 @@
 .blockchain-page .bc-section-dark {
   padding: 80px 0;
   background-color: #000000;
-  background-image: url("https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674826e5d6f401d348fef653_linear-bg.webp");
+  background-image: url("../../assets/banner/linear-bg.webp");
   background-size: cover;
   background-position: center;
-}
-
-/* ── CTA section (light bg) ────────────────────────────────── */
-.blockchain-page .bc-section-cta {
-  padding: 72px 0;
-  background: #f5f7fa;
 }
 
 /* ── Section header ────────────────────────────────────────── */
@@ -432,52 +426,6 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* ── CTA section ───────────────────────────────────────────── */
-.blockchain-page .bc-cta-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-  max-width: 860px;
-}
-
-.blockchain-page .bc-cta-inner h2 {
-  margin: 0;
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1.42;
-  letter-spacing: -0.64px;
-  color: #4c4c4e;
-}
-
-.blockchain-page .bc-cta-inner p {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  color: #5e5e60;
-}
-
-.blockchain-page .bc-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 36px;
-  background: #4DAC8A;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.22s ease;
-  margin-top: 8px;
-}
-
-.blockchain-page .bc-cta-btn:hover {
-  background: #3a9070;
-}
-
 /* ── Responsive ────────────────────────────────────────────── */
 @media (max-width: 1200px) {
   .blockchain-page .bc-container {
@@ -514,8 +462,7 @@
   .blockchain-page .bc-section-light,
   .blockchain-page .bc-section-capabilities,
   .blockchain-page .bc-section-why,
-  .blockchain-page .bc-section-dark,
-  .blockchain-page .bc-section-cta {
+  .blockchain-page .bc-section-dark {
     padding: 56px 0;
   }
 

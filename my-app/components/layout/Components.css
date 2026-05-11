@@ -1,4 +1,5 @@
 .site-header {
+  font-family: var(--font-sans-stack);
   position: fixed;
   top: 0;
   right: 0;
@@ -133,7 +134,7 @@
   color: #1c1c1c;
   text-decoration: none;
   font-size: 14px;
-  font-family: var(--font-geist-sans), "Inter", system-ui, sans-serif;
+  font-family: var(--font-sans-stack);
 }
 
 .site-dropdown-link:hover {
@@ -546,6 +547,7 @@
 }
 
 .site-footer {
+  font-family: var(--font-sans-stack);
   background-color: rgba(30, 54, 52, 1);
   color: #fff;
 }

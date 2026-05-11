@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import type { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 import {
-  ArrowRight,
   Blocks,
   BrainCircuit,
   Building2,
@@ -29,11 +29,17 @@ import {
   Wifi,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import servicesBanner from "@/app/assets/banner/services-banner.png";
+import adTechIndustryBanner from "@/app/assets/banner/industries/AdTech-Innovations-industry.webp";
+import ecommerceIndustryBanner from "@/app/assets/banner/industries/Ecommerce-industry.webp";
+import edpIndustryBanner from "@/app/assets/banner/industries/Edp-industry.webp";
+import erpIndustryBanner from "@/app/assets/banner/industries/Erp-industry.webp";
+import iotIndustryBanner from "@/app/assets/banner/industries/IoT-industry.webp";
+import realEstateIndustryBanner from "@/app/assets/banner/industries/Real-estate-industry.webp";
+import PageBanner from "@/components/shared/PageBanner";
+import PreConnectCtaSection from "@/components/shared/PreConnectCtaSection";
 import type { IndustryItem, IndustryPageDetail } from "../industryDetails";
 
 type IndustryShowcaseSectionProps = {
-  slug: string;
   detail: IndustryPageDetail;
 };
 
@@ -107,46 +113,24 @@ function CardGrid({
   );
 }
 
-export default function IndustryShowcaseSection({ slug, detail }: IndustryShowcaseSectionProps) {
+export default function IndustryShowcaseSection({ detail }: IndustryShowcaseSectionProps) {
+  const industryBannerByTitle: Record<string, StaticImageData> = {
+    "AdTech Innovations": adTechIndustryBanner,
+    "E-commerce": ecommerceIndustryBanner,
+    "EDP Solutions": edpIndustryBanner,
+    "ERP Solutions": erpIndustryBanner,
+    IoT: iotIndustryBanner,
+    "Real Estate Technology": realEstateIndustryBanner,
+  };
+  const bannerImage = industryBannerByTitle[detail.title] ?? erpIndustryBanner;
+
   return (
     <>
-      <section className="section-18">
-        <section
-          className={`section service-details-banner ${slug}`}
-          style={{
-            backgroundImage: `linear-gradient(90deg, rgba(2, 11, 23, 0.92) 0%, rgba(3, 16, 30, 0.84) 45%, rgba(10, 82, 93, 0.42) 100%), url(${servicesBanner.src})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            padding: "130px 0 92px",
-          }}
-        >
-          <div className="w-layout-blockcontainer service-baner mx-auto w-full max-w-[1350px] px-6">
-            <motion.div
-              className="title-banner-wraper-flex"
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              transition={{ duration: 0.55, ease: "easeOut" }}
-            >
-              <Link href={`/industry/${slug}`} className="service-sidebar-post-category w-inline-block">
-                <div className="text-block-24 rounded-full bg-white px-3 py-1 text-xs font-medium text-[#4c4c4e]">
-                  {detail.title}
-                </div>
-              </Link>
-              <h1 className="text-white">{detail.title}</h1>
-              <p className="title-description-white-about">{detail.subtitle}</p>
-              <Link href="/contact-us" className="secondary-button w-button">
-                GET IN TOUCH
-              </Link>
-            </motion.div>
-          </div>
-        </section>
-      </section>
+      <PageBanner title={detail.title} description={detail.subtitle} backgroundImage={bannerImage} />
 
       <section className="section-10 bg-[#f5f7fa] py-18">
         <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
-          <div className="w-layout-blockcontainer header-container _w-100 gap-32 w-container">
+          <div className="w-layout-blockcontainer header-container _w-100 gap-6 w-container">
             <h2 className="main-heading">{detail.overviewHeading}</h2>
             <p className="description-text-dark max-w-[1300px] text-[19px] leading-[1.7] text-[#5e5e60]">
               {detail.overview}
@@ -208,23 +192,10 @@ export default function IndustryShowcaseSection({ slug, detail }: IndustryShowca
         </section>
       ) : null}
 
-      <section className="section-10 bg-[#f6f7fa] py-20">
-        <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
-          <div className="w-layout-blockcontainer header-container _w-100 gap-32 w-container">
-            <h2 className="main-heading">{detail.closingHeading}</h2>
-            <p className="description-text-dark max-w-[1200px] text-[19px] leading-[1.75] text-[#5e5e60]">
-              {detail.closingDescription}
-            </p>
-            <Link
-              href="/contact-us"
-              className="inline-flex w-fit items-center gap-2 rounded-full bg-[#173440] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#4dac8a]"
-            >
-              GET IN TOUCH
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <PreConnectCtaSection
+        title={detail.closingHeading}
+        description={detail.closingDescription}
+      />
     </>
   );
 }

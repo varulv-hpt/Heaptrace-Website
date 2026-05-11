@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  ArrowRight,
   BarChart3,
   BrainCircuit,
   Cloud,
@@ -20,8 +19,9 @@ import {
   Settings2,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import servicesBanner from "@/app/assets/banner/services-banner.png";
-import ConnectSection from "@/app/services/components/ConnectSection";
+import bigDataMlBanner from "@/app/assets/banner/services/Big data ML.webp";
+import ConnectSection from "@/components/shared/ConnectSection";
+import PreConnectCtaSection from "@/components/shared/PreConnectCtaSection";
 import type { ServiceDetail } from "../../[slug]/serviceDetails";
 
 type BigDataAndMlMainSectionProps = {
@@ -106,7 +106,7 @@ export default function BigDataAndMlMainSection({ service }: BigDataAndMlMainSec
         <section
           className="section service-details-banner big-data-and-ml"
           style={{
-            backgroundImage: `linear-gradient(90deg, rgba(2, 11, 23, 0.92) 0%, rgba(3, 16, 30, 0.84) 45%, rgba(10, 82, 93, 0.42) 100%), url(${servicesBanner.src})`,
+            backgroundImage: `linear-gradient(90deg, rgba(2, 11, 23, 0.92) 0%, rgba(3, 16, 30, 0.84) 45%, rgba(10, 82, 93, 0.42) 100%), url("${encodeURI(bigDataMlBanner.src)}")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -138,7 +138,7 @@ export default function BigDataAndMlMainSection({ service }: BigDataAndMlMainSec
 
       <section className="section-10 bg-[#f5f7fa] py-18">
         <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
-          <div className="w-layout-blockcontainer header-container _w-100 gap-32 w-container">
+          <div className="w-layout-blockcontainer header-container _w-100 gap-6 w-container">
             <h2 className="main-heading">
               Big Data and Machine Learning Services:{" "}
               <span className="text-span-23 text-[#4dac8a]">Unlocking Insights and Driving Innovation</span>
@@ -287,30 +287,13 @@ export default function BigDataAndMlMainSection({ service }: BigDataAndMlMainSec
         </div>
       </section>
 
-      <section className="section-10 bg-[#f6f7fa] py-20">
-        <div className="w-layout-blockcontainer mx-auto w-full max-w-[1350px] px-6">
-          <div className="w-layout-blockcontainer header-container _w-100 gap-32 w-container">
-            <h2 className="main-heading">{service.closingCta?.title}</h2>
-            <p className="description-text-dark max-w-[1200px] text-[19px] leading-[1.75] text-[#5e5e60]">
-              {service.closingCta?.description}
-              {service.closingCta?.secondaryDescription ? (
-                <>
-                  <br />
-                  <br />
-                  {service.closingCta.secondaryDescription}
-                </>
-              ) : null}
-            </p>
-            <Link
-              href="/contact-us"
-              className="inline-flex w-fit items-center gap-2 rounded-full bg-[#173440] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#4dac8a]"
-            >
-              GET IN TOUCH
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      {service.closingCta ? (
+        <PreConnectCtaSection
+          title={service.closingCta.title}
+          description={service.closingCta.description}
+          secondaryDescription={service.closingCta.secondaryDescription}
+        />
+      ) : null}
 
       <ConnectSection />
     </>

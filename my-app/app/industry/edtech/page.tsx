@@ -4,7 +4,7 @@ import EdtechIntroSection from "../[slug]/sections/EdtechIntroSection";
 import EdtechServicesSection from "../[slug]/sections/EdtechServicesSection";
 import EdtechHowWeWorkSection from "../[slug]/sections/EdtechHowWeWorkSection";
 import EdtechWhyChooseSection from "../[slug]/sections/EdtechWhyChooseSection";
-import EdtechCtaSection from "../[slug]/sections/EdtechCtaSection";
+import ConnectSection from "@/components/shared/ConnectSection";
 import "../[slug]/edtech.css";
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function Page() {
       <EdtechServicesSection />
       <EdtechHowWeWorkSection />
       <EdtechWhyChooseSection />
-      <EdtechCtaSection />
+      <ConnectSection />
     </div>
   );
 }

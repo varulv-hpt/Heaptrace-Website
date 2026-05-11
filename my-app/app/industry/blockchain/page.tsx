@@ -5,7 +5,7 @@ import BlockchainCapabilitiesSection from "../[slug]/sections/BlockchainCapabili
 import BlockchainWhyHeaptraceSection from "../[slug]/sections/BlockchainWhyHeaptraceSection";
 import BlockchainIndustriesSection from "../[slug]/sections/BlockchainIndustriesSection";
 import BlockchainTechStackSection from "../[slug]/sections/BlockchainTechStackSection";
-import BlockchainCtaSection from "../[slug]/sections/BlockchainCtaSection";
+import ConnectSection from "@/components/shared/ConnectSection";
 import "../[slug]/blockchain.css";
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function Page() {
       <BlockchainWhyHeaptraceSection />
       <BlockchainIndustriesSection />
       <BlockchainTechStackSection />
-      <BlockchainCtaSection />
+      <ConnectSection />
     </div>
   );
 }

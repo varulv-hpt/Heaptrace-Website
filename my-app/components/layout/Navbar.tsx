@@ -4,13 +4,9 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ChevronDown } from "lucide-react";
+import LOGO_URL from "../../app/assets/ht/ht-logo.svg";
 import "./Components.css";
-
-const CHEVRON_URL =
-  "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/673f35a9dd60ec1d9a138bbc_chevron.svg";
-
-const LOGO_URL =
-  "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/670bbc6b01de0ce138925648_ht-logo.svg";
 
 const INDUSTRIES_LINKS = [
   { label: "Blockchain", href: "/industry/blockchain" },
@@ -78,11 +74,8 @@ function NavDropdown({ label, items }: NavDropdownProps) {
         onClick={() => setOpen((v) => !v)}
       >
         {label}
-        <Image
-          src={CHEVRON_URL}
-          alt=""
-          width={12}
-          height={6}
+        <ChevronDown
+          size={12}
           className={`site-chevron ${open ? "site-chevron-open" : ""}`}
           aria-hidden="true"
         />
@@ -125,11 +118,8 @@ function MobileAccordion({ label, items, onClose }: MobileAccordionProps) {
         aria-expanded={open}
       >
         {label}
-        <Image
-          src={CHEVRON_URL}
-          alt=""
-          width={12}
-          height={6}
+        <ChevronDown
+          size={12}
           className={`site-chevron ${open ? "site-chevron-open" : ""}`}
           aria-hidden="true"
         />

@@ -1,4 +1,4 @@
-import bannerBg from "@/app/assets/banner/Erp-industry.webp";
+import bannerBg from "@/app/assets/banner/industries/Erp-industry.webp";
 import IndustryPageBanner from "../components/IndustryPageBanner";
 
 export default function ErpBannerSection() {

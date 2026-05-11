@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 
 type FaqItem = {
   question: string;
@@ -33,12 +34,7 @@ export default function ServicesFaqSection({ faqs }: ServicesFaqSectionProps) {
           onClick={() => setOpenIndex(isOpen ? null : index)}
         >
           <h5 className="accordion-title">{faq.question}</h5>
-          <img
-            src="https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/67497f2f720eea8d5d3f8a0b_down-arrow.svg"
-            loading="lazy"
-            alt=""
-            className="accordian-arrow"
-          />
+          <ChevronDown aria-hidden="true" className="accordian-arrow" />
         </button>
         <nav id={`faq-panel-${index}`} className="accordion-list w-dropdown-list">
           <p className="accordion-list-content">{faq.answer}</p>

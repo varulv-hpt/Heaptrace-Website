@@ -1,4 +1,4 @@
-import bannerBg from "@/app/assets/banner/Edp-industry.webp";
+import bannerBg from "@/app/assets/banner/industries/Edp-industry.webp";
 import IndustryPageBanner from "../components/IndustryPageBanner";
 
 export default function EdpBannerSection() {

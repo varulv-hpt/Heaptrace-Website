@@ -1,4 +1,4 @@
-import bannerImage from "@/app/assets/banner/services-banner.png";
+import bannerImage from "@/app/assets/banner/industries/Healthcare.webp";
 import IndustryPageBanner from "../components/IndustryPageBanner";
 
 export default function HcBannerSection() {

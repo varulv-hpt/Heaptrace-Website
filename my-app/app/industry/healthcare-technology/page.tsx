@@ -5,7 +5,7 @@ import HcServicesSection from "../[slug]/sections/HcServicesSection";
 import HcApproachSection from "../[slug]/sections/HcApproachSection";
 import HcComplianceSection from "../[slug]/sections/HcComplianceSection";
 import HcWhyHeaptraceSection from "../[slug]/sections/HcWhyHeaptraceSection";
-import HcCtaSection from "../[slug]/sections/HcCtaSection";
+import ConnectSection from "@/components/shared/ConnectSection";
 import "../[slug]/healthcare.css";
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function Page() {
       <HcApproachSection />
       <HcComplianceSection />
       <HcWhyHeaptraceSection />
-      <HcCtaSection />
+      <ConnectSection />
     </div>
   );
 }

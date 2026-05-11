@@ -1,4 +1,5 @@
 import worldMap from "@/app/assets/banner/worldmap.svg";
+import { Headset, Send } from "lucide-react";
 
 export default function ConnectSection() {
   return (
@@ -17,12 +18,7 @@ export default function ConnectSection() {
 
             <div className="connect-info-stack">
               <div className="connect-info-row">
-                <img
-                  src="https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/67496adbec99a5236bfb53b9_headphone.svg"
-                  alt=""
-                  loading="lazy"
-                  className="connect-info-icon"
-                />
+                <Headset className="connect-info-icon" aria-hidden="true" />
                 <div>
                   <p className="connect-info-label">Customer sales enquiries</p>
                   <p className="connect-info-value">
@@ -36,12 +32,7 @@ export default function ConnectSection() {
               <div className="connect-divider" />
 
               <div className="connect-info-row">
-                <img
-                  src="https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/67496ac25ee4ab4e81526d31_send.svg"
-                  alt=""
-                  loading="lazy"
-                  className="connect-info-icon"
-                />
+                <Send className="connect-info-icon" aria-hidden="true" />
                 <div>
                   <p className="connect-info-label">General enquiries</p>
                   <p className="connect-info-value">service@heaptrace.com</p>

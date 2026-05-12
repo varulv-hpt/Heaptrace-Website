@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
-import LOGO_URL from "@/app/assets/ht/ht-logo.svg";
+import HtPreloader from "@/components/preloader/HtPreloader";
+import "./preloader.css";
 
 const MIN_VISIBLE_MS = 900;
 
-export default function SitePreloader() {
+export default function Preloader() {
   const pathname = usePathname();
   const [visible, setVisible] = useState(true);
   const [routeAnimating, setRouteAnimating] = useState(false);
@@ -51,23 +51,9 @@ export default function SitePreloader() {
   );
 
   return (
-    <section
-      id="ht-preloader"
-      className={`ht-preloader ${visibilityClass}`}
-      aria-hidden={!shouldShow}
-    >
-      <div data-text="HEAPTRACE" className="preloader old-loader" />
-      <div className="ht-loader-container">
-        <div id="page-logo" className="div-block-62">
-          <Image
-            src={LOGO_URL}
-            alt="HeapTrace Logo"
-            width={170}
-            height={42}
-            priority
-          />
-        </div>
-      </div>
-    </section>
+    <HtPreloader
+      visibilityClass={visibilityClass}
+      shouldShow={shouldShow}
+    />
   );
 }

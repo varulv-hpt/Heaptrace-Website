@@ -3,7 +3,7 @@ import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import SitePreloader from "@/components/layout/SitePreloader";
+import Preloader from "@/components/preloader";
 import heaptraceFavicon from "@/app/assets/ht/Heaptrace-fevicon-256x256.png";
 
 const inter = Inter({
@@ -66,7 +66,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} min-h-full flex flex-col font-sans`}
       >
-        <SitePreloader />
+        <Preloader />
         <Navbar />
         <main className="flex-1 font-sans">{children}</main>
         <Footer />

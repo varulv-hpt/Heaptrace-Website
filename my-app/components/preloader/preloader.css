@@ -113,17 +113,11 @@
   align-items: center;
 }
 
-.ht-loader-brand-logo {
-  height: auto;
-  width: auto;
-  max-width: 170px;
-}
-
 .ht-loader-container {
   position: relative;
-  width: 100%;
   display: flex;
   justify-content: center;
+  /* Width/height come from Tailwind on HtLoaderLogoContainer (rem-based). */
 }
 
 .ht-loader-container::before {

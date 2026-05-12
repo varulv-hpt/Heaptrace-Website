@@ -3,6 +3,7 @@
 import Image from "next/image";
 import LOGO_URL from "@/app/assets/ht/ht-logo.svg";
 import linearBgTexture from "@/app/assets/banner/linear-bg.webp";
+import HtLoaderLogoContainer from "@/components/preloader/HtLoaderLogoContainer";
 
 const LOGO_WIDTH = 170;
 const LOGO_HEIGHT = 42;
@@ -57,19 +58,7 @@ export default function HtPreloader({
       }}
     >
       <div className="ht-preloader-stage">
-        <div className="preloader-band">
-          <HtPreloaderLogo variant="band" className="preloader-band-logo" />
-          <div data-text="HEAPTRACE" className="preloader old-loader" />
-        </div>
-        <div className="ht-loader-container">
-          <div id="page-logo" className="div-block-62">
-            <HtPreloaderLogo
-              variant="loader"
-              className="ht-loader-brand-logo"
-              priority
-            />
-          </div>
-        </div>
+        <HtLoaderLogoContainer />
       </div>
     </section>
   );

@@ -480,6 +480,11 @@ a {
 }
 
 .section-25 {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: 695px;
   background:
     linear-gradient(100deg, rgba(15, 58, 54, 0.92) 0%, rgba(16, 63, 55, 0.88) 35%, rgba(11, 37, 53, 0.9) 100%),
     url("./assets/banner/worldmap.svg");
@@ -528,129 +533,71 @@ a {
 }
 
 .connect-shell {
-  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-  gap: 40px;
-  border-radius: 10px;
-  padding: 36px 38px;
-  background: rgba(6, 31, 37, 0.22);
-  overflow: hidden;
-}
-
-.connect-shell::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 35% 48%, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px) 0 0 / 7px 7px;
-  mask-image: radial-gradient(circle at 34% 50%, black 0 38%, transparent 62%);
-  opacity: 0.35;
-  pointer-events: none;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.56fr);
+  gap: 48px;
+  align-items: flex-start;
 }
 
 .connect-left-pane {
-  position: relative;
-  z-index: 1;
-  max-width: 430px;
+  max-width: 620px;
 }
 
 .connect-hero-title {
   margin: 0;
-  color: #f3fbf8;
-  font-size: 40px;
+  color: #ffffff;
+  font-size: 48px;
   font-weight: 600;
-  line-height: 56px;
+  line-height: 62px;
   letter-spacing: -0.8px;
+  text-transform: none;
 }
 
-.connect-info-stack {
-  margin-top: 34px;
-}
-
-.connect-info-row {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
+.connect-heading-accent {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 530px;
 }
 
 .connect-divider {
   height: 1px;
-  margin: 14px 0;
-  background: rgba(255, 255, 255, 0.24);
-}
-
-.connect-info-icon {
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;
-  margin-top: 3px;
-}
-
-.connect-info-label {
-  margin: 0;
-  color: rgba(232, 246, 241, 0.85);
-  font-size: 12px;
-  line-height: 16px;
-}
-
-.connect-info-value {
-  margin: 4px 0 0;
-  color: #ffffff;
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 32px;
-  letter-spacing: -0.2px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.32);
 }
 
 .connect-form-pane {
-  position: relative;
-  z-index: 1;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 16px;
-  padding: 24px 22px 22px;
-  background: linear-gradient(155deg, rgba(154, 255, 228, 0.2) 0%, rgba(5, 20, 34, 0.72) 65%);
-  box-shadow:
-    0 18px 42px rgba(2, 10, 20, 0.42),
-    inset 0 1px 0 rgba(255, 255, 255, 0.24);
-  backdrop-filter: blur(10px);
+  width: 100%;
+  max-width: 430px;
+  margin-left: auto;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 30px 24px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
 }
 
 .connect-form-title {
   margin: 0;
-  color: #f4fffb;
-  font-size: 24px;
+  color: #ffffff;
+  font-size: 36px;
   font-weight: 600;
-  line-height: 32px;
-  letter-spacing: -0.24px;
-}
-
-.connect-form-subtitle {
-  margin: 8px 0 0;
-  color: rgba(232, 246, 241, 0.82);
-  font-size: 14px;
-  line-height: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.6px;
 }
 
 .connect-form-grid {
-  margin-top: 16px;
+  margin-top: 22px;
   display: grid;
-  gap: 12px;
-}
-
-.connect-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 12px;
+  gap: 14px;
 }
 
 .connect-field {
   width: 100%;
-  height: 46px;
-  border: 1px solid rgba(255, 255, 255, 0.36);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #ffffff;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f9fffc;
   padding: 12px 14px;
   font-size: 14px;
   line-height: 20px;
@@ -661,31 +608,31 @@ a {
 }
 
 .connect-field::placeholder {
-  color: rgba(226, 241, 237, 0.66);
+  color: rgba(239, 250, 245, 0.82);
 }
 
 .connect-field:focus-visible {
   outline: none;
-  border-color: rgba(120, 255, 221, 0.92);
-  box-shadow: 0 0 0 3px rgba(117, 255, 216, 0.22);
-  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 .connect-message {
   height: auto;
-  min-height: 132px;
-  resize: vertical;
+  min-height: 128px;
+  resize: none;
   font-family: inherit;
 }
 
 .connect-submit-btn {
   width: 100%;
-  height: 44px;
+  height: 46px;
   border: 0;
-  border-radius: 10px;
-  padding: 0 18px;
-  background: linear-gradient(180deg, #7cf0ce 0%, #4ec6a4 100%);
-  color: #f7fffc;
+  border-radius: 999px;
+  padding: 0 20px;
+  background: #16c79a;
+  color: #ffffff;
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
@@ -699,15 +646,15 @@ a {
 
 .connect-submit-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(76, 198, 164, 0.34);
-  filter: brightness(1.03);
+  box-shadow: 0 10px 24px rgba(22, 199, 154, 0.35);
+  filter: brightness(1.04);
 }
 
 .connect-submit-btn:focus-visible {
   outline: none;
   box-shadow:
-    0 0 0 3px rgba(124, 240, 206, 0.3),
-    0 10px 24px rgba(76, 198, 164, 0.34);
+    0 0 0 3px rgba(255, 255, 255, 0.28),
+    0 10px 24px rgba(22, 199, 154, 0.35);
 }
 
 .connect-submit-btn:active {
@@ -715,6 +662,10 @@ a {
 }
 
 @media (max-width: 991px) {
+  .section-25 {
+    min-height: auto;
+  }
+
   .accordion-wrapper {
     flex-direction: column;
     gap: 0;
@@ -750,27 +701,22 @@ a {
 
   .connect-shell {
     grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 24px 20px;
+    gap: 28px;
   }
 
   .connect-hero-title {
-    font-size: 30px;
-    line-height: 40px;
-  }
-
-  .connect-info-value {
-    font-size: 18px;
-    line-height: 26px;
-  }
-
-  .connect-row {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    font-size: 34px;
+    line-height: 44px;
   }
 
   .connect-form-pane {
-    padding: 20px 16px 16px;
+    max-width: 100%;
+    margin-left: 0;
+    padding: 24px 18px 18px;
+  }
+
+  .connect-form-title {
+    font-size: 30px;
   }
 }
 

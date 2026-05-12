@@ -1,6 +1,19 @@
 import Link from "next/link";
 import type { ServiceDetail } from "../../[slug]/serviceDetails";
 import cloudServicesBanner from "@/app/assets/banner/services/Cloud services.webp";
+import cloudDevIcon5 from "@/app/assets/icons/services/clouddev/0 services 5.svg";
+import cloudDevIcon6 from "@/app/assets/icons/services/clouddev/1 services 6.svg";
+import cloudDevIcon7 from "@/app/assets/icons/services/clouddev/2 services 7.svg";
+import cloudDevIcon8 from "@/app/assets/icons/services/clouddev/3 services 8.svg";
+import cloudDevIcon9 from "@/app/assets/icons/services/clouddev/4 services 9.svg";
+import cloudDevIcon10 from "@/app/assets/icons/services/clouddev/5 services 10.svg";
+import cloudDevIcon11 from "@/app/assets/icons/services/clouddev/6 services 11.svg";
+import cloudDevIcon12 from "@/app/assets/icons/services/clouddev/7 services 12.svg";
+import cloudDevChoose19 from "@/app/assets/icons/services/clouddev/0 choose 19.svg";
+import cloudDevChoose20 from "@/app/assets/icons/services/clouddev/1 choose 20.svg";
+import cloudDevChoose21 from "@/app/assets/icons/services/clouddev/2 choose 21.svg";
+import cloudDevChoose22 from "@/app/assets/icons/services/clouddev/3 choose 22.svg";
+import cloudDevChoose23 from "@/app/assets/icons/services/clouddev/4 choose 23.png";
 import ConnectSection from "@/components/shared/ConnectSection";
 import PreConnectCtaSection from "@/components/shared/PreConnectCtaSection";
 
@@ -16,29 +29,31 @@ export default function CloudDevelopmentMainSection({ service }: CloudDevelopmen
   const closingCta = service.closingCta;
 
   const serviceIconUrls = [
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674ec8ed9ac3e900ff4c0d83_Cloud%20migration.svg",
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674ec9233b841a85674df73f_Cloud%20native.svg",
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674ec97d2b32d0bf6c139939_Hybrid%20colud%20solutions.svg",
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674ec9b22f257b9d0494a094_Infrastructure%20as%20code.svg",
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674eca0bf11883ae47dbba35_security%20n%20compliance-cld.svg",
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674fef75a04815b79090ac0a_CICD%20Pipeline%20Automation.svg",
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674ecab0968c7c6223a5238f_cost%20efficient%20solutions.svg",
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674ff7ec84a10b36d2a0188e_Disaster%20Recovery%20and%20Backup%20Solutions.svg",
+    cloudDevIcon5.src,
+    cloudDevIcon6.src,
+    cloudDevIcon7.src,
+    cloudDevIcon8.src,
+    cloudDevIcon9.src,
+    cloudDevIcon10.src,
+    cloudDevIcon11.src,
+    cloudDevIcon12.src,
   ];
   const whyChooseIconUrls = [
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674ecc3047dda37eb9fe5dc8_Tailored%20cloud%20solutions.svg",
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674ecc67968c7c6223a73de8_Cloud%20experties.svg",
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674eb9c41e847fe6a1697d48_Scalable%20and%20secure.svg",
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674ecab0968c7c6223a5238f_cost%20efficient%20solutions.svg",
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674eca0bf11883ae47dbba35_security%20n%20compliance-cld.svg",
+    cloudDevChoose19.src,
+    cloudDevChoose20.src,
+    cloudDevChoose21.src,
+    cloudDevChoose22.src,
+    cloudDevChoose23.src,
   ];
   const techIconUrls = [
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/6746fb41829349829923b380_Cloud%20platforms.svg",
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/67375a7ff42ce92f0c798954_Containerization.png",
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674ecd84832f7ff50426bf50_Serverless%20tech.svg",
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674ec9b22f257b9d0494a094_Infrastructure%20as%20code.svg",
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674ecdf5b259108aa9f8d4ba_Cloud%20security.svg",
-    "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a7a3/674eceb044ad9fde09dbc82b_Devops%20tools.svg",
+    cloudDevIcon5.src,
+    cloudDevIcon6.src,
+    cloudDevIcon7.src,
+    cloudDevIcon8.src,
+    cloudDevIcon9.src,
+    cloudDevIcon10.src,
+    cloudDevIcon11.src,
+    cloudDevIcon12.src,
   ];
 
   return (

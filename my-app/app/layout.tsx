@@ -3,6 +3,8 @@ import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import SitePreloader from "@/components/layout/SitePreloader";
+import heaptraceFavicon from "@/app/assets/ht/Heaptrace-fevicon-256x256.png";
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
@@ -44,6 +46,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://heaptrace.com",
   },
+  icons: {
+    icon: [{ url: heaptraceFavicon.src, type: "image/png" }],
+    shortcut: [{ url: heaptraceFavicon.src, type: "image/png" }],
+    apple: [{ url: heaptraceFavicon.src, type: "image/png" }],
+  },
 };
 
 export default function RootLayout({
@@ -59,6 +66,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} min-h-full flex flex-col font-sans`}
       >
+        <SitePreloader />
         <Navbar />
         <main className="flex-1 font-sans">{children}</main>
         <Footer />

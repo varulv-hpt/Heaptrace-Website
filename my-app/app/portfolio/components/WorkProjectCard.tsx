@@ -9,15 +9,15 @@ type WorkProjectCardProps = {
 
 export default function WorkProjectCard({ project }: WorkProjectCardProps) {
   return (
-    <article className="project-item-inner-block flex h-full flex-col overflow-hidden rounded-2xl border border-[#dce3ea] bg-white shadow-[0_12px_28px_rgba(20,25,45,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_34px_rgba(20,25,45,0.14)]">
-      <Link href={project.href} className="block shrink-0">
-        <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#f1f4f8]">
+    <article className="project-item-inner-block flex h-full min-w-0 w-full flex-col overflow-hidden rounded-2xl border border-[#dce3ea] bg-white shadow-[0_12px_28px_rgba(20,25,45,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_34px_rgba(20,25,45,0.14)]">
+      <Link href={project.href} className="block w-full shrink-0">
+        <div className="relative aspect-[4/3] w-full max-w-full overflow-hidden bg-[#f1f4f8]">
           <Image
             src={project.image}
             alt={project.title}
             fill
             sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
-            className="object-contain object-center transition-transform duration-500 hover:scale-[1.02]"
+            className="object-cover object-top transition-transform duration-500 origin-top hover:scale-[1.03]"
           />
         </div>
       </Link>

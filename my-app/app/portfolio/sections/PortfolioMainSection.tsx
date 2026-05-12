@@ -3,10 +3,15 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import WorkProjectCard from "../components/WorkProjectCard";
-import { workFilterCategories, workProjects } from "../data/workProjects";
+import type { WorkListItem } from "@/lib/sanity/types";
 import PageBanner from "@/components/shared/PageBanner";
 
-export default function PortfolioMainSection() {
+type PortfolioMainSectionProps = {
+  initialProjects: WorkListItem[];
+  categories: string[];
+};
+
+export default function PortfolioMainSection({ initialProjects, categories }: PortfolioMainSectionProps) {
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
@@ -38,10 +43,10 @@ export default function PortfolioMainSection() {
   ];
 
   const filteredProjects = useMemo(() => {
-    return workProjects.filter((project) => {
+    return initialProjects.filter((project) => {
       return activeCategory === "All" || project.category === activeCategory;
     });
-  }, [activeCategory]);
+  }, [activeCategory, initialProjects]);
 
   return (
     <div className="portfolio-page">
@@ -53,16 +58,7 @@ export default function PortfolioMainSection() {
       <section className="section work-section-container py-14 md:py-16">
         <div className="base-container w-container mx-auto w-full max-w-[1350px] px-6">
           <div className="mb-8 flex flex-wrap gap-3">
-            <button
-              type="button"
-              onClick={() => setActiveCategory("All")}
-              className={`portfolio-chip rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-                activeCategory === "All" ? "portfolio-chip-active" : ""
-              }`}
-            >
-              All
-            </button>
-            {workFilterCategories.map((category) => (
+            {categories.map((category) => (
               <button
                 key={category}
                 type="button"
@@ -79,7 +75,7 @@ export default function PortfolioMainSection() {
           <div className="w-full">
             <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 xl:grid-cols-3">
               {filteredProjects.map((project) => (
-                <WorkProjectCard key={`${project.href}-${project.title}`} project={project} />
+                <WorkProjectCard key={project.slug} project={project} />
               ))}
             </div>
 

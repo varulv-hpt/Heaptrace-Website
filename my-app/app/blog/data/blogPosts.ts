@@ -4,6 +4,8 @@ export type BlogPost = {
   category: string;
   author?: string;
   href: string;
+  /** Optional card thumbnail when Sanity is not configured (matches marketing site cards). */
+  coverImageUrl?: string;
 };
 
 export const blogCategories = [
@@ -37,6 +39,8 @@ export const blogPosts: BlogPost[] = [
       "Most engineering organizations are experimenting with AI, but very few are operationalizing AI.",
     category: "Artificial Intelligence",
     href: "/blog",
+    coverImageUrl:
+      "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a848/69b17d8b9baf5763a315da1f_ai%20first%20company.jpg",
   },
   {
     title: "Adding AI Isn’t Transformation",

@@ -36,6 +36,121 @@
   justify-content: space-between;
 }
 
+/* ─── Sanity Studio: compact bar (no mega-menus) ─────────────────── */
+.site-header-studio {
+  /* Stay above Sanity Studio overlays/panels */
+  z-index: 20000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.site-header-inner--studio {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: "brand nav cta";
+  column-gap: clamp(12px, 2vw, 28px);
+  row-gap: 10px;
+  align-items: center;
+  max-width: 1400px;
+  min-height: 72px;
+  height: auto;
+  margin: 0 auto;
+  padding: 10px 32px;
+}
+
+.site-header-inner--studio .site-studio-brand {
+  grid-area: brand;
+}
+
+.site-header-inner--studio .site-studio-nav {
+  grid-area: nav;
+}
+
+.site-header-inner--studio .site-cta-studio {
+  grid-area: cta;
+}
+
+.site-studio-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.site-studio-badge {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 6px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.site-studio-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px clamp(16px, 2.5vw, 32px);
+  min-width: 0;
+}
+
+.site-studio-nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0.94;
+}
+
+.site-studio-nav-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.site-logo--studio {
+  width: 140px;
+  max-width: min(140px, 38vw);
+  height: auto;
+}
+
+.site-cta-studio {
+  justify-self: end;
+}
+
+@media (max-width: 720px) {
+  .site-header-inner--studio {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "brand cta"
+      "nav nav";
+    padding: 10px 18px 12px;
+  }
+
+  .site-studio-nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    gap: 20px;
+    padding-bottom: 2px;
+    margin-right: -4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .site-studio-badge {
+    display: none;
+  }
+}
+
 .site-logo-link {
   display: inline-flex;
   align-items: center;

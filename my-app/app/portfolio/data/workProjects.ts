@@ -25,6 +25,14 @@ export const workFilterCategories = [
 
 export const workProjects: WorkProject[] = [
   {
+    title: "[Sample] Heaptrace marketing site — Next.js, Sanity CMS, and portfolio launch",
+    category: "Generative AI",
+    tags: ["All Projects", "Sample"],
+    href: "/projects/sample-heaptrace-marketing-site-next-sanity",
+    image:
+      "https://cdn.prod.website-files.com/670bb5250f6a6cfc3a22a848/671a405bcbb8715f7850eb1c_1.png",
+  },
+  {
     title: "Blockchain-Powered Fantasy Sports Platform - Fantasy Sports Token",
     category: "FinTech & Blockchain",
     tags: ["All Projects"],

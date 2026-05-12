@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import ConditionalFooter from "@/components/layout/ConditionalFooter";
 import Preloader from "@/components/preloader";
 import heaptraceFavicon from "@/app/assets/ht/Heaptrace-fevicon-256x256.png";
 
@@ -68,8 +68,8 @@ export default function RootLayout({
       >
         <Preloader />
         <Navbar />
-        <main className="flex-1 font-sans">{children}</main>
-        <Footer />
+        <main className="flex-1 font-sans min-h-0">{children}</main>
+        <ConditionalFooter />
       </body>
     </html>
   );

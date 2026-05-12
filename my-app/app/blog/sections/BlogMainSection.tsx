@@ -2,27 +2,34 @@
 
 import { useMemo, useState } from "react";
 import BlogCard from "../components/BlogCard";
-import { blogCategories, blogPosts } from "../data/blogPosts";
+import type { BlogListItem } from "@/lib/sanity/types";
 import PageBanner from "@/components/shared/PageBanner";
+import blogBannerImage from "@/app/assets/banner/blog-image.webp";
 
-export default function BlogMainSection() {
+type BlogMainSectionProps = {
+  initialPosts: BlogListItem[];
+  categories: string[];
+};
+
+export default function BlogMainSection({ initialPosts, categories }: BlogMainSectionProps) {
   const [activeCategory, setActiveCategory] = useState<string>("All");
 
   const filteredPosts = useMemo(() => {
-    return blogPosts.filter((post) => activeCategory === "All" || post.category === activeCategory);
-  }, [activeCategory]);
+    return initialPosts.filter((post) => activeCategory === "All" || post.category === activeCategory);
+  }, [activeCategory, initialPosts]);
 
   return (
     <div className="blog-page">
       <PageBanner
         title="Explore Our Blog"
         description="Explore our latest insights and updates on technology trends, AI, UX design, healthcare IT, cloud computing, and more. Stay informed with expert articles from HeapTrace Technology."
+        backgroundImage={blogBannerImage}
       />
 
       <section className="py-14 md:py-16">
         <div className="mx-auto w-full max-w-[1350px] px-6">
           <div className="mb-8 flex flex-wrap gap-3">
-            {blogCategories.map((category) => (
+            {categories.map((category) => (
               <button
                 key={category}
                 type="button"
@@ -36,9 +43,12 @@ export default function BlogMainSection() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div
+            className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 xl:grid-cols-3"
+            role="list"
+          >
             {filteredPosts.map((post) => (
-              <BlogCard key={`${post.title}-${post.category}`} post={post} />
+              <BlogCard key={post.slug} post={post} />
             ))}
           </div>
         </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PortfolioMainSection from "./sections/PortfolioMainSection";
+import { getWorkCategories, getWorkProjects } from "@/lib/sanity/queries";
 import "./portfolio.css";
 
 export const metadata: Metadata = {
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   description: "Explore selected Heaptrace projects and product engineering success stories.",
 };
 
-export default function PortfolioPage() {
-  return <PortfolioMainSection />;
+export default async function PortfolioPage() {
+  const [projects, categories] = await Promise.all([getWorkProjects(), getWorkCategories()]);
+  return <PortfolioMainSection initialProjects={projects} categories={categories} />;
 }

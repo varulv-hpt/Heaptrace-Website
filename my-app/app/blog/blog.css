@@ -18,3 +18,26 @@
   background: #4dac8a;
   color: #ffffff;
 }
+
+/* Listing cards — avoid reusing `.blog-post-title` (detail hero uses white text). */
+.blog-page .blog-card-heading {
+  margin: 0;
+  color: #4c4c4e;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+
+.blog-page .blog-card-heading:hover {
+  color: #213c3a;
+}
+
+.blog-page .blog-card-image-area {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+  aspect-ratio: 410 / 320;
+  background: linear-gradient(145deg, #213c3a 0%, #2d4a47 45%, #60d7ad 100%);
+}

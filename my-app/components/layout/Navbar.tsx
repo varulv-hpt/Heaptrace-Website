@@ -144,10 +144,14 @@ function MobileAccordion({ label, items, onClose }: MobileAccordionProps) {
 
 /* ─── Main Navbar ───────────────────────────────────────────────── */
 export default function Navbar() {
+  const pathname = usePathname();
+  const isStudio = pathname.startsWith("/studio");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
 
   useEffect(() => {
+    if (isStudio) return;
+
     function updateTopState() {
       setIsAtTop(window.scrollY <= 8);
     }
@@ -155,54 +159,101 @@ export default function Navbar() {
     updateTopState();
     window.addEventListener("scroll", updateTopState, { passive: true });
     return () => window.removeEventListener("scroll", updateTopState);
-  }, []);
+  }, [isStudio]);
 
-  const isTransparent = isAtTop && !mobileOpen;
+  /** Light hero / white top: keep solid green bar (same as scrolled), not transparent — avoids unreadable nav on white. */
+  const solidNavWhileAtTop =
+    pathname.startsWith("/portfolio") ||
+    pathname.startsWith("/projects") ||
+    pathname.startsWith("/blog-posts") ||
+    pathname === "/blog" ||
+    pathname.startsWith("/contact-us") ||
+    pathname.startsWith("/firecrawl") ||
+    pathname.startsWith("/about-us") ||
+    pathname.startsWith("/careers") ||
+    pathname.startsWith("/faq");
+
+  const isTransparent = !isStudio && isAtTop && !mobileOpen && !solidNavWhileAtTop;
 
   return (
     <>
       <header
-        className={`site-header ${isTransparent ? "site-header-transparent" : "site-header-solid"}`}
+        className={`site-header ${isStudio ? "site-header-studio site-header-solid" : isTransparent ? "site-header-transparent" : "site-header-solid"}`}
         role="banner"
       >
-        <div className="site-header-inner">
-          <Link href="/" aria-label="home" className="site-logo-link">
-            <Image src={LOGO_URL} alt="Heaptrace" width={155} height={38} className="site-logo" priority />
-          </Link>
+        {isStudio ? (
+          <div className="site-header-inner site-header-inner--studio">
+            <div className="site-studio-brand">
+              <Link href="/" aria-label="Heaptrace home" className="site-logo-link">
+                <Image
+                  src={LOGO_URL}
+                  alt="Heaptrace"
+                  width={140}
+                  height={34}
+                  className="site-logo site-logo--studio"
+                  priority
+                />
+              </Link>
+              <span className="site-studio-badge">Sanity Studio</span>
+            </div>
 
-          <nav className="site-nav" role="navigation" aria-label="Main navigation">
-            <NavDropdown label="Industries" items={INDUSTRIES_LINKS} />
-            <NavDropdown label="Services" items={SERVICES_LINKS} />
-            <Link href="/about-us" className="site-nav-link">
-              About
-            </Link>
-            <Link href="/portfolio" className="site-nav-link">
-              Work
-            </Link>
-            <Link href="/careers" className="site-nav-link">
-              Careers
-            </Link>
-            <NavDropdown label="Insights" items={INSIGHTS_LINKS} />
-          </nav>
+            <nav className="site-studio-nav" aria-label="Site shortcuts">
+              <Link href="/" className="site-studio-nav-link">
+                Website
+              </Link>
+              <Link href="/blog" className="site-studio-nav-link">
+                Blog
+              </Link>
+              <Link href="/contact-us" className="site-studio-nav-link">
+                Contact
+              </Link>
+            </nav>
 
-          <div className="site-actions">
-            <Link href="/contact-us" className="site-cta">
+            <Link href="/contact-us" className="site-cta site-cta-studio">
               Get In Touch
             </Link>
-            <button
-              className={`site-mobile-toggle ${mobileOpen ? "site-mobile-open" : ""}`}
-              onClick={() => setMobileOpen((v) => !v)}
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileOpen}
-            >
-              <span className="site-mobile-line" />
-              <span className="site-mobile-line" />
-              <span className="site-mobile-line" />
-            </button>
           </div>
-        </div>
+        ) : (
+          <div className="site-header-inner">
+            <Link href="/" aria-label="home" className="site-logo-link">
+              <Image src={LOGO_URL} alt="Heaptrace" width={155} height={38} className="site-logo" priority />
+            </Link>
+
+            <nav className="site-nav" role="navigation" aria-label="Main navigation">
+              <NavDropdown label="Industries" items={INDUSTRIES_LINKS} />
+              <NavDropdown label="Services" items={SERVICES_LINKS} />
+              <Link href="/about-us" className="site-nav-link">
+                About
+              </Link>
+              <Link href="/portfolio" className="site-nav-link">
+                Work
+              </Link>
+              <Link href="/careers" className="site-nav-link">
+                Careers
+              </Link>
+              <NavDropdown label="Insights" items={INSIGHTS_LINKS} />
+            </nav>
+
+            <div className="site-actions">
+              <Link href="/contact-us" className="site-cta">
+                Get In Touch
+              </Link>
+              <button
+                className={`site-mobile-toggle ${mobileOpen ? "site-mobile-open" : ""}`}
+                onClick={() => setMobileOpen((v) => !v)}
+                aria-label={mobileOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileOpen}
+              >
+                <span className="site-mobile-line" />
+                <span className="site-mobile-line" />
+                <span className="site-mobile-line" />
+              </button>
+            </div>
+          </div>
+        )}
       </header>
 
+      {!isStudio && (
       <div
         className={`site-mobile-overlay ${
           mobileOpen ? "site-mobile-overlay-open" : ""
@@ -265,6 +316,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+      )}
 
     </>
   );

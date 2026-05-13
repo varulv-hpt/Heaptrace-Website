@@ -27,6 +27,5 @@ export function getSanityClient() {
     apiVersion,
     useCdn: process.env.NODE_ENV === "production",
     token: process.env.SANITY_API_READ_TOKEN,
-    perspective: "published",
   });
 }

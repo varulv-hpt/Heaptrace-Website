@@ -1,4 +1,4 @@
-import imageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
@@ -11,7 +11,7 @@ const hasValidDataset = Boolean(dataset && SANITY_DATASET_REGEX.test(dataset));
 
 const builder =
   hasValidProjectId && hasValidDataset
-    ? imageUrlBuilder({
+    ? createImageUrlBuilder({
         projectId: projectId!,
         dataset: dataset!,
       })

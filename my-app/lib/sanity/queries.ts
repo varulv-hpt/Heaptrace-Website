@@ -1,3 +1,4 @@
+import { unstable_noStore as noStore } from "next/cache";
 import { groq } from "next-sanity";
 import { blogPosts as staticBlogPosts } from "@/app/blog/data/blogPosts";
 import { workProjects as staticWorkProjects } from "@/app/portfolio/data/workProjects";
@@ -29,13 +30,7 @@ const blogPostBySlugQuery = groq`
     "category": category->title,
     "author": author->name,
     publishedAt,
-    body[]{
-      ...,
-      _type == "image" => {
-        ...,
-        asset->
-      }
-    },
+    body,
     seoTitle,
     seoDescription,
     coverImage,
@@ -160,6 +155,10 @@ export async function getBlogPosts(): Promise<BlogListItem[]> {
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPostDetail | null> {
+  if (isSanityConfigured) {
+    noStore();
+  }
+
   if (!isSanityConfigured) {
     if (slug === pocFallbackDetail.slug) {
       return pocFallbackDetail;

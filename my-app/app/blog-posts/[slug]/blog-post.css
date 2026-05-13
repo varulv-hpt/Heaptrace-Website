@@ -41,11 +41,41 @@
   background: #ffffff;
 }
 
+/* Override globals.css `a { color: #fff }` so article body and HTML embeds stay readable on white. */
+.blog-post-body-section a,
+.blog-post-html-embed a {
+  color: #286f58;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.blog-post-body-section a:hover,
+.blog-post-html-embed a:hover {
+  color: #235f4b;
+}
+
 .blog-post-paragraph {
   margin: 0 0 20px;
   font-size: 18px;
   line-height: 1.8;
   color: #3f4a59;
+}
+
+/* Make PT decorators obvious (parent weight / Tailwind can otherwise hide bold). */
+.blog-post-body-section strong {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.blog-post-body-section em {
+  font-style: italic;
+}
+
+.blog-post-body-section .blog-post-list strong,
+.blog-post-body-section .blog-post-list-number strong {
+  font-weight: 700;
+  color: #1f2937;
 }
 
 .blog-post-inline-link {

@@ -1,4 +1,5 @@
 import type { StaticImageData } from "next/image";
+import { ourWorkBannerBackgroundStyle } from "./ourWorkBannerStyle";
 
 type PageBannerProps = {
   title: string;
@@ -7,21 +8,13 @@ type PageBannerProps = {
   backgroundImage?: StaticImageData | string;
 };
 
-const BASE_BANNER_GRADIENT =
-  "linear-gradient(90deg, rgba(2, 11, 23, 0.92) 0%, rgba(3, 16, 30, 0.84) 45%, rgba(10, 82, 93, 0.42) 100%)";
-
 export default function PageBanner({
   title,
   description,
   ariaLabel,
   backgroundImage,
 }: PageBannerProps) {
-  const resolvedImage =
-    typeof backgroundImage === "string" ? encodeURI(backgroundImage) : backgroundImage?.src;
-
-  const backgroundStyle = resolvedImage
-    ? { backgroundImage: `${BASE_BANNER_GRADIENT}, url("${resolvedImage}")` }
-    : { backgroundImage: BASE_BANNER_GRADIENT };
+  const backgroundStyle = ourWorkBannerBackgroundStyle(backgroundImage);
 
   return (
     <section

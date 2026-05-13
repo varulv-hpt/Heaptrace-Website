@@ -1,5 +1,37 @@
 import type { BlogListItem, BlogPostDetail, WorkListItem, WorkProjectDetail } from "./types";
 
+/** Ensures @portabletext/react receives valid block shape (marks / markDefs arrays). */
+function normalizePortableBody(
+  body: BlogPostDetail["body"] | null | undefined,
+): BlogPostDetail["body"] {
+  if (!Array.isArray(body) || body.length === 0) return [];
+  return body.map((node) => {
+    if (node?._type !== "block") return node;
+    const block = node as BlogPostDetail["body"][number] & {
+      markDefs?: unknown[];
+      children?: Array<Record<string, unknown>>;
+    };
+    const children = Array.isArray(block.children)
+      ? block.children.map((child) => {
+          if (child && child._type === "span") {
+            const marks = (child as { marks?: unknown }).marks;
+            return {
+              ...child,
+              marks: Array.isArray(marks) ? marks : [],
+            };
+          }
+          return child;
+        })
+      : [];
+    const markDefs = (block as { markDefs?: unknown }).markDefs;
+    return {
+      ...block,
+      markDefs: Array.isArray(markDefs) ? markDefs : [],
+      children,
+    } as BlogPostDetail["body"][number];
+  });
+}
+
 const toSlug = (value: string) =>
   value
     .toLowerCase()
@@ -53,7 +85,7 @@ export function mapDetailItem(item: {
     author: item.author,
     slug,
     publishedAt: item.publishedAt,
-    body: item.body ?? [],
+    body: normalizePortableBody(item.body),
     seoTitle: item.seoTitle,
     seoDescription: item.seoDescription,
     coverImage: item.coverImage,

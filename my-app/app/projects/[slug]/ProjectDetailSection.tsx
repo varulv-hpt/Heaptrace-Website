@@ -5,6 +5,8 @@ import type { WorkProjectDetail } from "@/lib/sanity/types";
 import { urlForImage } from "@/lib/sanity/image";
 import PortableTextRenderer from "@/components/shared/PortableTextRenderer";
 import ConnectSection from "@/components/shared/ConnectSection";
+import { ourWorkBannerBackgroundStyle } from "@/components/shared/ourWorkBannerStyle";
+import portfolioBannerImage from "@/app/assets/banner/work/our-work.webp";
 import "./project-detail.css";
 
 type NavProject = { title: string; href: string };
@@ -30,12 +32,15 @@ export default function ProjectDetailSection({
   const coverUrl = resolveProjectCoverUrl(project);
   const hasArticleContent = Boolean(coverUrl) || project.body.length > 0;
 
+  const caseStudyBannerStyle = ourWorkBannerBackgroundStyle(portfolioBannerImage);
+
   return (
     <article className="project-case-study">
-      {/* Same banner treatment as service detail pages (globals: .service-details-banner.our-services) */}
+      {/* Same hero image + gradient as `/portfolio` (PageBanner + our-work.webp) */}
       <section
         className="section service-details-banner our-services project-case-study__banner"
         aria-label="Project overview"
+        style={caseStudyBannerStyle}
       >
         <div className="project-case-study__shell project-case-study__banner-inner">
           <nav className="project-case-study__breadcrumb" aria-label="Breadcrumb">

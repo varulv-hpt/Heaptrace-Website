@@ -161,12 +161,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", updateTopState);
   }, [isStudio]);
 
-  /** Light hero / white top: keep solid green bar (same as scrolled), not transparent — avoids unreadable nav on white. */
+  /** Light hero / white top: keep solid green bar (same as scrolled), not transparent — avoids unreadable nav on white. Blog routes use a dark gradient hero, so they stay transparent at the top. */
   const solidNavWhileAtTop =
     pathname.startsWith("/portfolio") ||
     pathname.startsWith("/projects") ||
-    pathname.startsWith("/blog-posts") ||
-    pathname === "/blog" ||
     pathname.startsWith("/contact-us") ||
     pathname.startsWith("/firecrawl") ||
     pathname.startsWith("/about-us") ||

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { WorkProjectDetail } from "@/lib/sanity/types";
+import { urlForImage } from "@/lib/sanity/image";
 import PortableTextRenderer from "@/components/shared/PortableTextRenderer";
 import ConnectSection from "@/components/shared/ConnectSection";
 import "./project-detail.css";
@@ -14,12 +15,20 @@ type ProjectDetailSectionProps = {
   nextProject: NavProject | null;
 };
 
+function resolveProjectCoverUrl(project: WorkProjectDetail): string | undefined {
+  const sanityUrl = project.coverImage
+    ? urlForImage(project.coverImage)?.width(1600).fit("max").quality(90).auto("format").url()
+    : undefined;
+  return sanityUrl ?? project.imageUrl;
+}
+
 export default function ProjectDetailSection({
   project,
   prevProject,
   nextProject,
 }: ProjectDetailSectionProps) {
-  const heroSrc = project.imageUrl;
+  const coverUrl = resolveProjectCoverUrl(project);
+  const hasArticleContent = Boolean(coverUrl) || project.body.length > 0;
 
   return (
     <article className="project-case-study">
@@ -39,30 +48,30 @@ export default function ProjectDetailSection({
         </div>
       </section>
 
-      {/* Gallery — primary cover + inline images come from Portable Text */}
-      {heroSrc ? (
-        <section className="project-case-study__gallery-section" aria-label="Project gallery">
-          <div className="project-case-study__shell">
-            <figure className="project-case-study__gallery-figure">
-              <Image
-                src={heroSrc}
-                alt=""
-                width={1174}
-                height={734}
-                className="project-case-study__gallery-img"
-                sizes="(max-width: 1174px) 100vw, 1174px"
-                priority
-              />
-            </figure>
-          </div>
-        </section>
-      ) : null}
-
-      {project.body.length > 0 ? (
+      {hasArticleContent ? (
         <section className="project-case-study__article-section" aria-label="Case study content">
           <div className="project-case-study__shell project-case-study__shell--article">
+            {coverUrl ? (
+              <div className="project-case-study__cover">
+                <div className="project-article-image-wrap project-case-study__cover-inner">
+                  <Image
+                    src={coverUrl}
+                    alt={project.title}
+                    width={1400}
+                    height={788}
+                    className="project-article-image"
+                    sizes="(max-width: 1174px) 100vw, 1174px"
+                    priority
+                  />
+                </div>
+              </div>
+            ) : null}
             <div className="project-case-study__body project-detail-body">
-              <PortableTextRenderer value={project.body} variant="project" />
+              {project.body.length > 0 ? (
+                <PortableTextRenderer value={project.body} variant="project" />
+              ) : coverUrl ? (
+                <p className="project-article-p">{project.excerpt}</p>
+              ) : null}
             </div>
           </div>
         </section>

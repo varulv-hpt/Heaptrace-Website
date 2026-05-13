@@ -24,6 +24,12 @@ export const authorType = defineType({
       type: "text",
       rows: 3,
     }),
+    defineField({
+      name: "photoUrl",
+      title: "Photo URL (external)",
+      description: "External photo URL for the author (e.g. Webflow CDN).",
+      type: "url",
+    }),
   ],
   preview: {
     select: {

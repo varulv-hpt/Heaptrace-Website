@@ -48,7 +48,7 @@ export default function BlogMainSection({ initialPosts, categories }: BlogMainSe
             role="list"
           >
             {filteredPosts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
+              <BlogCard key={post.id ?? post.slug} post={post} />
             ))}
           </div>
         </div>

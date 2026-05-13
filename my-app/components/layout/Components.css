@@ -490,7 +490,7 @@
 
 .collaborators {
   background: var(--collaborator-section-bg);
-  border-top: 1px solid rgba(77, 210, 255, 0.8);
+  /* No top border — previous cyan line read as an unwanted strip between hero and marquee */
   border-bottom: 1px solid rgba(77, 210, 255, 0.45);
   width: 100%;
   height: fit-content;

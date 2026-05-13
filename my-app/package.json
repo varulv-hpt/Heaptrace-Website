@@ -11,7 +11,11 @@
     "seed:first-sample": "sanity dataset import ./sanity/seed/first-sample.ndjson --dataset production",
     "generate:blog-seed": "npx tsx scripts/generate-blog-sanity-ndjson.ts",
     "seed:blog-static": "npm run generate:blog-seed && sanity dataset import ./sanity/seed/blog-from-static.ndjson --dataset production",
-    "seed:work-poc": "sanity dataset import ./sanity/seed/work-poc.ndjson --dataset production"
+    "generate:blog-csv": "npx tsx scripts/import-blog-from-csv.ts",
+    "seed:blog-csv": "npm run generate:blog-csv && sanity dataset import ./sanity/seed/blog-from-csv.ndjson --dataset production --replace",
+    "seed:work-poc": "sanity dataset import ./sanity/seed/work-poc.ndjson --dataset production",
+    "generate:work-csv": "npx tsx scripts/import-work-from-csv.ts",
+    "seed:work-csv": "npm run generate:work-csv && sanity dataset import ./sanity/seed/work-from-csv.ndjson --dataset production"
   },
   "dependencies": {
     "@portabletext/react": "^6.2.0",
@@ -28,12 +32,15 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "^20.19.41",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cheerio": "^1.2.0",
+    "csv-parse": "^6.2.1",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

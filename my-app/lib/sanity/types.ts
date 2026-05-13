@@ -14,6 +14,8 @@ export type SanityImageRef = {
 };
 
 export type BlogListItem = {
+  /** Sanity document _id when loaded from CMS (stable unique key for lists). */
+  id?: string;
   title: string;
   excerpt: string;
   category: string;
@@ -22,6 +24,7 @@ export type BlogListItem = {
   href: string;
   /** Resolved URL for list card cover (Sanity image CDN or static fallback). */
   coverImageUrl?: string;
+  featured?: boolean;
 };
 
 export type BlogPostDetail = {
@@ -35,6 +38,9 @@ export type BlogPostDetail = {
   seoTitle?: string;
   seoDescription?: string;
   coverImage?: SanityImageRef;
+  /** External cover image URL (e.g. Webflow CDN) fallback when no Sanity asset. */
+  coverImageUrl?: string;
+  featured?: boolean;
 };
 
 export type WorkListItem = {
@@ -60,6 +66,8 @@ export type WorkProjectDetail = {
   coverImage?: SanityImageRef;
   /** Resolved URL for hero when cover is set in Sanity or static `image`. */
   imageUrl?: string;
+  /** Optional extra gallery shots (resolved URLs), shown around the cover on the project page. */
+  galleryImageUrls?: string[];
   /** Matches Webflow case study “Client” meta row. */
   clientName?: string;
   /** ISO date string for “Date” meta row. */

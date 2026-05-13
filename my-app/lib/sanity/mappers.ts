@@ -8,15 +8,18 @@ const toSlug = (value: string) =>
     .replace(/\s+/g, "-");
 
 export function mapListItem(item: {
+  _id?: string;
   title: string;
   excerpt: string;
   category?: string;
   author?: string;
   slug?: string;
   coverImageUrl?: string;
+  featured?: boolean;
 }): BlogListItem {
   const slug = item.slug || toSlug(item.title);
   return {
+    ...(item._id ? { id: item._id } : {}),
     title: item.title,
     excerpt: item.excerpt,
     category: item.category || "Technology Trends",
@@ -24,6 +27,7 @@ export function mapListItem(item: {
     slug,
     href: `/blog-posts/${slug}`,
     coverImageUrl: item.coverImageUrl,
+    featured: item.featured,
   };
 }
 
@@ -38,6 +42,8 @@ export function mapDetailItem(item: {
   seoTitle?: string;
   seoDescription?: string;
   coverImage?: BlogPostDetail["coverImage"];
+  coverImageUrl?: string;
+  featured?: boolean;
 }): BlogPostDetail {
   const slug = item.slug || toSlug(item.title);
   return {
@@ -51,6 +57,8 @@ export function mapDetailItem(item: {
     seoTitle: item.seoTitle,
     seoDescription: item.seoDescription,
     coverImage: item.coverImage,
+    coverImageUrl: item.coverImageUrl,
+    featured: item.featured,
   };
 }
 
@@ -92,6 +100,7 @@ export function mapWorkDetailItem(item: {
   coverImage?: WorkProjectDetail["coverImage"];
   imageUrl?: string;
   image?: string;
+  galleryImageUrls?: string[];
   clientName?: string;
   completedDate?: string;
 }): WorkProjectDetail {
@@ -107,6 +116,7 @@ export function mapWorkDetailItem(item: {
     seoDescription: item.seoDescription,
     coverImage: item.coverImage,
     imageUrl: item.imageUrl ?? item.image,
+    galleryImageUrls: item.galleryImageUrls,
     clientName: item.clientName,
     completedDate: item.completedDate,
   };

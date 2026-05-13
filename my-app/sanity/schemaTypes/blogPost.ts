@@ -32,6 +32,19 @@ export const blogPostType = defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: "coverImageUrl",
+      title: "Cover Image URL (external)",
+      description:
+        "External image URL (e.g. CDN). Used as a fallback when no Sanity Cover Image is uploaded.",
+      type: "url",
+    }),
+    defineField({
+      name: "featured",
+      title: "Featured",
+      type: "boolean",
+      initialValue: false,
+    }),
+    defineField({
       name: "category",
       title: "Category",
       type: "reference",
@@ -59,6 +72,36 @@ export const blogPostType = defineType({
         defineArrayMember({
           type: "image",
           options: { hotspot: true },
+        }),
+        defineArrayMember({
+          type: "object",
+          name: "imageEmbed",
+          title: "External Image",
+          fields: [
+            { name: "url", title: "Image URL", type: "url" },
+            { name: "alt", title: "Alt Text", type: "string" },
+            { name: "caption", title: "Caption", type: "string" },
+          ],
+          preview: {
+            select: { title: "alt", subtitle: "url", media: "url" },
+          },
+        }),
+        defineArrayMember({
+          type: "object",
+          name: "htmlEmbed",
+          title: "Raw HTML Embed",
+          description:
+            "Raw HTML block (e.g. comparison tables from imported content). Rendered via dangerouslySetInnerHTML.",
+          fields: [
+            { name: "html", title: "HTML", type: "text", rows: 8 },
+          ],
+          preview: {
+            select: { title: "html" },
+            prepare: ({ title }: { title?: string }) => ({
+              title: "HTML Embed",
+              subtitle: title ? `${title.slice(0, 80)}…` : undefined,
+            }),
+          },
         }),
       ],
       validation: (rule) => rule.required(),

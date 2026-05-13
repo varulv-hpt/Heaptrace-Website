@@ -98,3 +98,31 @@
   height: auto;
   border-radius: 12px;
 }
+
+.blog-post-html-embed {
+  margin: 28px 0;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #3f4a59;
+  overflow-x: auto;
+}
+
+.blog-post-html-embed table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.blog-post-html-embed th,
+.blog-post-html-embed td {
+  border: 1px solid #d1d9e6;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.blog-post-inline-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9em;
+  background: #eef2f7;
+  padding: 0.12em 0.45em;
+  border-radius: 4px;
+}

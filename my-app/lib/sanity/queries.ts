@@ -6,29 +6,41 @@ import { urlForImage } from "./image";
 import { mapDetailItem, mapListItem, mapWorkDetailItem, mapWorkListItem } from "./mappers";
 import type { BlogListItem, BlogPostDetail, WorkListItem, WorkProjectDetail } from "./types";
 
+/** Exclude legacy `blog-static-*` seed stubs so slugs resolve to CSV-imported posts with full `body`. */
 const blogPostsQuery = groq`
-  *[_type == "blogPost"] | order(publishedAt desc){
+  *[_type == "blogPost" && !(_id match "blog-static-*")] | order(publishedAt desc){
+    _id,
     title,
     excerpt,
     "slug": slug.current,
     "category": category->title,
     "author": author->name,
-    coverImage
+    coverImage,
+    coverImageUrl,
+    featured
   }
 `;
 
 const blogPostBySlugQuery = groq`
-  *[_type == "blogPost" && slug.current == $slug][0]{
+  *[_type == "blogPost" && slug.current == $slug && !(_id match "blog-static-*")] | order(coalesce(publishedAt, _createdAt) desc)[0]{
     title,
     excerpt,
     "slug": slug.current,
     "category": category->title,
     "author": author->name,
     publishedAt,
-    body,
+    body[]{
+      ...,
+      _type == "image" => {
+        ...,
+        asset->
+      }
+    },
     seoTitle,
     seoDescription,
-    coverImage
+    coverImage,
+    coverImageUrl,
+    featured
   }
 `;
 
@@ -109,12 +121,15 @@ export async function getBlogPosts(): Promise<BlogListItem[]> {
   const sanityClient = getSanityClient();
   const posts = await sanityClient.fetch<
     Array<{
+      _id: string;
       title: string;
       excerpt: string;
       slug?: string;
       category?: string;
       author?: string;
       coverImage?: BlogPostDetail["coverImage"];
+      coverImageUrl?: string;
+      featured?: boolean;
     }>
   >(blogPostsQuery);
 
@@ -122,12 +137,25 @@ export async function getBlogPosts(): Promise<BlogListItem[]> {
     return [];
   }
 
-  return posts.map((post) => {
+  const mapped = posts.map((post) => {
     const base = mapListItem(post);
-    const coverImageUrl = post.coverImage
+    const sanityCoverUrl = post.coverImage
       ? urlForImage(post.coverImage)?.width(820).height(640).fit("crop").auto("format").url()
       : undefined;
-    return { ...base, coverImageUrl };
+    return {
+      ...base,
+      coverImageUrl: sanityCoverUrl ?? post.coverImageUrl,
+      featured: post.featured,
+    };
+  });
+
+  const seenSlugs = new Set<string>();
+  return mapped.filter((post) => {
+    if (seenSlugs.has(post.slug)) {
+      return false;
+    }
+    seenSlugs.add(post.slug);
+    return true;
   });
 }
 
@@ -164,6 +192,8 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPostDetail | 
     seoTitle?: string;
     seoDescription?: string;
     coverImage?: BlogPostDetail["coverImage"];
+    coverImageUrl?: string;
+    featured?: boolean;
   } | null>(blogPostBySlugQuery, { slug });
 
   return post ? mapDetailItem(post) : null;
@@ -201,7 +231,8 @@ const workProjectBySlugQuery = groq`
     body,
     seoTitle,
     seoDescription,
-    coverImage
+    coverImage,
+    galleryImages
   }
 `;
 
@@ -237,7 +268,7 @@ export async function getWorkProjects(): Promise<WorkListItem[]> {
     });
     const imageUrl =
       row.coverImage != null
-        ? urlForImage(row.coverImage)?.width(900).height(675).fit("crop").auto("format").url() ?? ""
+        ? urlForImage(row.coverImage)?.width(900).height(675).fit("crop").crop("top").auto("format").url() ?? ""
         : "";
     return { ...base, imageUrl };
   });
@@ -275,6 +306,7 @@ export async function getWorkProjectBySlug(slug: string): Promise<WorkProjectDet
     seoTitle?: string;
     seoDescription?: string;
     coverImage?: WorkProjectDetail["coverImage"];
+    galleryImages?: WorkProjectDetail["coverImage"][];
   } | null>(workProjectBySlugQuery, { slug });
 
   if (!doc) {
@@ -308,7 +340,16 @@ export async function getWorkProjectBySlug(slug: string): Promise<WorkProjectDet
     ? urlForImage(doc.coverImage)?.width(1200).height(750).fit("crop").auto("format").url()
     : undefined;
 
-  return { ...mapped, imageUrl };
+  const galleryImageUrls =
+    Array.isArray(doc.galleryImages) && doc.galleryImages.length > 0
+      ? doc.galleryImages
+          .map((img) =>
+            urlForImage(img)?.width(1000).height(1000).fit("max").auto("format").url(),
+          )
+          .filter((u): u is string => Boolean(u))
+      : undefined;
+
+  return { ...mapped, imageUrl, galleryImageUrls };
 }
 
 export async function getWorkCategories(): Promise<string[]> {

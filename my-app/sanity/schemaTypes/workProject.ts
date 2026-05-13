@@ -106,6 +106,15 @@ export const workProjectType = defineType({
         "Optional until asset is ready — grid cards use a placeholder when empty. Add before publishing to production.",
     }),
     defineField({
+      name: "galleryImages",
+      title: "Gallery images",
+      type: "array",
+      of: [defineArrayMember({ type: "image", options: { hotspot: true } })],
+      description:
+        "Optional extra shots displayed around the cover in the project page gallery (editorial mosaic layout).",
+      validation: (rule) => rule.max(12),
+    }),
+    defineField({
       name: "category",
       title: "Category",
       type: "string",

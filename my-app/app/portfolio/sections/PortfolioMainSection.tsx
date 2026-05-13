@@ -5,6 +5,7 @@ import Link from "next/link";
 import WorkProjectCard from "../components/WorkProjectCard";
 import type { WorkListItem } from "@/lib/sanity/types";
 import PageBanner from "@/components/shared/PageBanner";
+import portfolioBannerImage from "@/app/assets/banner/work/our-work.webp";
 
 type PortfolioMainSectionProps = {
   initialProjects: WorkListItem[];
@@ -53,6 +54,7 @@ export default function PortfolioMainSection({ initialProjects, categories }: Po
       <PageBanner
         title="Our Work"
         description="Explore our diverse portfolio showcasing successful collaborations across industries, demonstrating our expertise in delivering tailored solutions that drive business growth."
+        backgroundImage={portfolioBannerImage}
       />
 
       <section className="section work-section-container py-14 md:py-16">

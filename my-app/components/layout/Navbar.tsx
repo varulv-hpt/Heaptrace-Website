@@ -161,15 +161,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", updateTopState);
   }, [isStudio]);
 
-  /** Light hero / white top: keep solid green bar (same as scrolled), not transparent — avoids unreadable nav on white. `/portfolio` and `/projects` use the dark Our Work–style hero, so the header can be transparent until scroll. */
-  const solidNavWhileAtTop =
-    pathname.startsWith("/contact-us") ||
-    pathname.startsWith("/firecrawl") ||
-    pathname.startsWith("/about-us") ||
-    pathname.startsWith("/careers") ||
-    pathname.startsWith("/faq");
-
-  const isTransparent = !isStudio && isAtTop && !mobileOpen && !solidNavWhileAtTop;
+  const isTransparent = !isStudio && isAtTop && !mobileOpen;
 
   return (
     <>

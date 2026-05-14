@@ -70,16 +70,24 @@ export default function OfficeLocationsSection() {
 
         <div className="mt-12 grid w-full grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
           {officeItems.map((office) => (
-            <article key={`${office.title}-${office.address}`} className="flex flex-col items-start">
-              <img className="h-auto w-12" src={office.countIcon} alt="" />
-              <div className="mt-4 flex items-center gap-3">
+            <article
+              key={`${office.title}-${office.address}`}
+              className="group flex h-full flex-col items-start rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
+            >
+              <img
+                className="h-auto w-12 transition-transform duration-300 group-hover:scale-110"
+                src={office.countIcon}
+                alt=""
+              />
+              <div className="mt-6 flex items-center gap-3">
                 <img className="h-auto w-8" src={office.flagIcon} alt="" />
-                <h3 className="m-0 text-[1.125rem] leading-[1.2] font-medium tracking-[-0.02em] text-white">
+                <h3 className="m-0 text-[1.25rem] font-semibold leading-[1.2] tracking-[-0.02em] text-white">
                   {office.title}
                 </h3>
               </div>
-              <p className="mt-4 w-full text-[1.125rem] leading-[1.6] text-[#d2d7d6]">{office.address}</p>
-              {office.showDivider ? <div className="mt-6 h-px w-full bg-white/35" /> : null}
+              <p className="mt-4 w-full text-[1.0625rem] leading-[1.6] text-[#d2d7d6]">
+                {office.address}
+              </p>
             </article>
           ))}
         </div>

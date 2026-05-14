@@ -36,7 +36,7 @@ export default function StudioClient() {
             overflowX: "auto",
           }}
         >
-          NEXT_PUBLIC_SANITY_PROJECT_ID=your-project-id
+          NEXT_PUBLIC_SANITY_PROJECT_ID=ups3wse4
           {"\n"}
           NEXT_PUBLIC_SANITY_DATASET=production
         </pre>

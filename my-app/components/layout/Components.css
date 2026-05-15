@@ -330,12 +330,14 @@
   inset: 0;
   z-index: 1100;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
 .site-mobile-overlay-open {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 
@@ -374,7 +376,7 @@
   width: 140px;
   height: 34px;
   object-fit: contain;
-  filter: brightness(0) saturate(100%);
+  filter: none;
 }
 
 .site-mobile-close {

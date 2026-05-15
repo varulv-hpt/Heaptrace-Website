@@ -20,6 +20,12 @@ export const contactSubmissionType = defineType({
       readOnly: true,
     }),
     defineField({
+      name: "company",
+      title: "Company",
+      type: "string",
+      readOnly: true,
+    }),
+    defineField({
       name: "message",
       title: "Message",
       type: "text",

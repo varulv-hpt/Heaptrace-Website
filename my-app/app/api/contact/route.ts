@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { writeClient } from "@/sanity/lib/writeClient";
 
+<<<<<<< HEAD
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // ── Email sender address ──────────────────────────────────────────────────────
@@ -10,11 +11,17 @@ const FROM_ADDRESS = "Heaptrace <hello@heaptrace.com>";
 
 // ── Your internal notification inbox ─────────────────────────────────────────
 const NOTIFY_TO = process.env.CONTACT_TO_EMAIL ?? "varulv@heaptrace.com";
+=======
+const resend = new Resend(process.env.RESEND_API_KEY || "");
+const resendDomain = process.env.RESEND_DOMAIN || "heaptrace.com";
+const resendFromName = process.env.RESEND_FROM_NAME || "Heaptrace";
+const contactRecipient = process.env.CONTACT_TO_EMAIL || "varulv@heaptrace.com";
+>>>>>>> 5dfb53c2ae82e00757a787a4129340896a0be7f1
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, message } = body;
+    const { name, email, company, message } = body;
 
     // ── Basic server-side validation ──────────────────────────────────────────
     if (!name || typeof name !== "string" || name.trim().length < 2) {
@@ -39,14 +46,27 @@ export async function POST(req: NextRequest) {
       );
     }
 
+<<<<<<< HEAD
     const cleanName = name.trim();
     const cleanEmail = email.trim().toLowerCase();
     const cleanMessage = message.trim();
     const submittedAt = new Date().toISOString();
+=======
+    if (!process.env.SANITY_API_TOKEN || !writeClient) {
+      return NextResponse.json(
+        {
+          error:
+            "Sanity write token is not configured. Set SANITY_API_TOKEN in .env.local.",
+        },
+        { status: 500 },
+      );
+    }
+>>>>>>> 5dfb53c2ae82e00757a787a4129340896a0be7f1
 
     // ── Write to Sanity ───────────────────────────────────────────────────────
     const doc = await writeClient.create({
       _type: "contactSubmission",
+<<<<<<< HEAD
       name: cleanName,
       email: cleanEmail,
       message: cleanMessage,
@@ -137,6 +157,49 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ success: true, id: doc._id }, { status: 201 });
+=======
+      name: name.trim(),
+      email: email.trim().toLowerCase(),
+      company: company ? company.trim() : undefined,
+      message: message.trim(),
+      submittedAt: new Date().toISOString(),
+      status: "new",
+    });
+
+    let emailSent = false;
+    let emailErrorMessage: string | null = null;
+
+    if (!process.env.RESEND_API_KEY) {
+      emailErrorMessage = "RESEND_API_KEY is not configured.";
+      console.error("[/api/contact]", emailErrorMessage);
+    } else {
+      try {
+        await resend.emails.send({
+          from: `${resendFromName} <${resendFromName.replace(/\s+/g, "").toLowerCase()}@${resendDomain}>`,
+          to: [contactRecipient],
+          subject: `New contact submission from ${doc.name}`,
+          text: `New contact submission received:\n\nName: ${doc.name}\nEmail: ${doc.email}\nCompany: ${doc.company || "Not provided"}\nMessage: ${doc.message}\nSubmitted At: ${doc.submittedAt}`,
+        });
+        emailSent = true;
+      } catch (emailError) {
+        emailErrorMessage =
+          emailError instanceof Error
+            ? emailError.message
+            : "Unknown error while sending email.";
+        console.error("[/api/contact] Resend email failed:", emailError);
+      }
+    }
+
+    return NextResponse.json(
+      {
+        success: true,
+        id: doc._id,
+        emailSent,
+        emailError: emailErrorMessage,
+      },
+      { status: 201 },
+    );
+>>>>>>> 5dfb53c2ae82e00757a787a4129340896a0be7f1
   } catch (err) {
     // try/catch covers only Sanity write failures and JSON parse errors
     console.error("[/api/contact] Error saving submission:", err);
@@ -149,13 +212,12 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: "Something went wrong. Please try again later." },
+      { error: `Something went wrong: ${err instanceof Error ? err.message : 'Unknown error'}. Please try again later.` },
       { status: 500 },
     );
   }
 }
 
-// Reject every other HTTP method cleanly
 export async function GET() {
   return NextResponse.json({ error: "Method not allowed." }, { status: 405 });
 }

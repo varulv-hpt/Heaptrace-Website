@@ -19,16 +19,18 @@ function ConnectFormCard({ className = "" }: { className?: string }) {
   const [fieldErrors, setFieldErrors] = useState<{
     name?: string;
     email?: string;
+    company?: string;
     message?: string;
   }>({});
 
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
+  const companyRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
 
   // ── Client-side validation ────────────────────────────────────────────────
-  function validate(name: string, email: string, message: string) {
-    const errors: { name?: string; email?: string; message?: string } = {};
+  function validate(name: string, email: string, company: string, message: string) {
+    const errors: { name?: string; email?: string; company?: string; message?: string } = {};
     if (name.trim().length < 2) errors.name = "Please enter your full name.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
       errors.email = "Please enter a valid email address.";
@@ -43,9 +45,10 @@ function ConnectFormCard({ className = "" }: { className?: string }) {
 
     const name = nameRef.current?.value ?? "";
     const email = emailRef.current?.value ?? "";
+    const company = companyRef.current?.value ?? "";
     const message = messageRef.current?.value ?? "";
 
-    const errors = validate(name, email, message);
+    const errors = validate(name, email, company, message);
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
       return;
@@ -59,7 +62,7 @@ function ConnectFormCard({ className = "" }: { className?: string }) {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({ name, email, company, message }),
       });
 
       const data = await res.json();
@@ -73,6 +76,7 @@ function ConnectFormCard({ className = "" }: { className?: string }) {
       // Reset the form on success
       if (nameRef.current) nameRef.current.value = "";
       if (emailRef.current) emailRef.current.value = "";
+      if (companyRef.current) companyRef.current.value = "";
       if (messageRef.current) messageRef.current.value = "";
 
       setFormState("success");
@@ -187,6 +191,27 @@ function ConnectFormCard({ className = "" }: { className?: string }) {
                 {fieldErrors.email && (
                   <p id="email-error" className="text-xs text-red-200 pl-1">
                     {fieldErrors.email}
+                  </p>
+                )}
+              </div>
+
+              {/* Company */}
+              <div className="flex flex-col gap-1">
+                <input
+                  ref={companyRef}
+                  id="company-3"
+                  className={`${inputClass}${fieldErrors.company ? " border-red-300" : ""}`}
+                  type="text"
+                  placeholder="Your Company (Optional)"
+                  name="company"
+                  autoComplete="organization"
+                  disabled={isSubmitting}
+                  aria-invalid={!!fieldErrors.company}
+                  aria-describedby={fieldErrors.company ? "company-error" : undefined}
+                />
+                {fieldErrors.company && (
+                  <p id="company-error" className="text-xs text-red-200 pl-1">
+                    {fieldErrors.company}
                   </p>
                 )}
               </div>

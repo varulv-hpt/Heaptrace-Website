@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import LOGO_URL from "../../app/assets/ht/ht-logo.svg";
+import LOGO_BLACK_URL from "../../app/assets/ht/ht-logo-black.svg";
 import "./Components.css";
 
 const INDUSTRIES_LINKS = [
@@ -257,7 +258,7 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}
             >
               <Image
-                src={LOGO_URL}
+                src={LOGO_BLACK_URL}
                 alt="Heaptrace"
                 width={140}
                 height={34}

@@ -5,10 +5,8 @@ import { writeClient } from "@/sanity/lib/writeClient";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // ── Email sender address ──────────────────────────────────────────────────────
-// Using Resend sandbox sender for testing (works without domain verification).
-// Once heaptrace.com is verified in Resend dashboard, change to:
-//   `${fromName} <varulv@${fromDomain}>`
-const FROM_ADDRESS = "Heaptrace <onboarding@resend.dev>";
+// This requires heaptrace.com to be verified in the Resend dashboard (Domains tab).
+const FROM_ADDRESS = "Heaptrace <hello@heaptrace.com>";
 
 // ── Your internal notification inbox ─────────────────────────────────────────
 const NOTIFY_TO = process.env.CONTACT_TO_EMAIL ?? "varulv@heaptrace.com";
@@ -56,7 +54,9 @@ export async function POST(req: NextRequest) {
       status: "new",
     });
 
-    // ── Send emails via Resend (non-blocking — errors are logged, not thrown) ──
+    // ── Send emails via Resend ────────────────────────────────────────────────
+    // Emails are non-fatal — Sanity record is already saved above.
+    // Using { data, error } SDK pattern per official Resend docs (no try/catch).
     if (process.env.RESEND_API_KEY) {
       const date = new Date(submittedAt).toLocaleString("en-US", {
         dateStyle: "long",
@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
           <p style="margin:32px 0 0;font-size:12px;color:#6b7280;">Heaptrace · Contact Form Notification</p>
         </div>`;
 
-      // 2. Auto-reply to the person who contacted us
+      // 2. Auto-reply to the person who submitted
       const replyHtml = `
         <div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;padding:32px 24px;background:#0d0d0d;color:#e5e5e5;border-radius:12px;">
           <div style="margin-bottom:24px;">
@@ -100,37 +100,47 @@ export async function POST(req: NextRequest) {
           <p style="margin:0;font-size:13px;color:#6b7280;">— The Heaptrace Team</p>
         </div>`;
 
-      // Fire both emails in parallel; errors are non-fatal
-      await Promise.allSettled([
+      // Fire both emails in parallel using the { data, error } SDK pattern
+      const [notifyResult, replyResult] = await Promise.all([
         resend.emails.send({
           from: FROM_ADDRESS,
           to: [NOTIFY_TO],
           replyTo: cleanEmail,
           subject: `New contact from ${cleanName}`,
           html: notifyHtml,
+          idempotencyKey: `contact-notify/${doc._id}`,
+          tags: [{ name: "type", value: "contact-notification" }],
         }),
         resend.emails.send({
           from: FROM_ADDRESS,
           to: [cleanEmail],
           subject: "We got your message — Heaptrace",
           html: replyHtml,
+          idempotencyKey: `contact-reply/${doc._id}`,
+          tags: [{ name: "type", value: "contact-autoreply" }],
         }),
-      ]).then((results) => {
-        results.forEach((r, i) => {
-          if (r.status === "rejected") {
-            console.error(`[/api/contact] Resend email ${i + 1} failed:`, r.reason);
-          }
-        });
-      });
+      ]);
+
+      if (notifyResult.error) {
+        console.error("[/api/contact] Notification email failed:", notifyResult.error);
+      } else {
+        console.log("[/api/contact] Notification sent:", notifyResult.data?.id);
+      }
+
+      if (replyResult.error) {
+        console.error("[/api/contact] Auto-reply email failed:", replyResult.error);
+      } else {
+        console.log("[/api/contact] Auto-reply sent:", replyResult.data?.id);
+      }
     } else {
       console.warn("[/api/contact] RESEND_API_KEY not set — skipping email sends.");
     }
 
     return NextResponse.json({ success: true, id: doc._id }, { status: 201 });
   } catch (err) {
+    // try/catch covers only Sanity write failures and JSON parse errors
     console.error("[/api/contact] Error saving submission:", err);
 
-    // If the write token is missing we get a 401 from Sanity
     if (err instanceof Error && err.message.includes("Unauthorized")) {
       return NextResponse.json(
         { error: "Server configuration error — write token not set." },

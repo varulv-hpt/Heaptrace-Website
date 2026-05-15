@@ -5,16 +5,13 @@ import { writeClient } from "@/sanity/lib/writeClient";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // ── Email sender address ──────────────────────────────────────────────────────
-// Constructed from RESEND_FROM_NAME + RESEND_DOMAIN env vars.
-// Falls back to the Resend sandbox address if the domain is not yet set.
-const fromName = process.env.RESEND_FROM_NAME ?? "Heaptrace";
-const fromDomain = process.env.RESEND_DOMAIN;
-const FROM_ADDRESS = fromDomain
-  ? `${fromName} <hello@${fromDomain}>`
-  : "Heaptrace <onboarding@resend.dev>";
+// Using Resend sandbox sender for testing (works without domain verification).
+// Once heaptrace.com is verified in Resend dashboard, change to:
+//   `${fromName} <varulv@${fromDomain}>`
+const FROM_ADDRESS = "Heaptrace <onboarding@resend.dev>";
 
 // ── Your internal notification inbox ─────────────────────────────────────────
-const NOTIFY_TO = process.env.CONTACT_TO_EMAIL ?? "hello@heaptrace.com";
+const NOTIFY_TO = process.env.CONTACT_TO_EMAIL ?? "varulv@heaptrace.com";
 
 export async function POST(req: NextRequest) {
   try {

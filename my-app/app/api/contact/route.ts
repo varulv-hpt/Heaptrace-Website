@@ -29,6 +29,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    if (!process.env.SANITY_API_TOKEN) {
+      return NextResponse.json(
+        {
+          error:
+            "Sanity write token is not configured. Set SANITY_API_TOKEN in .env.local.",
+        },
+        { status: 500 },
+      );
+    }
+
     // ── Write to Sanity ───────────────────────────────────────────────────────
     const doc = await writeClient.create({
       _type: "contactSubmission",
@@ -52,7 +62,7 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: "Something went wrong. Please try again later." },
+      { error: `Something went wrong: ${err instanceof Error ? err.message : 'Unknown error'}. Please try again later.` },
       { status: 500 },
     );
   }

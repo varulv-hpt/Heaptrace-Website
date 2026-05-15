@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/sanity/queries";
+import type { BlogListItem } from "@/lib/sanity/types";
 import BlogPostDetailSection from "./BlogPostDetailSection";
 import "./blog-post.css";
 
@@ -31,11 +32,16 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
+  const posts = await getBlogPosts();
   const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     notFound();
   }
 
-  return <BlogPostDetailSection post={post} />;
+  const index = posts.findIndex((item) => item.slug === slug);
+  const nextPost = index > 0 ? posts[index - 1] : null;
+  const prevPost = index >= 0 && index < posts.length - 1 ? posts[index + 1] : null;
+
+  return <BlogPostDetailSection post={post} prevPost={prevPost} nextPost={nextPost} />;
 }

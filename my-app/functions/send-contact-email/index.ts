@@ -5,7 +5,6 @@ interface ContactSubmission {
   _type: 'contactSubmission'
   name: string
   email: string
-  company?: string
   message: string
   submittedAt: string
   status: string

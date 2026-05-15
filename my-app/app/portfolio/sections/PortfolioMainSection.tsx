@@ -91,7 +91,7 @@ export default function PortfolioMainSection({ initialProjects, categories }: Po
       </section>
 
       <section className="bg-[#ffffff] py-20">
-        <div className="mx-auto w-full max-w-[980px] px-6 text-center">
+        <div className="mx-auto w-full max-w-[1350px] px-6 text-center">
           <h2 className="text-[32px] font-semibold leading-[1.35] text-[#303338] md:text-[40px]">
             Improve your business with the right solutions
           </h2>
@@ -112,7 +112,7 @@ export default function PortfolioMainSection({ initialProjects, categories }: Po
       </section>
 
       <section className="bg-[#f6f8fb] py-20">
-        <div className="mx-auto w-full max-w-[980px] px-6">
+        <div className="mx-auto w-full max-w-[1350px] px-6">
           <h2 className="text-center text-[32px] font-semibold leading-[1.35] text-[#303338] md:text-[40px]">
             Customers frequently ask
           </h2>

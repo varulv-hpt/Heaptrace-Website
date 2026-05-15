@@ -1,10 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
 import { writeClient } from "@/sanity/lib/writeClient";
+
+const resend = new Resend(process.env.RESEND_API_KEY || "");
+const resendDomain = process.env.RESEND_DOMAIN || "heaptrace.com";
+const resendFromName = process.env.RESEND_FROM_NAME || "Heaptrace";
+const contactRecipient = process.env.CONTACT_TO_EMAIL || "varulv@heaptrace.com";
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, message } = body;
+    const { name, email, company, message } = body;
 
     // ── Basic server-side validation ──────────────────────────────────────────
     if (!name || typeof name !== "string" || name.trim().length < 2) {
@@ -29,7 +35,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (!process.env.SANITY_API_TOKEN) {
+    if (!process.env.SANITY_API_TOKEN || !writeClient) {
       return NextResponse.json(
         {
           error:
@@ -44,16 +50,48 @@ export async function POST(req: NextRequest) {
       _type: "contactSubmission",
       name: name.trim(),
       email: email.trim().toLowerCase(),
+      company: company ? company.trim() : undefined,
       message: message.trim(),
       submittedAt: new Date().toISOString(),
       status: "new",
     });
 
-    return NextResponse.json({ success: true, id: doc._id }, { status: 201 });
+    let emailSent = false;
+    let emailErrorMessage: string | null = null;
+
+    if (!process.env.RESEND_API_KEY) {
+      emailErrorMessage = "RESEND_API_KEY is not configured.";
+      console.error("[/api/contact]", emailErrorMessage);
+    } else {
+      try {
+        await resend.emails.send({
+          from: `${resendFromName} <${resendFromName.replace(/\s+/g, "").toLowerCase()}@${resendDomain}>`,
+          to: [contactRecipient],
+          subject: `New contact submission from ${doc.name}`,
+          text: `New contact submission received:\n\nName: ${doc.name}\nEmail: ${doc.email}\nCompany: ${doc.company || "Not provided"}\nMessage: ${doc.message}\nSubmitted At: ${doc.submittedAt}`,
+        });
+        emailSent = true;
+      } catch (emailError) {
+        emailErrorMessage =
+          emailError instanceof Error
+            ? emailError.message
+            : "Unknown error while sending email.";
+        console.error("[/api/contact] Resend email failed:", emailError);
+      }
+    }
+
+    return NextResponse.json(
+      {
+        success: true,
+        id: doc._id,
+        emailSent,
+        emailError: emailErrorMessage,
+      },
+      { status: 201 },
+    );
   } catch (err) {
     console.error("[/api/contact] Error saving submission:", err);
 
-    // If the write token is missing we get a 401 from Sanity
     if (err instanceof Error && err.message.includes("Unauthorized")) {
       return NextResponse.json(
         { error: "Server configuration error — write token not set." },
@@ -68,7 +106,6 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// Reject every other HTTP method cleanly
 export async function GET() {
   return NextResponse.json({ error: "Method not allowed." }, { status: 405 });
 }

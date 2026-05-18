@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { writeClient } from "@/sanity/lib/writeClient";
 
-<<<<<<< HEAD
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // ── Email sender address ──────────────────────────────────────────────────────
@@ -11,12 +10,6 @@ const FROM_ADDRESS = "Heaptrace <hello@heaptrace.com>";
 
 // ── Your internal notification inbox ─────────────────────────────────────────
 const NOTIFY_TO = process.env.CONTACT_TO_EMAIL ?? "varulv@heaptrace.com";
-=======
-const resend = new Resend(process.env.RESEND_API_KEY || "");
-const resendDomain = process.env.RESEND_DOMAIN || "heaptrace.com";
-const resendFromName = process.env.RESEND_FROM_NAME || "Heaptrace";
-const contactRecipient = process.env.CONTACT_TO_EMAIL || "varulv@heaptrace.com";
->>>>>>> 5dfb53c2ae82e00757a787a4129340896a0be7f1
 
 export async function POST(req: NextRequest) {
   try {
@@ -46,12 +39,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-<<<<<<< HEAD
     const cleanName = name.trim();
     const cleanEmail = email.trim().toLowerCase();
+    const cleanCompany = company ? company.trim() : undefined;
     const cleanMessage = message.trim();
     const submittedAt = new Date().toISOString();
-=======
+
     if (!process.env.SANITY_API_TOKEN || !writeClient) {
       return NextResponse.json(
         {
@@ -61,14 +54,13 @@ export async function POST(req: NextRequest) {
         { status: 500 },
       );
     }
->>>>>>> 5dfb53c2ae82e00757a787a4129340896a0be7f1
 
     // ── Write to Sanity ───────────────────────────────────────────────────────
     const doc = await writeClient.create({
       _type: "contactSubmission",
-<<<<<<< HEAD
       name: cleanName,
       email: cleanEmail,
+      company: cleanCompany,
       message: cleanMessage,
       submittedAt,
       status: "new",
@@ -94,6 +86,7 @@ export async function POST(req: NextRequest) {
           <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
             <tr><td style="padding:10px 0;border-bottom:1px solid #1f1f1f;font-size:13px;color:#9ca3af;width:90px;">Name</td><td style="padding:10px 0;border-bottom:1px solid #1f1f1f;font-size:14px;font-weight:600;color:#ffffff;">${cleanName}</td></tr>
             <tr><td style="padding:10px 0;border-bottom:1px solid #1f1f1f;font-size:13px;color:#9ca3af;">Email</td><td style="padding:10px 0;border-bottom:1px solid #1f1f1f;font-size:14px;color:#60d7ad;"><a href="mailto:${cleanEmail}" style="color:#60d7ad;text-decoration:none;">${cleanEmail}</a></td></tr>
+            ${cleanCompany ? `<tr><td style="padding:10px 0;border-bottom:1px solid #1f1f1f;font-size:13px;color:#9ca3af;">Company</td><td style="padding:10px 0;border-bottom:1px solid #1f1f1f;font-size:14px;color:#e5e5e5;">${cleanCompany}</td></tr>` : ''}
             <tr><td style="padding:10px 0;font-size:13px;color:#9ca3af;vertical-align:top;">Message</td><td style="padding:10px 0;font-size:14px;color:#e5e5e5;white-space:pre-wrap;">${cleanMessage}</td></tr>
           </table>
           <a href="https://heaptrace.sanity.studio/structure/contactSubmission;${doc._id}" style="display:inline-block;background:#60d7ad;color:#0d2e28;font-size:14px;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none;">View in Sanity Studio →</a>
@@ -157,49 +150,6 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ success: true, id: doc._id }, { status: 201 });
-=======
-      name: name.trim(),
-      email: email.trim().toLowerCase(),
-      company: company ? company.trim() : undefined,
-      message: message.trim(),
-      submittedAt: new Date().toISOString(),
-      status: "new",
-    });
-
-    let emailSent = false;
-    let emailErrorMessage: string | null = null;
-
-    if (!process.env.RESEND_API_KEY) {
-      emailErrorMessage = "RESEND_API_KEY is not configured.";
-      console.error("[/api/contact]", emailErrorMessage);
-    } else {
-      try {
-        await resend.emails.send({
-          from: `${resendFromName} <${resendFromName.replace(/\s+/g, "").toLowerCase()}@${resendDomain}>`,
-          to: [contactRecipient],
-          subject: `New contact submission from ${doc.name}`,
-          text: `New contact submission received:\n\nName: ${doc.name}\nEmail: ${doc.email}\nCompany: ${doc.company || "Not provided"}\nMessage: ${doc.message}\nSubmitted At: ${doc.submittedAt}`,
-        });
-        emailSent = true;
-      } catch (emailError) {
-        emailErrorMessage =
-          emailError instanceof Error
-            ? emailError.message
-            : "Unknown error while sending email.";
-        console.error("[/api/contact] Resend email failed:", emailError);
-      }
-    }
-
-    return NextResponse.json(
-      {
-        success: true,
-        id: doc._id,
-        emailSent,
-        emailError: emailErrorMessage,
-      },
-      { status: 201 },
-    );
->>>>>>> 5dfb53c2ae82e00757a787a4129340896a0be7f1
   } catch (err) {
     // try/catch covers only Sanity write failures and JSON parse errors
     console.error("[/api/contact] Error saving submission:", err);
